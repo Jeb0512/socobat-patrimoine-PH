@@ -1,158 +1,112 @@
 import streamlit as st
 import pandas as pd
 
-# 1. CONFIGURATION DE LA PAGE
-st.set_page_config(
-    page_title="Socobat Asset Manager",
-    layout="wide",
-    initial_sidebar_state="collapsed",
-    page_icon="🏢"
-)
+# 1. CONFIGURATION
+st.set_page_config(page_title="Socobat Asset", layout="wide", initial_sidebar_state="collapsed")
 
-# 2. DESIGN FINTECH (Style Revolut / Qonto)
+# 2. DESIGN MOLLIE (Clean & Minimalist)
 st.markdown("""
     <style>
-    /* Fond global */
-    .main { background-color: #f4f7f9; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+    .main { background-color: #FFFFFF; }
     
-    /* Style des Cartes */
+    /* Cartes style Mollie */
     .card {
-        background-color: white;
-        padding: 24px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        margin-bottom: 16px;
-        border: 1px solid #eef2f6;
+        background-color: #F9FAFB;
+        padding: 32px;
+        border-radius: 12px;
+        border: 1px solid #E5E7EB;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
     }
+    .card:hover { border-color: #374151; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
     
     /* Typography */
-    .card-label { 
-        color: #8a94a6; 
-        font-size: 0.7rem; 
-        font-weight: 700; 
-        text-transform: uppercase; 
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-    }
-    .card-value { 
-        color: #1a202c; 
-        font-size: 1.8rem; 
-        font-weight: 800; 
-        letter-spacing: -0.5px;
-    }
-    .card-sub { 
-        color: #5a67d8; 
-        font-size: 0.85rem; 
-        font-weight: 600;
-        margin-top: 4px;
-    }
+    .lbl { color: #6B7280; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .val { color: #111827; font-size: 2rem; font-weight: 800; line-height: 1; }
+    .sub { color: #374151; font-size: 0.9rem; margin-top: 8px; font-weight: 500; }
     
-    /* Badges Style Revolut */
-    .badge-coll { 
-        background-color: #e6fffa; 
-        color: #319795; 
-        padding: 6px 14px; 
-        border-radius: 12px; 
-        font-size: 0.7rem; 
-        font-weight: 800; 
-    }
-    .badge-indiv { 
-        background-color: #fff5f5; 
-        color: #e53e3e; 
-        padding: 6px 14px; 
-        border-radius: 12px; 
-        font-size: 0.7rem; 
-        font-weight: 800; 
-    }
+    /* Badge */
+    .tag { background-color: #111827; color: white; padding: 6px 16px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; }
     
-    /* Inputs */
-    div[data-baseweb="select"] {
-        border-radius: 15px !important;
-        border: none !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    /* Bouton Mollie */
+    .stButton>button {
+        background-color: #111827; color: white; border-radius: 100px; 
+        padding: 12px 24px; font-weight: 600; border: none; width: 100%;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. MOT DE PASSE SÉCURISÉ
-if "authenticated" not in st.session_state:
-    st.markdown("<div style='text-align:center; padding:100px 20px;'>", unsafe_allow_html=True)
-    st.image("https://img.icons8.com/fluency/96/shield-lock.png")
-    st.title("Socobat Private Access")
-    pwd = st.text_input("Enter Access Code", type="password")
-    if st.button("Unlock Dashboard", use_container_width=True):
-        if pwd == "SOCOBAT2026":
-            st.session_state["authenticated"] = True
+# 3. AUTHENTIFICATION
+if "auth" not in st.session_state:
+    st.markdown("<div style='padding:80px 0; text-align:center'><h1>Socobat.</h1><p>Dashboard Accès Privé</p></div>", unsafe_allow_html=True)
+    p = st.text_input("Code confidentiel", type="password")
+    if st.button("Accéder au Dashboard"):
+        if p == "SOCOBAT2026":
+            st.session_state["auth"] = True
             st.rerun()
-        else:
-            st.error("Invalid Code")
-    st.markdown("</div>", unsafe_allow_html=True)
+        else: st.error("Code erroné")
     st.stop()
 
-# 4. CHARGEMENT DES DONNÉES
+# 4. DATA LOAD
 @st.cache_data
 def load_data():
     f1 = "1-EQUIPEMENTS CHAUFFAGE COLLECTIF_NOVEMBRE 2024.xlsx"
     f3 = "3 - BATIMENTS_SURFACES_NOVEMBRE 2024.xlsx"
     f4 = "4 - UG SURFACES - NOVEMBRE 2024.xlsx"
-    
-    # Lecture
-    d_ug = pd.read_excel(f4, sheet_name="SURFACES DES UG", dtype={'N° UG': str, 'GROUPE (HP2)': str})
-    d_bat = pd.read_excel(f3, sheet_name="SURFACES BATIMENTS", dtype={'GROUPE (HP2)': str})
-    d_coll = pd.read_excel(f1, sheet_name="COLLECTIF + TRAVAUX", dtype={'HP2': str})
-    
-    # Nettoyage
-    d_ug['N° UG'] = d_ug['N° UG'].str.strip().str.zfill(6)
-    d_ug['GROUPE (HP2)'] = d_ug['GROUPE (HP2)'].str.strip()
-    d_coll['HP2'] = d_coll['HP2'].str.strip()
-    return d_ug, d_bat, d_coll
+    d1 = pd.read_excel(f1, sheet_name="COLLECTIF + TRAVAUX", dtype={'HP2': str})
+    d3 = pd.read_excel(f3, sheet_name="SURFACES BATIMENTS", dtype={'GROUPE (HP2)': str})
+    d4 = pd.read_excel(f4, sheet_name="SURFACES DES UG", dtype={'N° UG': str, 'GROUPE (HP2)': str})
+    for d in [d1, d3, d4]:
+        c = 'HP2' if 'HP2' in d.columns else 'GROUPE (HP2)'
+        d[c] = d[c].str.strip()
+    d4['N° UG'] = d4['N° UG'].str.strip().str.zfill(6)
+    return d1, d3, d4
 
 try:
-    df_ug, df_bat, df_coll = load_data()
+    df1, df3, df4 = load_data()
+    st.markdown("<h1 style='font-weight:800; letter-spacing:-1px'>Asset Manager.</h1>", unsafe_allow_html=True)
 
-    # HEADER
-    st.markdown("<h2 style='color: #1a202c; font-weight:800;'>Socobat Asset</h2>", unsafe_allow_html=True)
+    # RECHERCHE
+    c1, c2 = st.columns(2)
+    with c1:
+        hp2s = sorted(df4['GROUPE (HP2)'].dropna().unique())
+        sel_h = st.selectbox("Groupe HP2", hp2s, index=None)
     
-    # RECHERCHE ULTRA-FLUIDE
-    c_s1, c_s2 = st.columns(2)
-    with c_s1:
-        hp2_list = sorted(df_ug['GROUPE (HP2)'].dropna().unique())
-        sel_hp2 = st.selectbox("Code Groupe", hp2_list, index=None, placeholder="Search HP2...")
-    
-    if sel_hp2:
-        with c_s2:
-            ug_list = sorted(df_ug[df_ug['GROUPE (HP2)'] == sel_hp2]['N° UG'].unique())
-            sel_ug = st.selectbox("Unité UG", ug_list, index=None, placeholder="Search UG...")
+    if sel_h:
+        with c2:
+            ugs = sorted(df4[df4['GROUPE (HP2)'] == sel_h]['N° UG'].unique())
+            sel_u = st.selectbox("Unité UG", ugs, index=None)
 
-        if sel_ug:
-            # DATA EXTRACTION
-            info_ug = df_ug[(df_ug['GROUPE (HP2)'] == sel_hp2) & (df_ug['N° UG'] == sel_ug)].iloc[0]
-            surf_tot = df_ug[df_ug['GROUPE (HP2)'] == sel_hp2]['SURFACE HABITABLE (SHA)'].sum()
-            info_coll = df_coll[df_coll['HP2'] == sel_hp2]
+        if sel_u:
+            # DATA
+            u_row = df4[(df4['GROUPE (HP2)'] == sel_h) & (df4['N° UG'] == sel_u)].iloc[0]
+            s_tot = df4[df4['GROUPE (HP2)'] == sel_h]['SURFACE HABITABLE (SHA)'].sum()
+            c_row = df1[df1['HP2'] == sel_h]
             
-            st.markdown(f"### {info_ug['NOM GROUPE']}")
+            st.markdown(f"### {u_row['NOM GROUPE']}")
 
-            # CARTES STYLE FINTECH
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown(f"""
-                <div class="card">
-                    <div class="card-label">Surface Logement</div>
-                    <div class="card-value">{info_ug['SURFACE HABITABLE (SHA)']} m²</div>
-                    <div class="card-sub">Type {info_ug['Type']} • {info_ug['Etage']}</div>
-                </div>
-                """, unsafe_allow_html=True)
-            
-            with col2:
-                st.markdown(f"""
-                <div class="card">
-                    <div class="card-label">Total Immeuble</div>
-                    <div class="card-value">{int(surf_tot):,} m²</div>
-                    <div class="card-sub">{len(df_ug[df_ug['GROUPE (HP2)'] == sel_hp2])} Unités Habitables</div>
-                </div>
-                """, unsafe_allow_html=True)
+            # GRID MOLLIE
+            col_a, col_b = st.columns(2)
+            with col_a:
+                st.markdown(f"""<div class="card"><div class="lbl">Surface Logement</div><div class="val">{u_row['SURFACE HABITABLE (SHA)']} m²</div><div class="sub">Type {u_row['Type']} • Étage {u_row['Etage']}</div></div>""", unsafe_allow_html=True)
+            with col_b:
+                st.markdown(f"""<div class="card"><div class="lbl">Total Immeuble</div><div class="val">{int(s_tot):,} m²</div><div class="sub">{len(df4[df4['GROUPE (HP2)'] == sel_h])} Unités</div></div>""", unsafe_allow_html=True)
 
-            # CHAUFFAGE SECTION
-            is_c = not info_coll.empty
-            badge = '<span class="badge-coll">COLLECTIF</span>' if is_c else '<span class="badge-indiv">INDIVIDUEL</span>'
-            type_ch = info_coll['Type combustible'].iloc[0] if is
+            # CHAUFFAGE
+            is_c = not c_row.empty
+            tag = "COLLECTIF" if is_c else "INDIVIDUEL"
+            t_ch = c_row['Type combustible'].iloc[0] if is_c else "Gaz Individuel"
+            eq = c_row['Equipement'].iloc[0] if is_c else "Équipement privé"
+
+            st.markdown(f"""<div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px">
+                    <div class="lbl" style="margin:0">Énergie & Chauffage</div><span class="tag">{tag}</span>
+                </div>
+                <div class="val" style="font-size:1.6rem">{t_ch}</div>
+                <div class="sub">{eq}</div>
+            </div>""", unsafe_allow_html=True)
+
+except Exception as e:
+    st.info("Sélectionnez un groupe pour commencer.")
