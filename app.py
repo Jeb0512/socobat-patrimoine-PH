@@ -4,47 +4,58 @@ import pandas as pd
 # 1. CONFIGURATION
 st.set_page_config(page_title="Socobat Asset - Jeb", layout="wide", initial_sidebar_state="collapsed")
 
-# 2. CHARTE GRAPHIQUE (EXTRAITE DE TON IMAGE)
+# 2. CHARTE GRAPHIQUE CLAIRE (EXTRAITE DE TON IMAGE)
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
-    .main { background-color: #F8F9FB; }
+    html, body, [class*="css"] { font-family: 'Inter', sans-serif; background-color: #F8F9FB; }
+    .stApp { background-color: #F8F9FB; }
     
+    /* Header Branding */
     .header-box { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding-top: 10px; }
-    .logo-box { background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-    .title-txt { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -1px; }
+    .logo-img { background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); font-size: 1.8rem; }
+    .title-txt { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -1px; line-height: 1.1; }
     .sub-txt { color: #6B7280; font-size: 0.9rem; font-weight: 500; }
 
+    /* Cards Style (Ombres douces fond clair) */
     .st-card {
         background-color: white; padding: 25px; border-radius: 24px;
         border: 1px solid #F2F4F7; margin-bottom: 15px;
         box-shadow: 0 10px 25px -5px rgba(0,0,0,0.04);
     }
 
-    .t-lbl { color: #6B7280; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+    /* Typo Widgets */
+    .t-lbl { color: #6B7280; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
     .t-val { color: #111827; font-size: 2.1rem; font-weight: 800; letter-spacing: -1.2px; line-height: 1; }
     .t-desc { color: #3B82F6; font-size: 0.85rem; font-weight: 600; margin-top: 8px; }
     
-    .tag { float: right; background-color: #111827; color: white; padding: 4px 12px; border-radius: 100px; font-size: 0.65rem; font-weight: 700; }
+    /* Tags arrondis */
+    .tag { float: right; background-color: #111827; color: white; padding: 4px 14px; border-radius: 100px; font-size: 0.65rem; font-weight: 700; }
     .tag-gr { background-color: #D1FAE5; color: #065F46; }
 
-    div[data-baseweb="select"] { border-radius: 16px !important; border: 1px solid #D1D5DB !important; }
+    /* Saisie Mobile */
+    div[data-baseweb="select"] { border-radius: 16px !important; border: 1px solid #D1D5DB !important; background: white !important; }
+    input { border-radius: 12px !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. ACCÈS SÉCURISÉ
+# 3. ACCÈS SÉCURISÉ (VERSION FOND CLAIR)
 if "auth" not in st.session_state:
-    st.markdown("<div style='text-align:center;padding-top:80px'><h1>🏢 Socobat.</h1><p>Privé - Jeb Edition</p></div>", unsafe_allow_html=True)
-    pw = st.text_input("Code confidentiel", type="password")
-    if st.button("Déverrouiller", use_container_width=True):
-        if pw == "SOCOBAT2026":
-            st.session_state["auth"] = True
-            st.rerun()
-        else: st.error("Accès refusé")
+    st.markdown("<div style='text-align:center;padding-top:100px'>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:3.5rem; margin-bottom:10px;'>🏢</div>", unsafe_allow_html=True)
+    st.markdown("<div class='title-txt'>Socobat Asset</div><p class='sub-txt'>Accès privé Jeb Edition</p>", unsafe_allow_html=True)
+    _, mid, _ = st.columns([1,3,1])
+    with mid:
+        pw = st.text_input("Code confidentiel", type="password")
+        if st.button("Déverrouiller", use_container_width=True):
+            if pw == "SOCOBAT2026":
+                st.session_state["auth"] = True
+                st.rerun()
+            else: st.error("Accès refusé")
+    st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
-# 4. CHARGEMENT
+# 4. CHARGEMENT DATA
 @st.cache_data
 def load():
     f1, f3, f4 = "1-EQUIPEMENTS CHAUFFAGE COLLECTIF_NOVEMBRE 2024.xlsx", "3 - BATIMENTS_SURFACES_NOVEMBRE 2024.xlsx", "4 - UG SURFACES - NOVEMBRE 2024.xlsx"
@@ -60,10 +71,10 @@ def load():
 try:
     du, db, dc = load()
 
-    # HEADER CHARTE JEB
+    # HEADER JEB
     st.markdown('<div class="header-box"><div class="logo-box">🏢</div><div><div class="title-txt">A votre service</div><div class="sub-txt">by Jeb 😉</div></div></div>', unsafe_allow_html=True)
 
-    # RECHERCHE (MOBILE READY)
+    # RECHERCHE
     c1, c2 = st.columns(2)
     with c1:
         h_opts = sorted(du['GROUPE (HP2)'].dropna().unique())
@@ -81,7 +92,7 @@ try:
             
             st.markdown(f"<p style='color:#6B7280; font-weight:600; margin-left:5px;'>📍 {u['NOM GROUPE']}</p>", unsafe_allow_html=True)
 
-            # GRILLE
+            # GRILLE DE CARTES (STYLE IMAGE CLAIRE)
             col1, col2 = st.columns(2)
             with col1:
                 st.markdown(f'<div class="st-card"><div class="t-lbl">Logement</div><div class="t-val">{u["SURFACE HABITABLE (SHA)"]} m²</div><div class="t-desc">Type {u["Type"]} • {u["Etage"]}</div></div>', unsafe_allow_html=True)
