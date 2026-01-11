@@ -1,64 +1,89 @@
 import streamlit as st
 import pandas as pd
+import base64
+from PIL import Image
 
-# 1. CONFIGURATION
-st.set_page_config(page_title="Socobat Asset - Jeb", layout="wide")
+# 1. CONFIGURATION INITIALE
+st.set_page_config(page_title="Socobat Asset", layout="wide", initial_sidebar_state="collapsed")
 
-# 2. CSS ULTRA-PRIORITAIRE (FORCE LE BLANC & NOIR)
+# FONCTION POUR LE LOGO
+def get_base64(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# 2. DESIGN SYSTEM ALAN (FORCE LE BLANC ET LES CONTRASTES)
+# On injecte le CSS directement pour bloquer le mode sombre
 st.markdown("""
     <style>
-    /* 1. FORCE LE FOND DE L'APP */
-    .stApp, [data-testid="stAppViewContainer"], .main {
-        background-color: white !important;
-    }
-
-    /* 2. FORCE LE TEXTE NOIR PARTOUT */
-    h1, h2, h3, p, span, label, div {
-        color: black !important;
-    }
-
-    /* 3. FORCE LES CHAMPS DE SAISIE EN BLANC (ANTI-FOND NOIR) */
-    div[data-baseweb="select"], div[data-baseweb="base-input"], input {
-        background-color: white !important;
-        border: 1px solid #ccc !important;
-    }
+    /* Force le fond de l'application en blanc cassé style Alan */
+    .stApp { background-color: #F9FAFB !important; }
     
-    /* 4. FORCE LE TEXTE DANS LES CHAMPS EN NOIR */
-    input, div[data-baseweb="select"] * {
-        color: black !important;
-        -webkit-text-fill-color: black !important;
-    }
-
-    /* 5. STYLE DES CARTES (DESIGN MAKE) */
-    .jeb-card {
+    /* STYLE DES CARTES (Inspiré de ta capture Alan) */
+    .alan-card {
         background-color: white !important;
-        border: 1px solid #eee !important;
-        border-radius: 15px !important;
-        padding: 20px !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+        padding: 30px !important;
+        border-radius: 20px !important;
+        border: 1px solid #E5E7EB !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
         margin-bottom: 20px !important;
     }
+
+    /* FORCE LE TEXTE EN NOIR DANS LES CHAMPS (Fix fond noir) */
+    div[data-baseweb="select"], div[data-baseweb="base-input"], input {
+        background-color: white !important;
+        color: #1F2937 !important;
+        border-radius: 12px !important;
+    }
     
-    /* 6. STYLE DES TITRES DANS LES CARTES */
-    .card-label { font-size: 0.8rem; font-weight: 700; color: #666 !important; text-transform: uppercase; }
-    .card-value { font-size: 2rem; font-weight: 800; color: black !important; margin: 10px 0; }
-    .card-icon { font-size: 1.5rem; margin-right: 10px; }
+    /* Fix pour le texte invisible dans les listes déroulantes */
+    div[role="listbox"] div { color: #1F2937 !important; }
+    label p { color: #4B5563 !important; font-weight: 600 !important; }
+
+    /* TYPOGRAPHIE */
+    .main-title { color: #111827 !important; font-weight: 800 !important; font-size: 2.2rem !important; }
+    .card-label { color: #6B7280 !important; font-size: 0.85rem !important; font-weight: 700 !important; text-transform: uppercase; margin-bottom: 10px; }
+    .card-value { color: #111827 !important; font-size: 2.5rem !important; font-weight: 800 !important; letter-spacing: -1px; }
+    .card-sub { color: #6366F1 !important; font-weight: 600 !important; font-size: 0.95rem !important; }
+    
+    /* BOUTON ALAN */
+    .stButton>button {
+        background-color: #6366f1 !important;
+        color: white !important;
+        border-radius: 100px !important;
+        padding: 10px 30px !important;
+        border: none !important;
+        font-weight: 700 !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. AUTHENTIFICATION
+# 3. AUTHENTIFICATION SÉCURISÉE
 if "auth" not in st.session_state:
-    st.markdown("<h1 style='text-align:center;'>🏢 Socobat</h1>", unsafe_allow_html=True)
-    pw = st.text_input("Code secret", type="password")
-    if st.button("Se connecter"):
-        if pw == "SOCOBAT2026":
-            st.session_state["auth"] = True
-            st.rerun()
+    st.markdown("<div style='text-align:center; padding-top:100px;'>", unsafe_allow_html=True)
+    try:
+        # Remplace par le nom exact de ton fichier logo dans GitHub
+        logo_base64 = get_base64("logosocobat.jpg")
+        st.markdown(f'<img src="data:image/jpeg;base64,{logo_base64}" width="200">', unsafe_allow_html=True)
+    except:
+        st.markdown("<h1 class='main-title'>SOCOBAT</h1>", unsafe_allow_html=True)
+    
+    st.markdown("<p style='color:#6B7280; margin-bottom:30px;'>Asset Management Portal • Jeb Edition</p>", unsafe_allow_html=True)
+    
+    _, mid, _ = st.columns([1,2,1])
+    with mid:
+        code = st.text_input("Code confidentiel", type="password")
+        if st.button("Se connecter", use_container_width=True):
+            if code == "SOCOBAT2026":
+                st.session_state["auth"] = True
+                st.rerun()
+            else: st.error("Accès refusé")
+    st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
-# 4. CHARGEMENT DATA
+# 4. CHARGEMENT DES DONNÉES
 @st.cache_data
-def load():
+def load_data():
     f1 = "1-EQUIPEMENTS CHAUFFAGE COLLECTIF_NOVEMBRE 2024.xlsx"
     f4 = "4 - UG SURFACES - NOVEMBRE 2024.xlsx"
     du = pd.read_excel(f4, sheet_name="SURFACES DES UG", dtype=str)
@@ -66,48 +91,56 @@ def load():
     return du, dc
 
 try:
-    du, dc = load()
-    
-    st.markdown("<h1>🏢 A votre service by Jeb 😉</h1>", unsafe_allow_html=True)
+    df_ug, df_coll = load_data()
 
-    # RECHERCHE
+    # HEADER AVEC LOGO
+    col_h1, col_h2 = st.columns([1, 5])
+    with col_h1:
+        try:
+            st.image("logosocobat.jpg", width=80)
+        except:
+            st.markdown("🏢")
+    with col_h2:
+        st.markdown("<h1 class='main-title'>A votre service by Jeb 😉</h1>", unsafe_allow_html=True)
+
+    # RECHERCHE (FOND BLANC FORCÉ)
     c1, c2 = st.columns(2)
     with c1:
-        hp2_list = sorted(du['GROUPE (HP2)'].dropna().unique())
-        sel_h = st.selectbox("Choisir le Groupe HP2", hp2_list, index=None)
+        hp2_list = sorted(df_ug['GROUPE (HP2)'].dropna().unique())
+        sel_hp2 = st.selectbox("Choisir le Groupe HP2", hp2_list, index=None)
     
-    if sel_h:
+    if sel_hp2:
         with c2:
-            ug_list = sorted(du[du['GROUPE (HP2)'] == sel_h]['N° UG'].unique())
-            sel_u = st.selectbox("Choisir l'Unité UG", ug_list, index=None)
+            ug_list = sorted(df_ug[df_ug['GROUPE (HP2)'] == sel_hp2]['N° UG'].unique())
+            sel_ug = st.selectbox("Choisir l'Unité UG", ug_list, index=None)
 
-        if sel_u:
-            u_row = du[(du['GROUPE (HP2)'] == sel_h) & (du['N° UG'] == sel_u)].iloc[0]
+        if sel_ug:
+            u = df_ug[(df_ug['GROUPE (HP2)'] == sel_hp2) & (df_ug['N° UG'] == sel_ug)].iloc[0]
             
             # Calcul surface immeuble
-            du['SHA_NUM'] = pd.to_numeric(du['SURFACE HABITABLE (SHA)'], errors='coerce')
-            s_imm = du[du['GROUPE (HP2)'] == sel_h]['SHA_NUM'].sum()
+            df_ug['SHA_NUM'] = pd.to_numeric(df_ug['SURFACE HABITABLE (SHA)'], errors='coerce')
+            surf_total = df_ug[df_ug['GROUPE (HP2)'] == sel_hp2]['SHA_NUM'].sum()
             
-            st.markdown(f"<h3>📍 {u_row['NOM GROUPE']}</h3>", unsafe_allow_html=True)
+            st.markdown(f"<p style='color:#4F46E5; font-weight:700; font-size:1.1rem; margin-bottom:20px;'>📍 {u['NOM GROUPE']}</p>", unsafe_allow_html=True)
 
-            # AFFICHAGE CARTES (ICONÉES RÉINTÉGRÉES DANS LE HTML)
-            cola, colb = st.columns(2)
-            with cola:
+            # AFFICHAGE STYLE ALAN
+            col_a, col_b = st.columns(2)
+            with col_a:
                 st.markdown(f"""
-                <div class="jeb-card">
-                    <div class="card-label"><span class="card-icon">🏠</span>LOGEMENT</div>
-                    <div class="card-value">{u_row['SURFACE HABITABLE (SHA)']} m²</div>
-                    <div style="color:blue !important; font-weight:bold;">Type {u_row['Type']} • Etage {u_row['Etage']}</div>
+                <div class="alan-card">
+                    <div class="card-label">🏠 LOGEMENT PERSONNEL</div>
+                    <div class="card-value">{u['SURFACE HABITABLE (SHA)']} m²</div>
+                    <div class="card-sub">Type {u['Type']} • Étage {u['Etage']}</div>
                 </div>
                 """, unsafe_allow_html=True)
-            with colb:
+            with col_b:
                 st.markdown(f"""
-                <div class="jeb-card">
-                    <div class="card-label"><span class="card-icon">🏢</span>IMMEUBLE</div>
-                    <div class="card-value">{int(s_imm):,} m²</div>
-                    <div style="color:blue !important; font-weight:bold;">{len(du[du['GROUPE (HP2)'] == sel_h])} Logements</div>
+                <div class="alan-card">
+                    <div class="card-label">🏢 SURFACE IMMEUBLE</div>
+                    <div class="card-value">{int(surf_total):,} m²</div>
+                    <div class="card-sub">{len(df_ug[df_ug['GROUPE (HP2)'] == sel_hp2])} Logements gérés</div>
                 </div>
                 """, unsafe_allow_html=True)
 
 except Exception as e:
-    st.info("En attente de sélection...")
+    st.info("Sélectionnez un groupe pour afficher les données.")
