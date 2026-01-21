@@ -107,7 +107,7 @@ df_coll = load_csv(source_for("coll"))
 df_pv = load_csv(source_for("pv"))
 df_th = load_csv(source_for("th"))
 
-missing = [name for name,df in (("UG",df_ug),("IND",df_ind),("COLL",df_coll),("PV",df_pv),("TH",df_th)) if df is None]
+missing = [name for name,df in ("UG",df_ug),("IND",df_ind),("COLL",df_coll),("PV",df_pv),("TH",df_th) if df is None]
 if missing:
     st.error(f"Fichiers manquants ou illisibles : {', '.join(missing)}. Vérifie les noms ou upload via l'UI ci‑dessus.")
     st.info("Conseils rapides :\n- Vérifie que les CSV sont bien au même emplacement que app.py.\n- Vérifie la casse et les espaces spéciaux dans les noms de fichiers.\n- Si les fichiers existent mais ne sont pas détectés, renomme-les pour inclure des mots-clés comme 'UG', 'SURFACE', 'INDIVIDUEL', 'COLLECTIF', 'PV', 'THERMIQUE'.")
@@ -152,13 +152,13 @@ if sel_h and sel_u:
     sh = u_data.get("SURFACE HABITABLE (SHA)", "NC")
     typ = u_data.get("Type", "NC")
     etage = u_data.get("Etage", "NC")
-    st.markdown(f"""
+st.markdown(f"""
     <div class="alan-card">
         <div class="t-label">🏠 LOGEMENT (UG)</div>
         <div class="t-val">{sh} m²</div>
         <div class="t-sub">Type {typ} • Étage {etage}</div>
     </div>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
     # Chauffage individuel
     st.markdown("### 🔥 Chauffage individuel")
@@ -172,7 +172,7 @@ if sel_h and sel_u:
             travaux = r.get("Travaux réalisés", "NC")
             date = r.get("Date d'achèvement travaux", "NC")
             st.markdown(f"""
-            <div class="alan-card">
+            <div class="alan-card">  
                 <div class="t-label">Chaudière individuelle</div>
                 <p>Modèle : {r.get("Modèles des chaudières", "NC")}<br>
                 Type : {r.get("Type", "NC")}<br>
@@ -217,7 +217,7 @@ if sel_h and sel_u:
             nb = r.get("Nb de capteurs", "NC")
             type_cap = r.get("Type de capteurs", "NC")
             incl = r.get("Inclinaison [°/hor]", r.get("Inclinaison [°/hor]", r.get("Inclinaison [�/hor]", "NC")))
-            orient = r.get("Orientation [°/Sud]", r.get("Orientation", "NC")
+            orient = r.get("Orientation [°/Sud]", r.get("Orientation", "NC"))
             etat_pv = r.get("Etat de l'installation", "NC")
             st.markdown(f"""
             <div class="alan-card">
