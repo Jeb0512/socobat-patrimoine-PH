@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 
 # 1. CONFIG PAGE
 st.set_page_config(
@@ -66,37 +67,96 @@ if "auth" not in st.session_state:
     st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
-# 4. CHARGEMENT DES DONNÉES (CSV)
-@st.cache_data
-def load_ug():
-    df = pd.read_csv("ug_surfaces.csv", dtype=str)
-    # harmonisation éventuelle
-    if "N° UG" in df.columns and "N°UG" not in df.columns:
-        df = df.rename(columns={"N° UG": "N°UG"})
+# 4. CHARGEMENT DES DONNÉES (MAPPING DES FICHIERS)
+FILES_MAPPING = {
+    "ug": "4 - UG SURFACES - NOVEMBRE 2024.xlsx - SURFACES DES UG.csv",
+    "batiments": "3 - BATIMENTS_SURFACES_NOVEMBRE 2024.xlsx - SURFACES BATIMENTS.csv",
+    "ind": "2-EQUIPEMENTS CHAUFFAGE INDIVIDUEL_NOVEMBRE 2024.xlsx - BDD CIgaz.csv",
+    "coll": "1-EQUIPEMENTS CHAUFFAGE COLLECTIF_NOVEMBRE 2024.xlsx - COLLECTIF + TRAVAUX.csv",
+    "pv": "5 - PANNEAUX SOLAIRES_NOVEMBRE 2024.xlsx - InfoPV.csv",
+    "th": "5 - PANNEAUX SOLAIRES_NOVEMBRE 2024.xlsx - Thermique.csv"
+}
+
+def clean_columns(df):
+    """Nettoie les noms de colonnes (espaces en trop)"""
+    df.columns = df.columns.str.strip()
     return df
 
 @st.cache_data
-def load_chauffage_ind():
-    return pd.read_csv("chauffage_individuel.csv", dtype=str)
+def load_data():
+    data = {}
+    
+    # --- 1. UG Surfaces ---
+    if os.path.exists(FILES_MAPPING["ug"]):
+        df = pd.read_csv(FILES_MAPPING["ug"], dtype=str)
+        df = clean_columns(df)
+        df = df.rename(columns={"N° UG": "N°UG", "GROUPE (HP2)": "GROUPE HP2"})
+        data["ug"] = df
+    else:
+        st.error(f"Fichier manquant : {FILES_MAPPING['ug']}")
+        return None
 
-@st.cache_data
-def load_chauffage_coll():
-    return pd.read_csv("chauffage_collectif.csv", dtype=str)
+    # --- 2. Batiments ---
+    if os.path.exists(FILES_MAPPING["batiments"]):
+        df_bat = pd.read_csv(FILES_MAPPING["batiments"], dtype=str)
+        df_bat = clean_columns(df_bat)
+        df_bat = df_bat.rename(columns={"GROUPE (HP2)": "GROUPE HP2", "BATIMENTS (HP3)": "BATIMENT"})
+        data["batiments"] = df_bat
+    
+    # --- 3. Chauffage Individuel ---
+    if os.path.exists(FILES_MAPPING["ind"]):
+        df = pd.read_csv(FILES_MAPPING["ind"], dtype=str, header=2)
+        df = clean_columns(df)
+        df = df.rename(columns={"HP2": "GROUPE HP2"})
+        data["ind"] = df
+    else:
+        data["ind"] = pd.DataFrame()
 
-@st.cache_data
-def load_pv():
-    return pd.read_csv("pv.csv", dtype=str)
+    # --- 4. Chauffage Collectif ---
+    if os.path.exists(FILES_MAPPING["coll"]):
+        df = pd.read_csv(FILES_MAPPING["coll"], dtype=str)
+        df = clean_columns(df)
+        # On mappe explicitement les colonnes importantes pour le système et l'énergie
+        df = df.rename(columns={
+            "HP2": "GROUPE HP2", 
+            "Type combustible": "Energie",
+            "Type d'équipement": "Systeme_Type"
+        })
+        data["coll"] = df
+    else:
+        data["coll"] = pd.DataFrame()
 
-@st.cache_data
-def load_thermique():
-    return pd.read_csv("thermique.csv", dtype=str)
+    # --- 5. PV ---
+    if os.path.exists(FILES_MAPPING["pv"]):
+        df = pd.read_csv(FILES_MAPPING["pv"], dtype=str)
+        df = clean_columns(df)
+        if "Code HP2" in df.columns:
+            df = df.rename(columns={"Code HP2": "GROUPE HP2"})
+        data["pv"] = df
+    else:
+        data["pv"] = pd.DataFrame()
 
-try:
-    df_ug = load_ug()
-    df_ind = load_chauffage_ind()
-    df_coll = load_chauffage_coll()
-    df_pv = load_pv()
-    df_th = load_thermique()
+    # --- 6. Thermique ---
+    if os.path.exists(FILES_MAPPING["th"]):
+        df = pd.read_csv(FILES_MAPPING["th"], dtype=str)
+        df = clean_columns(df)
+        if "Code HP2" in df.columns:
+            df = df.rename(columns={"Code HP2": "GROUPE HP2"})
+        data["th"] = df
+    else:
+        data["th"] = pd.DataFrame()
+        
+    return data
+
+datasets = load_data()
+
+if datasets and "ug" in datasets:
+    df_ug = datasets["ug"]
+    df_bat = datasets.get("batiments", pd.DataFrame())
+    df_ind = datasets["ind"]
+    df_coll = datasets["coll"]
+    df_pv = datasets["pv"]
+    df_th = datasets["th"]
 
     st.markdown("<h2>🏢 Assistant DPE logement – Socobat Asset</h2>", unsafe_allow_html=True)
 
@@ -105,6 +165,7 @@ try:
     col1, col2 = st.columns(2)
     with col1:
         sel_h = st.selectbox("Groupe HP2", hp2_list, index=None, placeholder="Choisir...")
+    
     sel_u = None
     if sel_h:
         ug_list = sorted(df_ug[df_ug['GROUPE HP2'] == sel_h]['N°UG'].dropna().unique())
@@ -119,20 +180,18 @@ try:
             st.stop()
         u_data = u_row.iloc[0]
 
-        # SHA numérique + totaux par HP2 et par adresse
-        df_ug['SHA_NUM'] = pd.to_numeric(df_ug.get('SURFACE HABITABLE (SHA)', pd.Series([None]*len(df_ug))), errors='coerce')
+        df_ug['SHA_NUM'] = pd.to_numeric(df_ug.get('SURFACE HABITABLE (SHA)', pd.Series([0]*len(df_ug))), errors='coerce').fillna(0)
         total_immeuble = df_ug[df_ug['GROUPE HP2'] == sel_h]['SHA_NUM'].sum()
 
-        adresse_col = 'Adresse' if 'Adresse' in df_ug.columns else None
-        if adresse_col:
-            adresse_ug = u_data[adresse_col]
-            mask_same_addr = (df_ug['GROUPE HP2'] == sel_h) & (df_ug[adresse_col] == adresse_ug)
-            total_addr = df_ug[mask_same_addr]['SHA_NUM'].sum()
-            nb_ug_addr = mask_same_addr.sum()
-        else:
-            adresse_ug = "Adresse non disponible"
-            total_addr = None
-            nb_ug_addr = None
+        adresse_ug = "Adresse non disponible"
+        if 'Adresse' in u_data and pd.notna(u_data['Adresse']):
+            adresse_ug = u_data['Adresse']
+        elif not df_bat.empty:
+            bat_info = df_bat[df_bat['GROUPE HP2'] == sel_h]
+            if not bat_info.empty:
+                adresse_ug = bat_info.iloc[0].get('Adresse', 'Adresse NC')
+        
+        nb_ug_addr = len(df_ug[df_ug['GROUPE HP2'] == sel_h])
 
         st.markdown(f"<p style='color:#6366F1; font-weight:700; margin-left:5px;'>📍 {sel_h} – UG {sel_u}</p>", unsafe_allow_html=True)
 
@@ -149,131 +208,105 @@ try:
         with c_b:
             st.markdown(f"""
             <div class="alan-card">
-                <div class="t-label">🏢 IMMEUBLE (HP2)</div>
-                <div class="t-val">{int(total_immeuble) if pd.notna(total_immeuble) else 'NC'} m²</div>
-                <div class="t-sub">{len(df_ug[df_ug['GROUPE HP2'] == sel_h])} logements</div>
-            </div>
-            """, unsafe_allow_html=True)
-
-        if adresse_col:
-            st.markdown(f"""
-            <div class="alan-card">
-                <div class="t-label">📏 SOMME DES SURFACES PAR ADRESSE</div>
-                <div class="t-val">{int(total_addr) if pd.notna(total_addr) else 'NC'} m²</div>
-                <div class="t-sub">{nb_ug_addr} UG • {adresse_ug}</div>
+                <div class="t-label">🏢 GROUPE (HP2)</div>
+                <div class="t-val">{int(total_immeuble)} m²</div>
+                <div class="t-sub">{nb_ug_addr} logements • {adresse_ug}</div>
             </div>
             """, unsafe_allow_html=True)
 
         # 7. CHAUFFAGE INDIVIDUEL
         st.markdown("### 🔥 Chauffage individuel")
-        ind_rows = df_ind[df_ind['GROUPE HP2'] == sel_h]
+        ind_rows = pd.DataFrame()
+        if not df_ind.empty and 'GROUPE HP2' in df_ind.columns:
+            ind_rows = df_ind[df_ind['GROUPE HP2'] == sel_h]
+            
         if not ind_rows.empty:
-            # si tu as une colonne N°UG dans cette base, filtre aussi dessus
-            if 'N°UG' in ind_rows.columns:
-                ind_rows = ind_rows[ind_rows['N°UG'] == sel_u]
-            if not ind_rows.empty:
-                for _, r in ind_rows.iterrows():
-                    st.markdown(f"""
-                    <div class="alan-card">
-                        <div class="t-label">Chaudière individuelle</div>
-                        <div class="t-sub">{r.get('Modèle', r.get('Modèles des chaudières', 'Modèle NC'))}</div>
-                        <p>Type : {r.get('Type', 'NC')}<br>
-                        Année : {r.get('Années (chaudières & chauffe-bains)', 'NC')}<br>
-                        Nb équipements : {r.get('Nb d\'équipements individuels gaz', 'NC')}<br>
-                        Travaux : {r.get('Travaux réalisés', 'NC')} – {r.get('Date d\'achèvement travaux', 'NC')}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-            else:
-                st.info("Pas de chauffage individuel spécifique à cette UG.")
+            for _, r in ind_rows.iterrows():
+                modele = r.get('Modèle', r.get('Modèles des chaudières', 'Non spécifié'))
+                if pd.isna(modele): modele = "Modèle non détecté"
+                
+                st.markdown(f"""
+                <div class="alan-card">
+                    <div class="t-label">Chaudière Individuelle</div>
+                    <div class="t-sub">{modele}</div>
+                    <p>Année : {r.get('Années (chaudières & chauffe-bains)\nà titre indicatif', 'NC')}<br>
+                    Nb équipements : {r.get("Nb d'équipements individuels gaz", 'NC')}<br>
+                    Travaux : {r.get('Travaux réalisés', 'NC')}</p>
+                </div>
+                """, unsafe_allow_html=True)
         else:
-            st.info("Pas de données de chauffage individuel pour ce HP2.")
+            st.info("Pas de chauffage individuel gaz recensé pour ce groupe.")
 
         # 8. CHAUFFAGE COLLECTIF
         st.markdown("### 🏢 Chauffage collectif")
-        coll_rows = df_coll[df_coll['GROUPE HP2'] == sel_h] if 'GROUPE HP2' in df_coll.columns else df_coll[df_coll['Code HP2'] == sel_h]
+        coll_rows = pd.DataFrame()
+        if not df_coll.empty and 'GROUPE HP2' in df_coll.columns:
+            coll_rows = df_coll[df_coll['GROUPE HP2'] == sel_h]
+
         if not coll_rows.empty:
             for _, r in coll_rows.iterrows():
+                # Récupération détaillée du système
+                systeme = r.get('Systeme_Type', 'NC')
+                marque = r.get('Marque', '')
+                modele = r.get('Modèle', '')
+                
+                # Construction de la chaîne complète pour le système
+                desc_systeme = f"{systeme}"
+                if pd.notna(marque) and marque:
+                    desc_systeme += f" - {marque}"
+                if pd.notna(modele) and modele:
+                    desc_systeme += f" ({modele})"
+                
+                energie = r.get('Energie', 'NC')
+
                 st.markdown(f"""
                 <div class="alan-card">
-                    <div class="t-label">Chauffage collectif</div>
-                    <p>Type chaudière : {r.get('Type de chaudière', 'NC')}<br>
-                    Énergie : {r.get('Type d\'énergie', 'NC')}<br>
-                    Nb équipements : {r.get('Nb d\'équipements collectifs', 'NC')}<br>
-                    Travaux : {r.get('Travaux réalisés', 'NC')} – {r.get('Date d\'achèvement travaux', 'NC')}</p>
+                    <div class="t-label">Chaufferie Collective</div>
+                    <div class="t-sub">Système : {desc_systeme}</div>
+                    <div class="t-val" style="font-size: 1.5rem !important;">Énergie : {energie}</div>
+                    <p style="margin-top:10px;">Travaux : {r.get('Travaux réalisés', 'Aucun travaux récents')}<br>
+                    Date : {r.get("Date d'achèvement travaux", '-')}</p>
                 </div>
                 """, unsafe_allow_html=True)
         else:
-            st.info("Pas de données de chauffage collectif pour ce HP2.")
+            st.info("Pas de chauffage collectif recensé pour ce HP2.")
 
-        # 9. PANNEAUX SOLAIRES PV
-        st.markdown("### ☀️ Panneaux solaires photovoltaïques")
-        pv_rows = df_pv[df_pv['Code HP2'] == sel_h] if 'Code HP2' in df_pv.columns else df_pv[df_pv['GROUPE HP2'] == sel_h]
+        # 9. PV
+        st.markdown("### ☀️ Panneaux solaires PV")
+        pv_rows = pd.DataFrame()
+        if not df_pv.empty and 'GROUPE HP2' in df_pv.columns:
+            pv_rows = df_pv[df_pv['GROUPE HP2'] == sel_h]
+
         if not pv_rows.empty:
             for _, r in pv_rows.iterrows():
                 st.markdown(f"""
                 <div class="alan-card">
-                    <div class="t-label">PV – {r.get('Nom du groupe', r.get('Nom', ''))}</div>
+                    <div class="t-label">Photovoltaïque</div>
                     <p>Surface : {r.get('Surface totale de capteurs', 'NC')} m²<br>
-                    Nb capteurs : {r.get('Nb de capteurs', 'NC')}<br>
-                    Type : {r.get('Type de capteurs', 'NC')}<br>
-                    Inclinaison : {r.get('Inclinaison [°/hor]', 'NC')}<br>
-                    Orientation : {r.get('Orientation [°/Sud]', r.get('Orientation', 'NC'))}<br>
-                    État : {r.get('Etat de l\'installation', r.get('Etat des lieux', 'NC'))}</p>
+                    Orientation : {r.get('Orientation [°/Sud]', 'NC')}<br>
+                    État : {r.get("Etat de l'installation", 'NC')}</p>
                 </div>
                 """, unsafe_allow_html=True)
         else:
-            st.info("Pas de PV recensés pour ce HP2.")
+            st.info("Pas de PV.")
 
-        # 10. PANNEAUX SOLAIRES THERMIQUES
-        st.markdown("### ♨️ Panneaux solaires thermiques")
-        th_rows = df_th[df_th['Code HP2'] == sel_h] if 'Code HP2' in df_th.columns else df_th[df_th['GROUPE HP2'] == sel_h]
+        # 10. THERMIQUE
+        st.markdown("### ♨️ Solaire Thermique")
+        th_rows = pd.DataFrame()
+        if not df_th.empty and 'GROUPE HP2' in df_th.columns:
+            th_rows = df_th[df_th['GROUPE HP2'] == sel_h]
+
         if not th_rows.empty:
             for _, r in th_rows.iterrows():
                 st.markdown(f"""
                 <div class="alan-card">
-                    <div class="t-label">Thermique – {r.get('Nom', r.get('Nom du groupe', ''))}</div>
+                    <div class="t-label">Solaire Thermique</div>
                     <p>Surface : {r.get('Surface totale des capteurs (m2)', 'NC')} m²<br>
-                    Nb capteurs : {r.get('Nb de capteurs', 'NC')}<br>
-                    Type : {r.get('Type de capteurs', 'NC')}<br>
-                    Inclinaison : {r.get('Inclinaison [°/hor]', 'NC')}<br>
-                    Orientation : {r.get('Orientation', 'NC')}<br>
-                    État : {r.get('Etat des lieux', r.get('Etat de l\'installation', 'NC'))}</p>
+                    État : {r.get('Etat des lieux', 'NC')}</p>
                 </div>
                 """, unsafe_allow_html=True)
         else:
-            st.info("Pas de solaire thermique recensé pour ce HP2.")
-
-        # 11. RÉSUMÉ DES TRAVAUX
-        st.markdown("### 🛠️ Résumé des travaux")
-        resume = []
-
-        # Chauffage indiv
-        if not ind_rows.empty:
-            for _, r in ind_rows.iterrows():
-                resume.append(f"Chauffage individuel : {r.get('Travaux réalisés', 'NC')} ({r.get('Date d\'achèvement travaux', 'NC')})")
-
-        # Chauffage coll
-        if not coll_rows.empty:
-            for _, r in coll_rows.iterrows():
-                resume.append(f"Chauffage collectif : {r.get('Travaux réalisés', 'NC')} ({r.get('Date d\'achèvement travaux', 'NC')})")
-
-        # PV
-        if not pv_rows.empty:
-            for _, r in pv_rows.iterrows():
-                resume.append(f"PV : {r.get('Etat de l\'installation', 'NC')} – {r.get('Adresse', r.get('Adresse', ''))}")
-
-        # Thermique
-        if not th_rows.empty:
-            for _, r in th_rows.iterrows():
-                resume.append(f"Thermique : {r.get('Etat des lieux', 'NC')} – {r.get('Adresse', r.get('Adresse', ''))}")
-
-        if resume:
-            st.markdown("<div class='alan-card'>", unsafe_allow_html=True)
-            for line in resume:
-                st.markdown(f"- {line}")
-            st.markdown("</div>", unsafe_allow_html=True)
-        else:
-            st.info("Aucun travail recensé dans les bases pour ce HP2 / cette UG.")
+            st.info("Pas de solaire thermique.")
 
 except Exception as e:
-    st.error(f"Erreur lors du chargement ou de l'affichage des données : {e}")
+    st.error(f"Une erreur est survenue : {e}")
