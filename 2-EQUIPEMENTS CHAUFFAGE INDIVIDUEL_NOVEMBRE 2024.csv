@@ -1,0 +1,788 @@
+DONNEES PATRIMONIALES;;;;;;;;;;;;EQUIPEMENTS INDIVIDUELS GAZ;;;;;;;;;; EQUIPEMENTS COLLECTIFS ;;;;; Modèles des chaudières ; Radiateurs électriques ; Panneaux solaires photovoltaique ; Thermiques ;DONNEES TRAVAUX IMMEUBLE;;;;;;;
+;;;;;;;;;;;;Chaudières standard ou Basse Température raccordées sur ;;;;Chaudières à condensation raccordées sur:;;;;Autres;;;;;;;;;;;;;;;;;;
+HP2;Nom du groupe;Nombre de logements;Date de construction;Adresse;Code postal;Ville;DT;Nb d'équipements individuels gaz;Nb d'équipements collectifs;"Années (chaudières & chauffe-bains)
+à titre indicatif";Années rempl des caissons;Conduit de fumées; Ventouse;DSC;3CE;Conduit tubé condens.;Ventouse;3CE;Solaire ventouse;"Chauffe-eau gaz / 
+Chauffe bain gaz";Radiateur gaz; VMC Sanitaire ;" VMC individuelle /
+Tourelles "; Astato mécanique ; VMC Gaz ; Conduit 3CE ;;;;;P3R;Travaux réalisés;Date d'achèvement travaux;Adresse de l'opération;Travaux réalisés;Date d'achèvement travaux;Adresse de l'opération;
+111AM;AMELOT 130;36;00/01/1900;130 rue Amelot;75011;PARIS;NE;36;1;2011;;;;;;;36;;;;;1;;;;;THEMAPLUS CONDENS;;;;;;;;;;;
+111B5;BASFROI 41              ;2;01/01/1840;Basfroi ( rue  ) n° 41;75011;PARIS;NE;2;0;2021;;;;;;;2;;;;;;;;;;ATLANTIC NAIA 2 MICRO 25;;;;2021;;;;;;;
+111BE;PAULBERT9;19;01/01/1880;9 rue Paul Bert;75011;PARIS;NE;5;1;2011;;;;;;;5;;;;;1;;;;;THEMAPLUS CONDENS;;;;;;;;;;;
+111C1;189 CHARONNE;23;01/01/1907;189 rue de Charonne;75011;PARIS;NE;23;1;2016;;;;;;;23;;;;;1;;;;;;;;;;;;;;;;
+111C3;CHARONNE 32/34;18;01/01/1895;32/34 rue de Charonne;75011;PARIS;NE;18;0;2015;;;;;;;18;;;;;;;;;;ISOTWIN CONDENS;;;;;;;;;;;
+111CH;CHARONNE 63;8;01/01/1850;63 rue de Charonne;75011;PARIS;NE;7;0;2016;;;;;;2;5;;;;;;;;;;THEMAFAST CONDENS F25+ 2 tubages conduit;;;;2016;Chaudière individuelle haute performance énergétique;03/08/2016;63 RUE DE CHARONNE;;;;
+111CM;CHEMIN VERT 35          ;22;01/01/1910;"35 rue Chemin Vert
+2 rue Moufle";75011;PARIS;NE;7;0;2015;;;6;;;;;;;1;;;;;;;;;;;;;;;;;;
+111CP;CHANZY30/30BIS;19;16/02/2007;30/30BIS rue Chanzy;75011;PARIS;NE;20;1;2007;;;20;;;;;;;;;1;;;;;;;;;;;;;;;;
+111FR;FOLIE REGNAULT 20;60;01/03/1955;18/20 rue de la Folie Regnault;75011;PARIS;NE;60;6;2022;;;2;;;;58;;;;;6;;;;;ATLANTIC NAIA 2 MICRO 25;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;31/12/2022;18-20 rue de la Folie Regnault;;;;
+111GP;GRAND PRIEURE 4;17;01/01/1840;4 rue du Grand Prieuré;75011;PARIS;NE;8;1;2022;;;;;;;8;;;;;1;;;;;ATLANTIC NAIA;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;16/12/2022;4 rue du Grand Prieure;;;;
+111LA;LAPPE 45;6;01/01/1850;45 Lappe;75011;PARIS;NE;6;0;2015;;6;;;;;;;;;;;;;;;;;;;;;;;;;;
+111M2;MORET 22/26;25;01/02/1998;22/26 Moret;75011;PARIS;NE;25;2;2012;;;25;;;;;;;;;2;;;;;;;;;;;;;;;;
+111P4;PHILIPPE AUGUSTE 13BIS;23;01/01/1890;13BIS avenue Philippe Auguste;75011;PARIS;NE;13;0;2019;;8;3;;;;;;;2;;;;;;;Themafast condens;;;;2019;;;;;;;
+111PB;PAUL BERT CESSELIN AMEUB;43;16/03/2007;"12 rue Paul Bert
+3/5 impasse";75011;PARIS;NE;41;13;2007;;;;;41;;;;;;;6;;;;7;;;;;;;;;;;;
+111R9;CHARLES DALLERY 27/29;21;18/03/2001;27/29 passage Charles Dallery;75011;PARIS;NE;21;1;2017;1 Caisson en 2017;;4;;;;17;;;;;1;;;;;;;;;2017;Chaudière individuelle haute performance énergétique;14/09/2016;90/90BIS RUE DE LA ROQUETTE;;;;
+111RO;ROQUETTE-RANVIER-FOLIE R;317;01/01/1931;"170/176 Roquette
+1/4 Henri Ranvier";75011;PARIS;NE;311;0;1999 - plan climat 2015;;198;109;;;;2;;;2;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/06/2025;;;;;
+111S9;SAINT SEBASTIEN 9;34;01/01/1850;9 rue Saint Sébastien;75011;PARIS;NE;34;0;2019;;34;;;;;;;;;;;;;;;;;;;2019;;;;;;;
+111TB;CITE DES 3 BORNES 6;12;01/01/1850;6 cité des Trois Bornes;75011;PARIS;NE;12;0;2008;;;12;;;;;;;;;;;;;;URBIA;;;;2023;;;;;;;
+111VE;CHEMIN VERT 120;15;09/03/2013;120 rue du Chemin Vert;75011;PARIS;NE;14;0;2013;;;;;;;14;;;;;;;;;;THEMAPLUS CONDENS;;;;;;;;;;;
+111VM;VILLAMARCES;10;31/10/2016;21 villa Marcès;75011;PARIS;NE;10;3;2015;;;;;10;;;;;;;1;;;;2;MIRA GREEN;;;;;;;;;;;
+111VO;VOLTAIRE 263;29;01/01/1865;263 rue Voltaire;75011;PARIS;NE;23;0;2009;;;23;;;;;;;;;;;;;;THEMAPLUS F25;;;;2023;;;;;;;
+112AN;ARNOLD NETTER-SAHEL     ;147;01/12/1951;1 avenue du Docteur Arnold Netter;75012;PARIS;ES;16;0;2019;;16;;;;;;;;;;;;;;;;;;;;;;;;;;
+112B3;BARON LE ROY 31/35;45;30/10/1996;31/35 Baron le Roy;75012;PARIS;ES;45;3;2011;;;44;;;;1;;;;;3;;;;;;;;;;;;;;;;
+112B4;BARON LE ROY 39/43;57;03/03/1997;39/43 Baron le Roy;75012;PARIS;ES;57;3;2011;;;55;;;;2;;;;;3;;;;;;;;;;;;;;;;
+112BL;BRECHE AUX LOUPS 46;24;01/01/1930;46 Brèche aux Loups;75012;PARIS;ES;17;0;2020;;;;;;;17;;;;;;;;;;Chaffoteaux Nexia 25FF;;;;2020;;;;;;;
+112CD;CLAUDE DECAEN 10/12;147;16/02/1932;10/12 Claude Decaen;75012;PARIS;ES;147;0;2016;;142;3;;;;2;;;;;;;;;;INOA EVO 25 CF;;;;2016;;;;;;;
+112GC;G CONTENOT-C DECAEN;485;01/06/1955;1/9 2/8 Georges Contenot;75012;PARIS;ES;6;1;2014 - plan climat 2016;;;6;;;;;;;;;1;;;;;;;;;;"Chaudière basse température avec contrat d'exploitation
+
+PLAN CLIMAT";"30/05/2014
+
+15/11/2021";46 rue de la Brèche aux Loups;;;;
+112GW;GRAVELLE-WATTIGNIES;66;01/07/1955;8/16 rue de Gravelle;75012;PARIS;ES;66;6;2022;;;;;;;66;;;;;6;;;;;ATLANTIC NAIA 2 MICRO 25;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;29/07/2022;8 -16 rue de Gravelle;;;;
+112LC;LACHAMBEAUDIE;19;01/01/1900;1 place Lachambeaudie;75012;PARIS;ES;13;0;nc;;7;;;;;6;;;;;;;;;;;;;;;;;;;;;
+112MB;MICHEL BIZOT 64;23;01/01/1920;64 ave du Général Michel Bizot;75012;PARIS;ES;3;0;2011;;2;;;;;1;;;;;;;;;;;;;;;;;;;;;
+119KA;ALPHONSE KARR;482;01/08/1932;9/37 22/36 Alphone Karr;75019;PARIS;NE;485;25;2015 DDR raccord CPCU ?;;;;;;;485;;;;;25;;;;;;;;;;"Chaudière individuelle haute performance énergétique
+
+REHABILITATION ET PLAN CLIMAT";"30/10/2015
+
+15/09/2027";5-37 /22-36 rue Alphonse Karr;;;;
+119NS;NANTES 23/29;51;25/07/2007;23/29 rue de Nantes;75019;PARIS;NE;51;3;2022;;;1;;;;50;;;;;3;;;;;;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;31/12/2022;23-29 rue de Nantes;;;;
+120BP;BELLEVILLE-PELLEPORT;77;01/11/1955;169 rue Pelleport;75020;PARIS;ES;77;5;2014;;;77;;;;;;;;;5;;;;;;;;;;Chaudière individuelle basse température;10/12/2014;169 rue Pelleport;;;;
+120DG;DOCTEUR GLEY 32;136;01/06/1975;32 Docteur Gley;75020;PARIS;ES;27;1;2015;;;4;;;;23;;;;;1;;;;;;;;;;Chaudière individuelle haute performance énergétique;14/12/2015;32 avenue du Docteur Gley;;;;
+120DU;DULAURE 3-V DEJEANTE 4;48;01/01/1953;3 Dulaure 4 Victor Dejeante;75020;PARIS;ES;48;4;2014;;;48;;;;;;;;;4;;;;;;;;;;Chaudière individuelle basse température;16/04/2014;3 rue Dulaure / 4 rue Victor Dejeante;;;;
+120G9;GAMBETTA 119;21;01/01/1910;119 av Gambetta;75020;PARIS;ES;18;0;2010;;3;4;;;;11;;;;;;;;;;;;;;;;;;;;;
+120GT;GAMBETTA-TOURELLES      ;54;01/06/1952;239 avenue Gambetta;75020;PARIS;ES;40;0;2016;;15;5;;;1;19;;;;;;;;;;"10 ACLEIS 24 TN NGLM 24 (ELM)-CF/
+1 MEGALIA CGLA24 (CF)/
+4 INOA EVO 25FF (BT ventouse)/
+2 INOA EVO 25 CF EU (CF)/
+10 MEGALIA CONDENS AGVAC 24/
+1 MIRA C GREEN 25 FF EU (condens ventouse)/
++ 5 autres";;;;2016;Chaudière individuelle haute performance énergétique;14/11/2017;239 AVENUE GAMBETTA;;;;
+120HB;HAXO-BORREGO;60;01/07/1956;77 rue Haxo;75020;PARIS;ES;60;3;2011;;;60;;;;;;;;;3;;;;;;;;;;;;;;;;
+120HJ;HELENE JACKUBOWITZ 22;14;20/06/2000;22 Hélène Jacubowitz;75020;PARIS;ES;14;5;2022;;;8;;;;6;;;;;5;;;;;;;;;2022;;;;;;;
+120I5;VILLIERS L'ISLE ADAM 95 ;2;01/05/1993;95 rue Villiers de l'Isle Adam;75020;PARIS;ES;1;0;2011;;;1;;;;;;;;;;;;;;;;;;;;;;;;;
+120I9;VILLIERS DE L ISLE ADAM;11;15/12/2014;2 rue Villiers de l Isle Adam;75020;PARIS;ES;9;1;2009;;;;;;0;9;;;;;1;;;;;DE DIETRICH CONDENSATION MCX 24/28 MI ;;;;;;;;;;;
+220BE;BELGRAND 45;126;01/06/1929;"45 Belgrand 
+3 Geo Chavez";75020;PARIS;ES;122;1;2014;;122;;;;;;;;;;1;;;;;;;;;;Chaudière individuelle basse température;27/05/2014;45 rue Belgrand / 3 rue Geo Chavez;;;;
+220MO;MORTIER 36/56;344;01/12/1930;"36/56 Mortier 
+3 Victor Dejeante";75020;PARIS;ES;339;0;2021;;4;;;;282;53;;;;;;;;;;ATLANTIC NAIA 2 MICRO 25;;;;2021;REHABILITATION ET PLAN CLIMAT;15/03/2027;;;;;
+220TG;TELEGRAPHE-BORREGO;208;01/11/1921;"28 Télégraphe 
+17/21 Borrégo";75020;PARIS;ES;209;0;2016;;206;;;;;2;;;1;;;;;;;"2 MIRA C GREEN
+201 INOA EVO 25 CF EU";;;;2016;;;;;;;
+112C3;CHARENTON103/103BIS;33;31/01/2007;103/103BIS rue de Charenton;75012;PARIS;ES;25;3;2021;;;;;;;12;13;;;;3;;;;3;ATLANTIC NAIA 2 MICRO 25;;;;2021;;;;;;;
+112CR;CHARENTON-RAMBOUILLET;48;06/03/2002;160/164 rue de Charenton;75012;PARIS;ES;48;5;2014;;;48;;;;;;;;;5;;;;;;;;;;Chaudière individuelle basse température;01/07/2014;160/164 rue de Charenton / 35 rue de Rambouillet;;;;
+112DL;DAUMESNIL 280;12;01/01/1880;280 avenue Daumesnil;75012;PARIS;ES;12;1;2011;;12;;;;;;;;;;1;;;;;;;;;;;;;;;;
+112DM;DAUMESNIL 270;20;17/07/2009;270 avenue Daumesnil;75012;PARIS;ES;20;3;2009;;;20;;;;;;;;;3;;;;;;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;13/07/2023;270 bis avenue Daumesnil;;;;
+112DO;DORIAN-P.BOURDAN-PICPUS;165;01/08/1950;10 rue Dorian;75012;PARIS;ES;153;10;2021;;;2;;;;151;;;;;10;;;;;ATLANTIC NAIA 2 MICRO 25;;;;2021;;;;;;;
+112JA;JAUCOURT-PICPUS;24;01/09/1955;1 rue Jaucourt;75012;PARIS;ES;24;2;2014;;;24;;;;;;;;;2;;;;;;;;;;Chaudière individuelle basse température;13/05/2014;1 rue Jaucourt;;;;
+112LY;45 RUE DE LYON;17;18/12/2020;45 rue de Lyon;75012;PARIS;ES;10;0;2003 - Travaux DT à venir;;8;2;;;;;;;;;;;;;;;;;;;;;;;;;
+112LY;45 RUE DE LYON;17;18/12/2020;45 rue de Lyon;75012;PARIS;ES;10;0;2003 - Travaux DT à venir;;9;1;;;;;;;;;1;;;;;;;;;;;;;;;;
+112RT;EDOUARD ROBERT-TOURNEUX;608;01/04/1924;2/32 Edouard Robert;75012;PARIS;ES;;0;2001 - réha 2017 à 2021;;;;;;595;;;;;;;;;;;;;;;;"Chaudière à condensation (bâtiment tertiaire)
+
+REHABILITATION ET PLAN CLIMAT";"30/11/2013
+
+15/03/2022";16 rue Edouard Robert;;;;
+112RT;EDOUARD ROBERT-TOURNEUX;608;01/04/1924;2/32 Edouard Robert;75012;PARIS;ES;595;0;2001 - réha 2017 à 2021;;;;;;583;;;;;;;583;;;;;;;;;"Chaudière à condensation (bâtiment tertiaire)
+
+REHABILITATION ET PLAN CLIMAT";"30/11/2013
+
+15/03/2022";16 rue Edouard Robert;;;;
+112S8;FBG SAINT ANTOINE 80;29;01/01/1895;80 rue du Faubourg Saint Antoine;75012;PARIS;ES;17;0;2014;;;17;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;19/05/2014;80 rue du Faubourg Saint Antoine;;;;
+112SA;FBG ST ANTOINE 84       ;19;01/01/1920;84 rue du Fbg St Antoine;75012;PARIS;ES;8;2;2010;;8;;;;;;;;;;2;;;;;;;;;;;;;;;;
+120AD;ALEXANDRE DUMAS 101;8;01/01/1850;101 rue Alexandre Dumas;75020;PARIS;ES;8;1;2019;;;;;;;8;;;;;1;;;;;MEGALIS CONDENS ;;;;2019;Chaudière individuelle haute performance énergétique;22/05/2019;10 rue Alexandre Dumas 75020;;;;
+120AM;AMIENS;249;01/07/1954;"1/3 2/4 Amiens 
+5/7 Harpignies";75020;PARIS;ES;8;1;2006;;;;;;;;;;8;;1;;;;;ELM  - LM10;;;;;;;;;;;
+120BL;BAGNOLET 108;9;01/01/1780;108 rue de Bagnolet;75021;PARIS;ES;3;2;;;3;;;;;;;;;;2;;;;;SD- THEMAPLUS COND 25;;;;;;;;;;;
+120BU;BUZENVAL 71/73;10;01/01/1930;71/73 Buzenval;75020;PARIS;ES;7;3;2020;;;0;;;;7;;;;;3;;;;;MEGALIA CONDENS ;;;;2020;;;;;;;
+120BV;ST BLAISE 34/40-VITRUVE;26;01/01/1800;"34/40 Saint Blaise 
+49 Vitruve";75020;PARIS;ES;26;1;2018;;25;;;;;1;;;;;;;1;;;"MEGALIA CF; 
+MEGALIS CONDENS";;;;2018;;;;;;;
+120DI;DIEU 1 - HAIES 101/103;9;30/09/2011;101/103 rue des Haies;75020;PARIS;ES;9;2;2011;;;;;;;9;;;;;2;;;;;DE DIETRICH - mcx;;;;;;;;;;;
+120GA;GALLERON 3/5;13;01/09/1980;3/5 Galleron;75020;PARIS;ES;13;1;2012;;;13;;;;;;;;;1;;;;;ELM -MEGALIA;;;;;;;;;;;
+120GC;GRANDS CHAMPS 55;38;01/07/1955;55 rue des Grands Champs;75020;PARIS;ES;38;2;2011;;;38;;;;;;;;;2;;;;;;;;;;;;;;;;
+120H2;HAIES 76/78;26;30/06/2005;76/78 rue des Haies;75020;PARIS;ES;26;2;2020;;;0;;;5;17;4;;;;2;;;;1;NIAGARA C GREEN - MIRA C GREEN - ;;;;2020;;;;;;;
+120H8;HAIES 81;47;11/02/2008;"81/91 rue des Haies
+2/4 passage Savart";75020;PARIS;ES;94;11;2008 date d'imm;;;47;;;;47;;;;;11;;;;;Chaff- plrs models;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;12/10/2022;81-91 rue des Haies 24 Passage Savart;;;;
+120HS;HAIES 79 - SAVART 3/15 8/10;18;01/01/1850;8/10 passage Savart;75020;PARIS;ES;18;18;2010;;;18;;;;;;;;;;17;;;;;;;;;;;;;;;
+120MA;MARAICHERS 26/28;49;01/09/1949;26/28 rue des Maraîchers;75020;PARIS;ES;45;0;2008;;;45;;;;;;;;;;;;;;;;;;2023;;;;;;;
+120O4;ORTEAUX 43;4;01/01/1850;43 rue des Orteaux;75020;PARIS;ES;3;3;2008;;;3;;;;;;;;;3;;;;;;;;;;;;;;;;
+120OX;ORTEAUX 45C;5 (Ateliers d'artiste);31/05/2017;45C rue des Orteaux;75020;PARIS;ES;5;3;;;;;;;;;5;;;;1;;;;2;SD Thema AS condens F25;;;;;;;;;;;
+120PM;PTE DE MONTREUIL;457;01/07/1934;"2/12 Schubert 
+5 Paganini";75020;PARIS;ES;456;0;2001 - plan climat 2019;;456;;;;;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/03/2028;;;;;
+120R7;REUNION 71/73;8;01/01/1850;71/73 place de la Réunion;75020;PARIS;ES;8;1;2015;;;8;;;;;;;;;1;;;;;;;;;;Chaudière individuelle haute performance énergétique;21/05/2015;71 place de la Réunion;;;;
+120V2;VOLGA 26/30;34;01/05/1989;"26/30 Volga
+58 Maraîchers";75020;PARIS;ES;34;2;2018;;;5;;;;29;;;;;2;;;;;"Niagara C Green 25 EU 
+Mira C Green ultra 25";;;;2018;Chaudière individuelle haute performance énergétique;12/10/2018;2630 rue Volga;;;;
+120V3;VOLGA 32/34;10;01/01/1920;32/34 Volga;75020;PARIS;ES;10;0;2018;;10;;;;;;;;;;;;;;;Inoa 25 CF EU;;;;2018;;;;;;;
+120V4;VOLGA 36/38;13;17/03/2000;36/38 Volga;75020;PARIS;ES;13;2;2013;;;13;;;;;;;;;2;;;;;;;;;;;;;;;;
+120V6;VOLGA 6/8;38;19/10/2000;6/8 Volga;75020;PARIS;ES;38;6;2014;;;38;;;;;;;;;6;;;;;;;;;;Chaudière individuelle basse température;01/07/2014;6 rue de la Volga;;;;
+120VL;VIGNOLES PLANCHAT 15/31;99;30/06/2008;"15/31 rue des Vignoles
+26/30 et 34 rue de Terre Neuve";75020;PARIS;ES;84;42;2008;;;42;;;;42;;;;;;42;;;;;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;12/10/2022;15-31 rue des Vignoles et 34 rue de Terre Neuve;;;;
+120VS;VICTOR SEGALEN 1/3;48;01/02/1980;1/3 Victor Segalen;75020;PARIS;ES;48;3;2012;;48;;;;;;;;;;3;;;;;;;;;;;;;;;;
+212A3;ABEL 13;36;01/03/1928;13 rue Abel;75012;PARIS;ES;37;0;2002 - plan climat 2019;;36;1;;;;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/12/2025;;;;;
+212A4;ABEL 14;147;01/02/1923;14 rue Abel;75012;PARIS;ES;147;0;2002 - plan climat 2019;;133;14;;;;;;;;;;;;;;;;;;;;;;;;;
+120E1;ENVIERGES 1/3;10;01/01/1860;1/3 rue des Envierges;75020;PARIS;ES;10;1;2019;;;;9;;;1;;;;;;;;1;;2  INOA EVO 24 VMC- 7 ACLES VMC  BAS NOX -1 MEGALIS CONDENS ;;;;2019;;;;;;;
+120AO;AVRON 147;7;01/01/1890;147 rue d'Avron;75020;PARIS;ES;7;1;2016;;;;;;;7;;;;;1;;;;;;;;;;;;;;;;
+120B3;BOYER 13/17;62;01/04/1987;13/17 Boyer;75020;PARIS;ES;62;4;2022;;;;62;;;;;;;;;;;4;;THEMA C25EV;;;;2022;Isolation des toitures terrasses;16/10/2017;13/17 RUE BOYER;;;;
+120B4;BELLEVILLE 114;8;01/01/1900;114 rue de Belleville;75020;PARIS;ES;8;0;2017;;;;;;;8;;;;;;;;;;Mira C Green 25 EU;;;;2017;Chaudière individuelle haute performance énergétique;18/09/2017;114 BD DE BELLEVILLE;;;;
+120B7;BELLEVILLE 74;5;01/01/1850;74 rue de Belleville;75020;PARIS;ES;5;0;2013;;5;;;;;;;;;;;;;;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;26/11/2019;74 rue de Belleville 75020 - 74 rue de Belleville;;;;
+120B8;BELLEVILLE 18;23;01/01/1850;18 rue de Belleville;75020;PARIS;ES;13;0;2015;;;13;;;;;;;;;;;;;;;;;;;;;;;;;
+120BM;MENILMONTANT 58/58BIS   ;10;01/01/1870;58/58BIS boulevard de Ménilmontant;75020;PARIS;ES;10;0;2006;;;10;;;;;;;;;;;;;;ELM - ACLEIS AGVM C 24-1H;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;16/06/2023;58 bis boulevard de Menilmontant;;;;
+120C4;CASCADES 43/45;15;01/03/1986;43/45 rue des Cascades;75020;PARIS;ES;15;1;2015;;;;15;;;;;;;;;;;1;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;14/11/2017;43/45 RUE DES CASCADES;;;;
+120C6;CASCADES 6/8-ERMITAGE 9;33;30/01/1998;"6/8 rue des Cascades 
+9 Ermitage";75020;PARIS;ES;18;3;2015;;;18;;;;;;;;;3;;;;;;;;;;Chaudière individuelle haute performance énergétique;16/10/2017;6/8 RUE DES CASCADES - 9 RUE DE L'ERMITAGE;;;;
+120C7;CASCADES 7/23;51;01/10/1985;7/23 rue des Cascades;75020;PARIS;ES;50;4;2014;;;;50;;;;;;;;;;;4;;Chaff- INOA EVO 24 VMC;;;;;Chaudière individuelle basse température;23/09/2014;11/13/23 rue des Cascades;;;;
+120CA;CASCADES 46;9;01/12/1998;46 rue des Cascades;75020;PARIS;ES;9;2;2013;;;;9;;;;;;;;;;;2;;;;;;;;;;;;;
+120CE;COURONNES-EUPATORIA;324;01/02/1970;"82/88 Couronnes
+23 Eupatoria";75020;PARIS;ES;1;0;2008;;;;;;;;;;1;;;;;;;;;;;;;;;;;;
+120CI;CLOS 20/24-ORTEAUX 79/99;33;01/12/1979;20/24 Clos 79/99 Orteaux;75020;PARIS;ES;33;11;2011;;;;33;;;;;;;;;;;11;;;;;;2023;;;;;;;
+120CJ;COURONNES 43-J.LACROIX;17;01/12/1985;"43 Couronnes 
+34 Julien Lacroix";75020;PARIS;ES;17;0;2013;;17;;;;;;;;;;;;;;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;10/12/2021;43 rue des Couronnes 75020;;;;
+120CL;CLOS 2/22-ORTEAUX 93/99;595;01/11/1978;2/22 CLOS 93/99 Orteaux;75020;PARIS;ES;280;9;2011;;;;280;;;;;;;;;;;9;;;;;;2023;"Isolation des toitures terrasses
+Chaudière à condensation avec contrat d'exploitation";"18/12/2014
+05/12/2014";"14/16 rue du Clos / 79/99 rue des Orteaux
+16 rue du Clos";Chaudière      collective      haute      performance énergétique avec contrat  assurant  la  conduite de l’installation;12/12/2022;87 rue des Orteaux;
+120CM;HENRI CHEVREAU 13/17;30;30/08/1998;13/17 Henri Chevreau;75020;PARIS;ES;30;1;2012;;;;30;;;;;;;;;;;1;;;;;;;;;;;;;
+120CN;COURONNES 124;1;01/01/1939;124 rue des Couronnes;75020;PARIS;ES;1;0;2010;;1;;;;;;;;;;;;;;;ELM Leblanc;;;;;;;;;;;
+120D5;DENOYEZ 5;5;01/01/1850;5 rue Dénoyez;75020;PARIS;ES;5;1;2015;;;5;;;;;;;;;1;;;;;;;;;;Chaudière individuelle haute performance énergétique;14/12/2015;5 rue Denoyez;;;;
+120D8;DENOYEZ 18;26;15/10/2003;18 rue Dénoyez;75020;PARIS;ES;21;3;2015;;;21;;;;;;;;;3;;;;;Chaff- NIAGARA C 25 FF;;;;;;;;;;;
+120DZ;DENOYEZ 11 LEMON;9;19/03/2002;11 rue Dénoyez;75020;PARIS;ES;9;1;2015;;;6;;;;3;;;;;1;;;;;chaff- INOA EVO 25 FF V2 et 3 NIAGARA C GREEN 25;;;;;Chaudière individuelle haute performance énergétique;22/12/2015;11 rue Denoyez;;;;
+120EC;ERMITAGE 29/31-CASCADES;13;01/01/1850;"29/31 Ermitage
+26/28 rue des Cascades";75020;PARIS;ES;13;3;2017;3 caissons en 2017;;2;10;;;1;;;;;;;;3;;Inoa 24 VMC  et 1 Mira C Green 25 EU;;;;2017;"Chaudière individuelle haute performance énergétique
+Fenêtre ou porte-fenêtre complète avec vitrage isolant";"21/07/2017
+15/12/2017";"23-31 RUE DE L'ERMITAGE
+29-31 rue de l'Ermitage 26-28 rue des Cascades";;;;
+120EV;ENVIERGES 35;16;01/01/1983;35 rue des Envierges;75020;PARIS;ES;16;2;2012;;;16;;;;;;;;;2;;;;;;;;;;;;;;;;
+120JL;JULIEN LACROIX;8;31/08/2007;15/17 rue Julien Lacroix;75020;PARIS;ES;8;1;2007;;;8;;;;;;;;;1;;;;;;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;16/06/2023;15 rue Julien Lacroix;;;;
+120JU;JUILLET 12/14;68;01/04/1987;12/14 Juillet;75020;PARIS;ES;68;3;2019;;;;68;;;;;;;;;;;3;;1 INOA VMC - 67 ACLES VMC BAS NOX;;;;2019;;;;;;;
+120JX;JULIEN LACROIX 91;4;21/02/2006;91 rue Julien Lacroix;75020;PARIS;ES;4;1;2015;;;4;;;;;;;;;1;;;;;;;;;;Chaudière individuelle haute performance énergétique;21/05/2015;91 rue Julien Lacroix;;;;
+120L1;LESAGE / RAMPONEAU;36;28/08/2005;"12/14 Lesage 
+45/47/49 Ramponeau";75020;PARIS;ES;37;11;2020;;;0;;;;11;26;;;;3;;;;8;;;;;2020;;;;;;;
+120L5;LESAGE 5;5;01/01/1850;5 rue Lesage;75020;PARIS;ES;5;0;2021;;;1;;;;4;;;;;;;;;;ELM LEBLANC - MEGALIS CONDENS / EGALIS CONDENS;;;;2021;;;;;;;
+120LE;LESAGE 8;5;01/04/2003;8 rue Lesage;75020;PARIS;ES;5;1;2020;;;;;;;5;;;;;1;;;;;MEGALIA CONDENS-MIRA C GREEN;;;;2020;;;;;;;
+120M1;MARE34/38 CASCADES 37/41;30;08/01/2003;36/38 rue de la Mare;75020;PARIS;ES;30;3;2015;;;30;;;;;;;;;3;;;;;;;;;;Chaudière individuelle haute performance énergétique;12/10/2015;36/38 rue de la Mare;;;;
+120M3;MARE 34;6;01/07/1983;34 rue de la Mare;75020;PARIS;ES;6;0;2015;;6;;;;;;;;;;;;;;;chaff- INOA EVO 25 CF;;;;;;;;;;;
+120M6;MENILMONTANT 61;5;01/01/1850;61 rue de Ménilmontant;75020;PARIS;ES;5;0;2013;;5;;;;;;;;;;;;;;;;;;;;;;;;;;
+120M7;MARE 70/72;5;01/05/1987;70/72 Mare;75020;PARIS;ES;5;1;2017;2017 caisson gaz;;;5;;;;;;;;;;;1;;;;;;2017;Fenêtre ou porte-fenêtre complète avec vitrage isolant;07/01/2020;7072 rue de la Mare 75020;;;;
+120M8;MENILMONTANT 82;39;01/01/1830;82 rue de Ménilmontant;75020;PARIS;ES;39;0;2014;;39;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;27/10/2014;82 rue de Ménilmontant;;;;
+120MC;MARE 58/60-CASCADES-SAVI;54;01/11/1985;"58/60 Mare 
+73/75 Cascades";75020;PARIS;ES;11;4;2019;;;;;;;11;;;;;4;;;;;11 MEGALIS CONDENS ;;;;2019;;;;;;;
+120ME;MENILMONTANT 36;30;01/01/1830;36 rue de Ménilmontant;75020;PARIS;ES;30;2;2014;;;;30;;;;;;;;;;;2;;chaff- INOA ;;;;;Chaudière individuelle basse température;11/12/2014;36 rue de Ménilmontant;;;;
+120MH;MENILMONTANT 54/56;44;15/10/1998;"54/56 boulevard de Ménilmontant 
+9 Houdard";75020;PARIS;ES;44;4;2012;;;44;;;;;;;;;4;;;;;;;;;;;;;;;;
+120ML;MENILMONTANT 51/53;15;01/01/1850;51/53 rue de Ménilmontant;75020;PARIS;ES;15;0;2013;;15;;;;;;;;;;;;;;;de dietrich- MS 24;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;15/12/2020;51-53 rue de Menilmontant 3 bis rue Julien Lacroix;;;;
+120MT;MENILMONTANT 113;1;01/01/1880;113 rue de Ménilmontant;75020;PARIS;ES;1;1;2020;;;;;;;1;;;;;;1;;;;;;;;;;;;;;;
+120P2;PYRENEES 217;5;01/11/1981;217 Pyrénées;75020;PARIS;ES;5;0;2013;;5;;;;;;;;;;;;;;;;;;;;;;;;;;
+120P5;PANOYAUX 23;16;11/06/1999;21/23 Panoyaux;75020;PARIS;ES;16;1;2017;;;;16;;;;;;;;;;;1;;"5 Niagara C 24 VMC EU (à ballon intégré); Inoa 24 VMC EU";;;;2017;;;;;;;
+120P6;PANOYAUX 65/71-PLATRIERE;39;08/11/1999;65/71 Panoyaux 6 Plâtrières;75020;PARIS;ES;39;4;2012;;;39;;;;;;;;;4;;;;;;;;;;;;;;;;
+120P7;PERE JULIEN D'HUIT 17/21;93;01/10/1986;17/21 Père Julien d'Huit;75020;PARIS;ES;93;3;2000 - plan climat 2018;;;;93;;;;;;;;;;;3;;;;;;;;;;;;;
+120P8;PLATRIERES 8;16;01/04/2009;8 rue des plâtrières;75020;PARIS;ES;15;3;2017;;;;;;;15;;;;;3;;;;;PMC-M 24/28 MI (de DIETRICH);;;;;;;;;;;
+120P9;PERE JULIEN D'HUIT 9/18;268;01/07/1986;9/21 10/18 Père Julien d'Huit;75020;PARIS;ES;268;8;2000 - plan climat 2018;;;;268;;;;;;;;;;;8;;;;;;;;;;;;;
+120PK;PALI-KAO 5/15;56;03/04/1996;"7/15 Pali-Kao 
+10BIS Bisson";75020;PARIS;ES;34;2;2011;;;34;;;;;;;;;2;;;;;;;;;;;;;;;;
+120PT;PLATRIERES 10/12;22;14/10/2005;10/12 rue des Plâtrières;75020;PARIS;ES;22;1;2020;;;;;;;22;;;;;1;;;;;CHAFFOTEAUX NIAGARA C GREEN ULTRA 25 - MIRA C GREEN ULTRA 25;;;;2020;;;;;;;
+120PX;PANOYAUX 4;4;01/01/1870;4 rue des Panoyaux;75020;PARIS;ES;4;0;2016;;;;;;;4;;;;;;;;;;3 NIAGARA C GREEN (CM) - 1 EGALIS  (ELM);;;;2016;Chaudière individuelle haute performance énergétique;11/10/2017;4 RUE DES PANOYAUX;;;;
+120R5;RAMPONEAU 35/37;9;01/03/2003;35/37 rue Ramponeau;75020;PARIS;ES;9;1;2020;;;;;;;9;;;;;1;;;;;ELM LEBLANC MEGALIA CONDENS ;;;;2020;;;;;;;
+120RA;RAMPONEAU 43/45;14;01/01/1870;43/45 rue Ramponeau;75020;PARIS;ES;14;1;2012;;;14;;;;;;;;;1;;;;;;;;;;;;;;;;
+120RL;RIGOLES-LEVERT;13;01/01/1850;"76/78 Rigoles 
+8/10 Levert";75020;PARIS;ES;13;6;2012;;;13;;;;;;;;;;6;;;;;;;;;Isolation des murs;12/04/2018;810 rue Levert et 78 rue des Rigoles;;;;
+120RM;RAMPONEAU 23;20;23/05/2014;23 rue Ramponeau;75020;PARIS;ES;19;2;2014;;;19;;;;;;;;;2;;;;;;;;;;;;;;;;
+120RP;RAMUS 30/38-PYRENEES 223;67;15/06/1981;"30/36 Ramus 
+223 Pyrénées";75020;PARIS;ES;67;5;2012;;;4;63;;;;;;;;;;;5;;;;;;;;;;;;;
+120T4;TOURTILLE 47/49;9;01/07/1997;47/49 Tourtille;75020;PARIS;ES;9;1;2011;;;9;;;;;;;;;1;;;;;;;;;;;;;;;;
+120T7;TOURTILLE 31;2;01/04/2003;31 rue de Tourtille;75020;PARIS;ES;2;2;2020;;;;;;;2;;;;;;2;;;;NIAGARA C GREEN - MIRA C GREEN - ;;;;2020;;;;;;;
+120T9;TOURTILLE 41;10;01/01/1850;39BIS/41 rue de Tourtille;75020;PARIS;ES;10;5;2019;;;;;;;10;;;;;5;;;;;3 NIAGARA CONDENS - 3 MIRA CONDENS - 4 INOA CONDENS ;;;;2019;Chaudière individuelle haute performance énergétique;05/04/2019;41 rue de Tourtilles 75020;;;;
+120VI;VITRUVE 48;15;01/10/1985;48 rue Vitruve;75020;PARIS;ES;15;1;2015;;;;15;;;;;;;;;;;1;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;01/10/2014;48 rue Vitruve;;;;
+220BJ;BOYER 3-JUILLET 4;96;01/02/1922;3/9 Boyer 4 Juillet;75020;PARIS;ES;96;3;2018;;;;95;;;1;;;;;;;;3;;"MIRA C GREEN; MEGALIA VMC ";;;;2018;;;;;;;
+220OM;OLIVIER METRA 36;96;01/05/1928;36/40 rue Olivier Métra;75020;PARIS;ES;93;0;2014;;93;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;29/09/2014;36/40 rue Olivier Métra;;;;
+620AN;AMANDIERS;29;06/11/1934;75 rue des Amandiers;75020;PARIS;ES;27;0;2011;;27;;;;;;;;;;;;;;;;;;;;;;;;;;
+108CH;CHAMBIGES 6 ;15;01/01/1880;6 rue Chambiges;75008;PARIS;NO;13;0;2013;;10;3;;;;;;;;;;;;;;;;;;;;;;;;;
+109C2;22CONDORCET;21;21/12/2017;22 rue Condorcet;75009;PARIS;NO;6;0;;;6;;;;;;;;;;;;;;;;;;;;;;;;;;
+109CL;CLICHY 29;54;01/01/1900;29 Clichy;75009;PARIS;NO;53;4;2015;;;53;;;;;;;;;3;1;;;;;;;;;;;;;;;
+109CO;CONDORCET 21;18;01/01/1881;21 rue Condorcet;75009;PARIS;NO;18;0;2015;;14;2;;;;1;;;1;;;;;;;;;;;;;;;;;;
+109CT;CITE TREVISE 16;7;01/01/1881;16 Cité Trévise;75009;PARIS;NO;6;0;2016;;2;1;;;3;;;;;;;;;;;"3 THEMAPLUS CONDENS
+1 MEGALIS NGLA 24 1 H
+1 THEMA C25 E non remplacée
+1 BT ventouse non remplacée pb tech";;;;2016;Chaudière individuelle haute performance énergétique;28/11/2016;16 CITE TREVISE;;;;
+109LA;ST LAZARE 43;21;01/01/1780;43 rue St Lazare;75009;PARIS;NO;10;2;2010;;;10;;;;;;;;;2;;;;;MEGALIA 4H;;;;;Fenêtre  ou  porte-fenêtre  complète  avec  vitrage isolant;23/05/2023;43 rue St Lazare;;;;
+109LF;LA FAYETTE90;16;01/01/1960;90 rue de La Fayette;75009;PARIS;NO;13;0;;;13;;;;;;;;;;;;;;;;;;;;;;;;;;
+109RC;ROCHECHOUART 53;11;01/01/1860;53 bd Rochechouart;75009;PARIS;NO;11;2;2011;;;;;;11;;;;;;2;;;;;THEMAPLUS CONDENS;;;;;;;;;;;
+109RT;ROCHECHOUART71;30;01/01/1890;71 rue de Rochechouart;75009;PARIS;NO;5;0;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;
+109TA;TOUR D'AUVERGNE 35/37;25;01/01/1840;35/37 Tour d'Auvergne;75009;PARIS;NO;25;1;2005;;;25;;;;;;;;;1;;;;;;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;27/06/2023;35-37 Tour d€™auvergne 75009 PARIS;;;;
+109TU;TURGOT19;48;01/01/1900;19 rue Turgot;75009;PARIS;NO;;0;;;19;;;;;;;;3;;0;;;;;"VMC non fonctionnelle (3 caissons ?) mais incompatible avec chaudières en place
+20 ballons électriques";;;;;;;;;;;
+110BV;LOUIS BLANC - VILLETTE;92;01/05/1956;"2/4 Louis Blanc
+97/99 Villette";75010;PARIS;NE;29;0;2014;;;;;;;;;;29;;;;;;;;;;;;Chaudière à haute performance énergétique;20/09/2019;97 Boulevard de la Villette 75010 Paris;;;;
+110CE;;33;01/01/1900;16/18 Rue du Château d’eau ;75010;PARIS;NE;;;;;3;;;;;;;;3;;;;;;;28 ballons électriques;;;;;;;;;;;
+110DE;DENAIN 4/6/8;50;01/01/1910;4/6/8 Bd de Denain;75010;PARIS;NE;13;3;2011;;;13;;;;;;;;;3;;;;;;;;;;Réhabilitation d’un poste de livraison de chaleur d’un bâtiment résidentiel;25/11/2021;6 boulevard Denain;;;;
+110EC;;10;01/01/1880;3 rue de l’échiquier ;75010;PARIS;NE;;;;;1;;;;;;;;1;;;;;;;11 ballons électriques;;;;;;;;;;;
+110FM;FAUBOURG SAINT-MARTIN;30;01/01/1890;197 rue du Faubourg Saint Martin;75010;PARIS;NE;12;1;2021;;;;;;;12;;;;;1;;;;;ELM LEBLANC modèle « mégalis condens ;;;;;;;;;;;
+110FS;FAUBOURG SAINT-DENIS 50;20;01/01/1780;50A Faubourg Saint Denis;75010;PARIS;NE;20;2;2017;;;2;;;;18;;;;;2;;;;;SAUNIER DUVAL - ISOTWIN CONDENS - THEMAPLUS CONDENS;;;;2017;Chaudière individuelle haute performance énergétique;27/04/2016;50 A RUE DU FAUBOURG SAINT DENIS;;;;
+110FT;FAUBOURG DU TEMPLE 113;23;01/01/1800;113 Faubourg du Temple;75010;PARIS;NE;20;0;2014;;20;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;22/10/2014;113 rue du Faubourg du Temple;;;;
+110JE;JEMMAPES 118            ;24;01/01/1985;118 quai de Jemmapes;75010;PARIS;NE;27;2;2014;;;;27;;;;;;;;;;;2;;;;;;;PLAN CLIMAT;15/12/2019;;;;;
+110JL;LOUVEL-TESSIER;39;30/10/2001;5/7BIS rue J.Louvel-Tessier;75010;PARIS;NE;39;2;2017;2 caissons en 2017;;7;;;;32;;;;;2;;;;;SAUNIER DUVAL - THEMAFAST CONDENS F25 - ISOTWIN CONDENS F25 - THEMAF25;;;;2017;Chaudière individuelle haute performance énergétique;06/06/2016;5-7BIS RUE JACQUES LOUVEL-TESSIER;;;;
+110LA;LANCRY/LEGOUVE          ;24;01/01/1780;4 Legouvé et 59 rue de Lancry;75010;PARIS;NE;24;1;2021;;;2;;;;22;;;;;1;;;;;ELM LEBLANC - MELIA I CONDENS;;;;2021;;;;;;;
+110LF;LA FAYETTE 150;26;01/01/1880;150 rue La Fayette;75010;PARIS;NE;26;1;2022;;;;;;;26;;;;;1;;;;;;;;;2022;;;;;;;
+110LM;BUISSON ST LOUIS - ST MAUR;32;01/07/1988;2 Buisson Saint Louis;75010;PARIS;NE;32;2;2014;;;;32;;;;;;;;;;;2;;;;;;;"Chaudière individuelle basse température
+
+PLAN CLIMAT";"11/12/2014
+
+15/04/2021";2 rue du Buisson Saint Louis;;;;
+110MA;158 MAGENTA;12;01/01/1880;158 bd Magenta;75010;PARIS;NE;12;1;2016;;;;;;;12;;;;;1;;;;;;;;;;;;;;;;
+110ML;MAGENTA99-LA FAYETTE136;32;01/01/1860;99 boulevard de Magenta;75010;PARIS;NE;34;2;2008;;;34;;;;;;;;;2;;;;;;;;;2023;;;;;;;
+110PA;PARADIS 44-46;57;01/01/1890;44b-46-46b-46true de Paradis;75010;PARIS;NE;57;12;2022;;;3;;;;25;29;;;;3;;;;9;;;;;2022;;;;;;;
+110PE;;16;01/01/1875;1 cour des petites écuries ;75010;PARIS;NE;;;DTNE;;5;;;;;;;;;;;;;;;9 ballons électriques;;;;;;;;;;;
+110PO;FG POISSONNIERE 156;65;01/01/1859;156 Rue du Faubourg Poissonnière;75010;PARIS;NE;64;0;2008 - DCI 2021;;;;;;64;;;;;;;;;;;ACLEIS MEGALIS;;;;;;;;;;;
+110PR;PARADIS 14;25;01/01/1840;14 rue du Paradis;75010;PARIS;NE;26;3;2010;;;26;;;;;;;;;3;;;;;MCX24/28;;;;;;;;;;;
+110ST;STRASBOURG 37;32;15/02/2000;37 Boulevard de Strasbourg;75010;PARIS;NE;32;2;2015;;;32;;;;;;;;;2;;;;;;;;;;;;;;;;
+110T3;TERRAGE 15/19  (PALULOS);6;01/01/1930;11/13 rue du Terrage;75010;PARIS;NE;6;1;2014;;;6;;;;;;;;;1;;;;;;;;;;Chaudière individuelle basse température;23/10/2014;11/13 rue du Terrage;;;;
+110TB;TERRAGE-BOUTRON;26;06/08/1999;21 Terrage 14 Boutron;75010;PARIS;NE;26;3;2014;;;;26;;;;;;;;;;;3;;;;;;;Chaudière individuelle basse température;23/10/2014;21 rue du Terrage / 14 impasse Boutron;;;;
+110VP;SAINT VINCENT DE PAUL;16;28/03/2014;17 RUE SAINT VINCENT DE PAUL ;75010;PARIS;NE;15;1;2013;;;;;;;15;;;;;1;;;;;MCX24/28;;;;;;;;;;;
+111AL;ST ANTOINE 97 - LHOMME;38;01/01/1982;97 Faubourg Saint Antoine;75011;PARIS;NE;38;4;2011;;;;38;;;;;;;;2;;;2;;chaudières en alvéoles;;;;;;;;;;;
+111CD;CDESMOULINS;28;01/01/1900;23 rue Camille Desmoulins;75011;PARIS;NE;22;0;;;22;;;;;;;;;;;;;;;;;;;2023;;;;;;;
+111CV;CHEMIN VERT-REPUBLIQUE-C;156;01/04/1983;125/125BIS Chemin Vert;75011;PARIS;NE;156;18;2013;;;;156;;;;;;;;9;;;9;;;;;;;;;;;;;
+111FM;FOLIE MERICOURT 4;36;01/01/1750;4 rue de la Folie Méricourt;75011;PARIS;NE;36;3;2017;3 caissons en 2017;;;36;;;;;;;;;;;3;;;;;;2017;;;;;;;
+111FO;FORGE ROYALE;9;01/01/1850;27 Forge Royale;75011;PARIS;NE;9;3;2022;;;;;;;1;8;;;;1;;;0;2;;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;31/12/2022;27 rue de la Forge Royale;;;;
+111JP;23 TIMBAUD;12;22/03/2022;23 rue Jean Pierre Timbaud;75011;PARIS;NE;12;;2021;;;;;;;;12;;;;;;;;3;DE DIETRICH;;;;;;;;;;;
+111JT;TIMBAUD21;16;01/01/1850;21 rue Jean Pierre Timbaud;75011;PARIS;NE;9;1;2019;;;;;;;9;;;;;1;;;;;;;;;;Isolation d'un plancher;05/02/2020;21 rue Jean Pierre Timbaud;;;;
+111PG;PASSAGE BONNE GRAINE;29;01/01/1850;8/10 passage de la bonne graine;75011;PARIS;NE;10;3;2021;;;;;;;2;8;;;;1;;;;2;ATLANTIC NAIA;;;;2021;;;;;;;
+111TI;TITON 11;19;01/05/1984;30 rue Titon;75011;PARIS;NE;19;1;2015;;;;19;;;;;;;;;;;1;;;;;;;;;;;;;
+112T1;TOUL 14/16;36;01/09/1987;14/16 rue de Toul;75012;PARIS;ES;31;1;2019;;;;31;;;;;;;;;;;1;;ZENA ECONOX MSN 24 MI VMC + NIAGARA C NOX 25 VMC FR;;;;2019;;;;;;;
+117BR;BREY 21;19;01/01/1920;21 rue Brey;75017;PARIS;NO;9;0;?;;8;1;;;;;;;;;;;;;;;;;;;;;;;;;
+117P7;PIERRE DEMOURS 78;22;01/01/1890;78 rue Pierre Demours;75017;PARIS;NO;19;2;2019;;;19;;;;;;;;;2;;;;;;;;;2019;Chaudière individuelle haute performance énergétique;28/02/2020;78 rue Pierre Demours;;;;
+117PE;PEREIRE 150;22;01/01/1850;150 Boulevard Péreire;75017;PARIS;NO;20;2;2009;;;20;;;;;;;;;2;;;;;;;;;2023;;;;;;;
+117SP;SAUSSURE 132/134-DE PISA;172;01/03/1985;132/134 Saussure;75017;PARIS;NO;173;7;2017;;;;173;;;;;;;;;;;7;;;;;OUI;2017;;;;;;;
+117VI;VILLIERS 77;16;01/07/2013;77 avenue de Villiers;75017;PARIS;NO;16;1;2010;;;;;;16;;;;;;1;;;;;ACLEIS CONDENS;;;;;;;;;;;
+118BN;BINET-NEY-LABORI-FOURNIE;378;01/01/1928;"118/124 Ney
+1/19 Fernand Labori";75018;PARIS;NO;377;19;2013;;;42;335;;;;;;;;;;;19;;;;OUI;;;;;;;;;
+118CW;CHAMPIONNET 120;18;01/01/1920;120 rue Championnet;75018;PARIS;NO;4;0;;;3;1;;;;;;;;;;;;;;;;;;;;;;;;;
+118CY;CLICHY 120;15;01/01/1908;120 bd de Clichy;75018;PARIS;NO;15;0;2012;;15;;;;;;;;;;;;;;;ISOTWIN C25;;;;;;;;;;;
+118FF;FLAMMARION-FOURNIERE-BIN;272;01/01/1927;"2/4 C Flammarion 
+1/3 E Fournière";75018;PARIS;NO;274;15;2017;;;;272;;;2;;;;;;;;15;;270 THEMACLASSIC V25 - 2 THEMAPLUS CONDENS;;;;2017;Chaudière individuelle haute performance énergétique;24/03/2017;2-4 RUE CAMILLE FLAMMARION;Radiateur  basse  température  pour  un  chauffage central;31/03/2021;15 RUE CAMILLE FLAMMARION;
+118HB;HENRI BRISSON-ARTHUR RAN;274;01/01/1930;"1/7 Henri Brisson 
+156/166 Ney";75018;PARIS;NO;273;12;2015;;;3;269;;;;;;1;;;;;12;;;;;;;;;;;;;
+118LJ;LEIBNIZ 16-ST-JULES;15;01/01/1986;16 Leibniz;75018;PARIS;NO;15;1;2015;;;;15;;;;;;;;;;;1;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;28/11/2017;16 rue Liebnitz4 passage St Jules;;;;
+118SF;SCHNEIDER-FLAMMARION-BIN;360;01/01/1926;2/4 Frédéric Schneider;75018;PARIS;NO;356;1;2016;;69;41;;;;246;;;;;1;;;;;"272 THEMAPLUS CONDENS F25/
+46 THEMAFAST C25 /
+14 chaudières récentes de 2012 à 2014
+";;;;2016;"Chaudière individuelle haute performance énergétique
+
+Mise en place d’un doublage isolant (complexe ou sur ossature) sur murs par l’intérieur ou par l’extérieur.";"24/11/2017
+
+31/03/2021";"2/4 Frederic Schneider - 3/19 Camille Flammarion - 136/138 bd Ney
+
+15 RUE CAMILLE FLAMMARION";;;;
+211CG;CRESPIN DU GAST 16;88;01/01/1932;16 rue Crespin du Gast;75011;PARIS;NE;87;3;2022;;;;72;;;15;;;;;;;;3;;;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;31/12/2022;16 rue Crespin du Gast;;;;
+220MJ;MENILMONTANT 140/156-JAC;359;01/12/1925;140/156 Ménilmontant;75020;PARIS;ES;344;17;2022;;;;343;;;1;;;;;;;;17;;;;;;2022;;;;;;;
+101GT;GRANDE TRUANDERIE 32;20;01/09/1938;32 rue de la Grande Truanderie;75001;PARIS;SE;6;0;2015;;6;;;;;;;;;;;;;;;;;;;;;;;;;;
+101PR;PROUVAIRES 3;16;01/01/1730;3 rue des Prouvaires;75001;PARIS;SE;16;0;2012;;16;;;;;;;;;;;;;;;;;;;;;;;;;;
+101RI;RIVOLI140A;8;15/10/2013;"140A/144 rue de Rivoli
+9 rue Roule";75001;PARIS;SE;8;3;2012;;;;;;;8;;;;;1;;;;2;MCX24/28;;;;;;;;;;;
+101S1;SAUVAL 12;5;01/01/1700;12 rue Sauval;75001;PARIS;SE;5;0;2014;;5;;;;;;;;;;;;;;;;;;;;"Isolation de combles ou de toitures
+Chaudière individuelle basse température";"08/04/2013
+23/10/2014";12 rue Sauval;;;;
+101S8;SAUVAL  8;13;01/01/1700;8 rue Sauval;75001;PARIS;SE;13;1;2014;;;;13;;;;;;;;;;;1;;;;;;;"Isolation de combles ou de toitures
+Chaudière individuelle basse température";"08/04/2013
+23/10/2014";12 rue Sauval;;;;
+101SO;SAINTE OPPORTUNE 3;12;01/01/1830;3 rue Sainte Opportune;75001;PARIS;SE;2;0;2015;;1;;;;;1;;;;;;;;;;DE DIETRICH MS24 MI TN;;;;;;;;;;;
+102CA;27 CAIRE;8;01/01/1870;27 rue du Caire;75002;PARIS;SE;3;0;IAO voir Sylvie Debert;;;;;;;;;;3;;;;;;;;;;;;;;;;;;
+102JE;JEUNEURS 6;22;01/01/1900;6 rue des Jeuneurs;75002;PARIS;SE;22;1;2017;;;;;;;22;;;;;1;;;;;;;;;;;;;;;;
+102LB;LEOPOLD BELLAN13;21;23/10/2013;13 rue Léopol Bellan;75002;PARIS;SE;21;2;2012;;;;;;;21;;;;;2;;;;;SAUNIER DUVAL ISOSPLIT F30;;;;;;;;;;;
+102PO;POISSONNIERE 25;20;01/01/1780;25 bvd poissonnière;75002;PARIS;SE;20;5;2013;;;;;;;;20;;;;2;;;;3;MCX24/28;;;;;;;;;;;
+103PM;MOLIERE;37;01/01/1730;4/26 19/23 Molière;75003;PARIS;SE;37;4;2021;;;;;;22;;15;;;;;;;;4;;;;;;REHABILITATION ET PLAN CLIMAT;15/06/2021;;;;;
+104FB;FRANCS BOURGEOIS 29BIS;14;01/01/1700;29ter rue des Francs-Bourgeois;75004;PARIS;SE;14;3;2022;;;;;;;6;8;;;;1;;;;2;ELM LEBLANC MELIA I CONDENS;;;;2022;;;;;;;
+104LP;PONT LOUIS PHILIPPE13/23;85;01/01/1840;13/23 Pont Louis-Philippe;75004;PARIS;SE;85;0;2014;;85;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;22/10/2014;13/23 rue du Pont Louis-Philippe / 26 rue François Miron;;;;
+104VE;VENISE - QUINCAMPOIX;8;01/01/1850;30 Venise 56 Quincampoix;75004;PARIS;SE;8;1;2012;;;;8;;;;;;;;;;;1;;;;;;;;;;;;;
+105AN;ANGLAIS 9/13;22;01/01/1830;9 rue des Anglais;75005;Paris;SE;22;2;2018;2 caissons gaz:P3R 2018;;;22;;;;;;;;;;;2;;"21 MEGALIS CGLA 23-7MN5 (ELM); 1 EGALIS BALLON NGLB 23 VMC (ELM)";;;;2018;;;;;;;
+105BE;BERNARDINS 6 - BIEVRE 3;17;01/01/1700;6 Bernardins 3 Bièvre;75005;Paris;SE;17;2;2014;;;;17;;;;;;;;;;;2;;;;;;;Chaudière individuelle basse température;30/12/2014;6 rue des Bernardins / 3 rue de Bièvre;;;;
+105CA;CARMES - ECOLE POLYTECHN;63;01/01/1934;15/21 Carmes;75005;Paris;SE;46;0;2003 - plan climat 2018;;43;3;;;;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/09/2024;;;;;
+105D4;DESCARTES 14;4;01/01/1750;Descartes (rue) 14;75005;Paris;SE;4;1;2020;;;;;;;;4;;;;0;;;;1;MEGALIA CONDENS ;;;;2020;;;;;;;
+105F3;FREDERIC SAUTON 3;12;01/01/1700;Frédéric Sauton (rue) 3;75005;Paris;SE;12;1;2016;;;4;;;;8;;;;;1;;;;;CHAFFOTEAUX 7 MEGALIA AGVC24-5MN - 4 MEGALIA NGVA 24 -5H;;;;2016;Chaudière individuelle haute performance énergétique;07/06/2016;3 RUE FREDERIC SAUTON;;;;
+105FS;FREDERIC SAUTON 23;10;01/01/1700;23 Frédéric Sauton;75005;Paris;SE;10;0;2013;;10;;;;;;;;;;;;;;;;;;;;;;;;;;
+105G4;GALANDE 44;9;01/01/1750;Galande (rue) 44;75005;Paris;SE;9;0;2014;;9;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;30/06/2014;44 rue Galande;;;;
+105G6;GALANDE 65;18;01/01/1700;Galande (rue) 65;75005;Paris;SE;18;0;2014;;18;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;30/06/2014;65 rue Galande;;;;
+105GE;GEOFFROY ST HILAIRE 28;8;01/06/1986;Geoffroy Saint Hilaire (rue) 28;75005;Paris;SE;8;1;2016;"P3R 2016 
+1 caisson";;;7;;;1;;;;;;;;1;;"2( ELM) EGALIS PLUS VMC
+2 (ELM) EGALIS PLUS VMC + BAL 121
+3 (ELM) MEGALIA VMC
+1 (CM) SERELIA GREEN";;;;2016;Chaudière individuelle haute performance énergétique;07/06/2016;28 RUE GEOFFROY SAINT HILAIRE ;;;;
+105GH;GEOFFROY ST HILAIRE19/25;300;01/01/1965;Geoffroy Saint Hilaire (rue) 19/25;75005;Paris;SE;2;0;NC;;;;;;;;;;46;;;;;;;;;;;;;;;;;;
+105HB;HENRI BARBUSSE 33;17;01/01/1840;Henri Barbusse (rue) 33;75005;Paris;SE;5;1;2019;;1;;;;;4;;;;;1;;;;;CHAFFOTEAUX - MIRA GREEN ULTRA - MIRA C NOX 25 FF ;;;;2019;Chaudière individuelle haute performance énergétique;08/11/2019;33 rue Henri Barbusse;;;;
+105J1;SAINT JACQUES 181/183;4;01/01/1700;Saint Jacques (rue) 181;75005;Paris;SE;4;1;2012;;;;4;;;;;;;;;;;1;;;;;;;;;;;;;
+105J2;SAINT JACQUES 275;11;01/01/1650;275 Saint-Jacques;75005;Paris;SE;11;3;2016;;;;11;;;;;;;;;;;3;;11 THEMAFAST V25;;;;2016;;;;;;;
+105LC;LACEPEDE 16/18;24;11/05/1963;16/18 rue Lacepede;75005;Paris;SE;4;0;;;;;;;;;;;4;;;;;;;;;;;;;;;;;;
+105LE;CARDINAL LEMOINE 49/51;32;05/04/2011;49/51 rue du Cardinal LEMOINE ;75005;Paris;SE;30;3;;;;;29;;;1;;;;;;;;3;;CHAFFOTEAUX INOA;;;;;;;;;;;
+105P2;POLIVEAU 18/20;12;01/06/1986;Poliveau (rue) 20;75005;Paris;SE;12;1;2016;;;;12;;;;;;;;;;;1;;"4 (ELM) EGALIS PLUS  VMC/
+2 EGALIS PLUS  VMC + BAL 121/
+3 EGALIS PLUS  VMC + BAL 50
+1 EGALIS PLUS  VMC + BALLON ELECTRIQUE/
+1 (SD) ISOTWIN VMC + ballon/
+1 (SD) Thema C AS 25 EV GN + ballon échangeur/";;;;2016;Isolation des toitures terrasses;22/10/2014;18-20, Rue Polivau ;;;;
+105S7;SAINT JACQUES 157;9;01/01/1700;Saint Jacques (rue) 157;75005;Paris;SE;8;2;2021;;;1;;;;2;5;;;;1;;;;1;"Elm Leblanc - Melia I condens et Egalis condens
+pas de chaudière dans le logement 8";;;;2021;;;;;;;
+105S9;SAINT JACQUES 159;7;01/01/1700;Saint Jacques (rue) 159;75005;Paris;SE;6;1;2021;;;;;;;6;;;;;1;;;;;Elm Leblanc - Melia I condens et Egalis condens;;;;2021;;;;;;;
+105VG;VAL DE GRACE 21;15;01/01/1840;21 rue du Val de Grâce;75005;PARIS;SE;11;4;2021;;;;;;;?;10;;;;2;;;;2;INOA 24 VMC;;;;;;;;;;;
+106CM;CHERCHE MIDI 5;19;01/01/1650;5 rue du Cherche Midi;75006;Paris;SE;18;0;2015;;18;;;;;;;;;;;;;;;;;;;;;;;;;;
+106EC;ECHAUDE 3 - SEINE 44 ;4;01/01/1600;44 rue de la Seine;75006;Paris;SE;4;1;2013;;;4;;;;;;;;;1;;;;;;;;;;;;;;;;
+106EM;ECOLE DE MEDECINE 11/13;7;01/01/1300;11/13 Ecole de Médecine;75006;Paris;SE;6;0;2015;;6;;;;;;;;;;;;;;;;;;;;;;;;;;
+106LI;LITTRE 6BIS;8;01/12/1983;Littré (rue du) 6bis;75006;Paris;SE;7;1;2015;;;;7;;;;;;;;;;;1;;;;;;;;;;;;;
+106NN;NESLE - NEVERS;8;01/01/1650;Nesle (rue du) 12 / 17 Nevers;75006;Paris;SE;9;0;2015;;9;;;;;;;;;;;;;;;;;;;;"Chaudière individuelle haute performance énergétique
+Fenêtre ou porte-fenêtre complète avec vitrage isolant";"31/10/2015
+18/11/2016";"12 rue de Nesles
+12 rue de Nesles - 17 rue de Nevers";;;;
+106S1;SEINE 15;8;01/01/1650;Seine (rue de) 15;75006;Paris;SE;8;0;2018;;8;;;;;;;;;;;;;;;THEMACLASSIC C25 (SD);;;;2018;;;;;;;
+106S2;SEINE 27;11;01/01/1700;Seine (rue de) 27;75006;Paris;SE;11;0;2019;;11;;;;;;;;;;;;;;;;;;;2019;;;;;;;
+106V1;VISCONTI 1/3;25;01/01/1700;Visconti (rue) 1/3 - Seine 26/28;75006;Paris;SE;23;0;2014;;23;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;29/07/2014;1/3 rue Visconti / 26/28 rue de Seine;;;;
+106V2;VISCONTI 2/4;25;01/01/1700;Visconti (rue) 4 - Seine 24;75006;Paris;SE;26;0;2014;;25;1;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;29/07/2014;2/4 rue Visconti / 24 rue de Seine;;;;
+107CO;COMETE 18               ;26;01/04/1983;Comète ( rue de la ) n° 18;75007;PARIS;SO;26;1;2012;;;;26;;;;;;;;;;;1;;INOA 24 VMC;;;;;;;;;;;
+113AL;ALBERT 24               ;36;15/03/2000;Albert (rue) 22/24;75013;Paris;SE;36;4;2014;;;;36;;;;;;;;;;;4;;;;;;;Chaudière individuelle basse température;15/05/2014;24 rue Albert;;;;
+113BP;BOURGON 16/20-MOULIN DEL;49;01/04/1988;Moulin de la Pointe (rue du) 32;75013;Paris;SE;49;3;2018;;;;49;;;;;;;;;;;3;;"Niagara C 24 VMC EU
+Inoa 24 VMC EU";;;;2018;;;;;;;
+113CD;COLONEL DOMINE 28       ;32;01/08/1989;Colonel Dominé (rue du) 28;75013;Paris;SE;32;2;2014;;;1;31;;;;;;;;;;;2;;;;;;;Chaudière individuelle basse température;17/04/2014;20 rue du Colonel Dominé;;;;
+113DB;DESSOUS DES BERGES-CANTA;15;27/04/1998;Dessous des Berges (rue du) 77;75013;Paris;SE;15;1;2012;;;;15;;;;;;;;;;;1;;;;;;;;;;;;;
+113GA;GANDON 18/22            ;44;01/08/1986;Gandon (rue) 20;75013;Paris;SE;44;2;2014;;;;44;;;;;;;;;;;2;;;;;;;"Chaudière individuelle basse température
+Isolation des toitures terrasses";"16/05/2014
+17/09/2019";18/20 rue Gandon ;;;;
+113GL;GLACIERE 117/119;17;01/01/1850;Glacière (rue de la) 117;75013;Paris;SE;17;2;2019;;;;15;;;2;;;;;;;;2;;MEGALIS CONDENS - ACLEA VMC BAS NOX ;;;;2019;;;;;;;
+113GO;GOSCINNY 11             ;23;15/09/2009;Goscinny ( rue de) 11;75013;Paris;SE;23;1;2022;;;;23;;;;;;;;;;;1;;Chaffoteaux et Maury - Inoa Nox 24 VMC et Niagara c nox 25 VMC ;;;;2022;;;;;;;
+113I9;ITALIE 188/194-COL DOMIN;95;01/03/1988;Colonel Dominé (rue du) 2;75013;Paris;SE;95;3;2018;;;;95;;;;;;;;;;;3;;Frisquet hydromotrix évolution C25 VMC 25KW  Flexible - basse température - haute performance.;;;;;Réhabilitation globale d'un bâtiment résidentiel;31/07/2018;2-4 rue du colonel Dominé  188-194 avenue d'Italie;;;;
+113IT;ITALIE 46;10;01/01/1880;Italie (avenue d') 46;75013;Paris;SE;9;1;2009;;;;9;;;;;;;;;;;1;;;;;;2023;;;;;;;
+113K1;KELLERMANN 14/16        ;56;01/01/1930;Kellermann (boulevard) 14/16;75013;Paris;SE;56;2;2020;;;2;54;;;;;;;;;;;2;;;;;;;Isolation des murs;18/12/2019;1416 bd Kellermann;;;;
+113K4;KELLERMANN 4;22;01/02/1985;Kellermann (boulevard) 4;75013;Paris;SE;21;1;2018;;;;21;;;;;;;;;;;1;;;;;;;PLAN CLIMAT;31/12/2017;;;;;
+113K6;KELLERMANN 6;32;01/01/1930;Kellermann (boulevard) 6;75013;Paris;SE;32;1;2016;;;;32;;;;;;;;;;;1;;"25 THEMACLASSIC V25/
+7 THEMAFAST CAS AVEC BALLON";;;;2016;;;;;;;
+113K8;KELLERMANN 6BIS/12;110;01/02/1985;Colonel Dominé (rue du) 9;75013;Paris;SE;110;4;2018;;;;110;;;;;;;;;;;4;;Chaffoteaux et Maury, modèle MIRA C ;;;;;;;;;;;
+113LC;LUCAS CHAMPIONNIERE-INTE;66;01/08/1956;13/19 rue de l'Interne Loeb;75013;Paris;SE;2;0;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;
+113MT;MOULIN DE LA POINTE-TAGE;25;01/06/1998;Tage (rue du) 18/24;75013;Paris;SE;25;2;2013;;;;25;;;;;;;;;;;2;;;;;;;;;;;;;
+113N4;NATIONALE 41;59;01/01/1984;Nationale (rue) 41/43;75013;Paris;SE;59;2;2013;"P3R 2016
+2 caissons + trainasses";;;59;;;;;;;;;;;2;;;;;;;;;;;;;
+114B3;BROUSSAIS 3             ;56;01/05/1986;Broussais (rue) 26;75014;PARIS;SO;56;2;2021;2 caissons gaz:P3R 2018;;;56;;;;;;;;;;;2;;"ELM Leblanc - Aclea bax nox  VMC
+Chaffoteaux et Maury - Niagara C Nox VMC ";;;;2021;;;;;;;
+114GE-1;GERGOVIE-OUEST-VERCI    ;244 (114GE-1 et 114GE-2);01/01/1983;Gergovie (rue de) 14/18;75014;PARIS;SO;133;6;2013;"P3R 2016 
+9 caissons";;12;119;;;2;;;;;;;;6;;;;;;;;;;;;;
+114GE-2;GERGOVIE-OUEST-VERCI    ;244 (114GE-1 et 114GE-2);01/01/1983;Gergovie (rue de) 28;75014;PARIS;SO;111;3;2018;;;;111;;;;;;;;;;;3;;;;;;2018;;;;;;;
+114OU;OUEST-LEBOUIS           ;54;01/12/1986;Lebouis (rue) 3;75014;PARIS;SO;55;3;2016;"P3R 2016 
+3 caissons";;;55;;;;;;;;;;;3;;55 (ELM) MEGALIA CGLA 23-7MN VMC;;;;2016;;;;;;;
+114P7;PLANTES74               ;16;01/01/1980;"Plantes (rue des) 74
+Brune (villa) 1";75014;PARIS;SO;15;2;2019;;;;15;;;;;;;;;;;2;;15 ACLEA VMC BAS NOX ;;;;2019;;;;;;;
+114PV;PORTE DE VANVES         ;419;01/01/1928;Brune (boulevard) 10;75014;PARIS;SO;405;17;2020;;49;;;;307;7;42;;;;11;;;;6;VIESSMANN VITODENS 050 W;;;;;REHABILITATION ET PLAN CLIMAT;15/12/2020;;;;;
+115LE;LEFEBVRE 48/50          ;15;01/01/1870;Lefebvre (boulevard) 50;75015;PARIS;SO;15;1;2012;;;;15;;;;;;;;;;;1;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;18/10/2016;48/50 BOULEVARD LEFEBVRE;;;;
+116BO;BOULAINVILLIERS-LAFONTAI;166;01/01/1988;"Docteur Hayem (place du) 1
+La Fontaine (rue) 1/5/7";75016;PARIS;SO;97;4;2018;4 Caissons gaz P3R 2018 ;;;97;;;;;;;;;;;4;;MEGALIA VMC (ELM) ;;;;2018;;;;;;;
+192BA;BAGNEUX:BIEVRE-MEGISSERI;342;01/12/1977;2/14 Bièvre 1/9 10/18 Mégisserie;92220;Bagneux;TM;342;7;2006-07;;;;342;;;;;;;;;;;7;;;;;;;;;;;;;
+194BS;BOISSY-AXIMO            ;83;31/12/1980;sapinière (4/5/6 place de la)- LA HAIE GRISELLE - BOISSY SAINT LEGER;94470;BOISSY SAINT LEGER         ;TM;83;3;2012;;;;83;;;;;;;;;;;3;;;;;;;;;;;;;
+194CA;CACHAN:PROVIGNY         ;39;15/11/1984;Provigny (rue de) 9/11 CACHAN;94094;CACHAN       ;TM;39;4;2012;;;;39;;;;;;;;;;;4;;;;;;;;;;;;;
+194JG;JOINVILLE GALLIENI      ;62;20/12/2004;Allée Louis Jouvet (1 et 3 ) - ZAC DES STUDIOS DE JOINVILLE LE PONT;94340;JOINVILLE LE PONT;TM;62;2;2019;;;;;;;62;;;;;2;;;;;ISOTWIN CONDENS - THEMAFAST CONDENS ET MEGALIS CONDENS ;;;;2019;;;;;;;
+194VF;FAURE SCHUMANN;45;02/05/2017;"61-109 RUE GABRIEL FAURE 
+66-104 RUE CLARA SCHUMANN";94440;VILLECRESNES;TM;45;45;2017;;;;;;;;;45;;;;45;;;;"45 chaudières solaires à condensation ventouse
+45 ballons ecs solaires
+45 panneaux solaires ";;;;;;;;;;;
+194VN;VITRY RUE NEUVE;16;01/01/1983;13/15 rue neuve;94400;VITRY ;TM;16;1;2016;;;;;;;16;;;;;1;;;;;SAUNIER DUVAL Thema plus condens F25;;;;;"Isolation des murs
+Isolation d'un plancher
+Fenêtre ou porte-fenêtre complète avec vitrage isolant
+Isolation des toitures terrasses
+Chaudière individuelle haute performance énergétique
+Ventilation Mécanique Contrôlée simple flux hygroréglable";"16/10/2017
+16/12/2016
+13/10/2017
+11/10/2017
+05/01/2017";13-15 RUE NEUVE;;;;
+213HB;HENRI BECQUE 1;93;01/07/1922;Henri Becque (rue) 1;75013;Paris;SE;93;4;2017;;;1;91;;;1;;;;;;;;4;;;;;;2017;Chaudière individuelle haute performance énergétique;17/07/2017;1 rue Henri Becque;;;;
+213HO;HOPITAL 137;408;01/06/1926;"Hopital (boulevard de l') 137
+Campo Formio (rue)";75013;Paris;SE;391;26;2016;"P3R 2016 
+5 caissons";;;386;;;5;;;;;;;;26;;"383 MEGALIA CGLA 23-7H 5 VMC
+1 ELM AGVAC24-5MN
+4 AGVAC24-5MN + 3 anciennnes à VMC
+";;;;2016;Chaudière individuelle haute performance énergétique;12/07/2017;137 BD DE L'HOPITAL;;;;
+113AH;ALBIN HALLER-MULARD-BRIL;96;01/04/1953;Brillat Savarin (rue) 28;75013;Paris;SE;96;7;2011;;;96;;;;;;;;;7;;;;;;;;;;Isolation de combles ou de toitures;06/02/2020;2628 rue Brillat Savarin;;;;
+113AR;ARAGO48 GLACIERE28      ;19;01/01/1881;Glacière (rue de la) 28;75014;Paris;SE;11;0;2010;;;11;;;;;;;;;;;;;;;;;;;;;;;;;
+113BE;DESSOUS DES BERGES 15/19;37;01/05/1955;Dessous des Berges (rue du) 15/19;75013;Paris;SE;37;0;2012;;37;;;;;;;;;;;;;;;;;;;;;;;;;;
+113BS;BRILLAT SAVARIN-MULARD-H;83;01/10/1951;Brillat Savarin (rue) 24;75013;Paris;SE;84;6;2011;;;84;;;;;;;;;6;;;;;;;;;;;;;;;;
+113D2;DAMESME 21              ;8;01/01/1850;Damesne (rue) 21;75013;Paris;SE;8;1;2013;;;7;;;;1;;;;;1;;;;;;;;;;;;;;;;
+113DI;DIEULAFOY-LERAY-DAMESME;38;01/10/1920;Damesne (rue) 34;75013;Paris;SE;35;0;2021;;1;;;;34;;;;;;;;;;;;;;;2021;;;;;;;
+113ED;EDISON 56/60;24;01/04/1955;Edison (avenue) 60;75013;Paris;SE;24;2;2013;;;24;;;;;;;;;2;;;;;;;;;;;;;;;;
+113EO;CANTAGREL-EUGENE OUDINE;96;01/10/1957;Eugène Oudiné (rue) 2/4;75013;Paris;SE;96;8;2021;;;5;;;;91;;;;;8;;;;;;;;;2021;;;;;;;
+113FM;FONTAINE A MULARD 1/5;89;01/04/1955;1/5 Rue de la Fontaine à Mulard;75013;PARIS;SE;89;6;2019;;;23;;;;66;;;;;6;;;;;;;;;P3R2019;;;;;;;
+113G2;GLACIERE 20             ;73;01/01/1880;Glacière (rue de la) 20;75013;Paris;SE;11;0;2014;;7;3;;;;;;;1;;;;;;;;;;;;Chaudière individuelle basse température;30/09/2014;20 rue Glacière;;;;
+113GM;GUYTON DE MORVEAU 13;16;01/01/1923;13 Rue Guyton de Morveau;75013;PARIS;SE;15;1;2016;;;2;;;;13;;;;;1;;;;;15 MIRA C GREEN;;;;2016;Chaudière individuelle haute performance énergétique;31/05/2016;13 RUE GUYTON DE MORVEAU;;;;
+113I5;ITALIE 77/79;89;01/01/1920;Italie (rue de) 77/79;75013;Paris;SE;89;8;2012;;;89;;;;;;;;;8;;;;;;;;;;;;;;;;
+113I7;ITALIE 170-DY/13 5      ;55;15/09/1998;Italie (avenue d') 170;75013;Paris;SE;55;2;2012;;;54;;;;1;;;;;2;;;;;;;;;2023;Isolation des toitures terrasses;25/03/2019;170170 bis avenue d'Italie;;;;
+113K3;KELLERMANN 30-DAMESME   ;34;01/11/1955;Kellermann (boulevard) 30;75013;Paris;SE;34;3;2011;;;31;;;;3;;;;;3;;;;;;;;;;;;;;;;
+113KK;KELLERMANN-KEUFER-MAX JA;296;01/11/1935;Keufer (rue) 6;75013;Paris;SE;291;0;2020;;21;;;;270;;;;;;;;;;;;;;;2020;Isolation des toitures terrasses;01/07/2016;2/12 RUE KEUFER - 5/7 RUE DU PR LOUIS RENAULT;;;;
+113L1;LANDOUZY-LECENE-LOEB-PEU;317;01/01/1933;Peupliers (rue des) 37/39/41/43/;75013;Paris;SE;315;31;2018;;;273;;;;42;;;;;31;;;;;INOA GREEN ULTRA 25;;;;2018;"Chaudière individuelle haute performance énergétique
+Isolation des toitures terrasses";"28/12/2018
+04/10/2019";"35 rue du Docteur Landouzy
+35 rue du Docteur Landouzy 46 rue du Docteur Lecene 416 rue de l'Interne Loeb 416 rue du Docteur Tuffier 3739 bis rue des Peupliers";;;;
+113LA;AUGUSTE LANCON-VERGNIAUD;89;01/11/1953;Auguste Lançon (rue) 10;75013;Paris;SE;89;8;2011;;;88;;;;;;;1;;8;;;;;;;;;;;;;;;;
+113M5;MOULIN DE LA POINTE 10  ;38;20/07/2006;Moulin de la pointe (rue du) 10;75013;Paris;SE;38;5;2021;;;;;;;27;11;;;;2;;;;3;;;;;2021;;;;;;;
+113MP;MOULIN DE LA POINTE 15/3;96;01/10/1998;Moulin de la Pointe (rue du) 17/27;75013;Paris;SE;96;6;2013;;;96;;;;;;;;;6;;;;;;;;;;Isolation des toitures terrasses;16/12/2014;17/33 rue du Moulin de la Pointe;;;;
+113PI;PORTE D'IVRY-MASSENA-PEA;420;01/06/1932;Péan (rue) 1;75013;Paris;SE;409;24;2017;;;5;;;;404;;;;;24;;;;;MEGALIA CONDENS - AGVAC21-6MN;;;;2017;"Chaudière individuelle haute performance énergétique
+
+Mise en place d’un doublage isolant (complexe ou sur ossature) sur murs par l’intérieur ou par l’extérieur.";"30/11/2016
+
+28/04/2021";"42/50 AVENUE DE LA PORTE D'IVRY
+
+3 RUE DUPUY DE LOME";;;;
+113RN;REGNAULT-NATIONALE      ;128;01/07/1952;Regnault (rue) 92;75013;Paris;SE;124;11;2017;;;;;;;124;;;;;11;;;;;MEGALIA CONDENS;;;;2017;Chaudière individuelle haute performance énergétique;28/12/2016;92-104 RUE REGNAULT;;;;
+113SR;SOEUR ROSALIE 4         ;31;01/01/1905;Soeur Rosalie (rue) 4;75014;Paris;SE;27;4;2016;;;1;;;;;26;;;;2;;;;2;;;;;;;;;;;;
+113VU;VULPIAN16               ;34;01/01/1900;Vulpian ( rue  ) n° 16;75013;Paris;SE;9;0;2009;;9;;;;;;;;;;;;;;;;;;;;;;;;;;
+113WB;WATTEAU-BANQUIER-HOPITAL;201;01/06/1969;116 bd de l'Hopital;75013;;SE;1;0;;;;;;;;1;;;;;;;;;;;;;;;Réhabilitation d'un poste de livraison de chaleur;16/01/2017;122 BOULEVARD DE L'HOPITAL;;;;
+205LA;LARREY 2/10 - DAUBENTON;211;01/01/1928;Larrey (rue) 6;75005;Paris;SE;212;0;2006 - plan climat 2017;;33;179;;;;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/08/2025;;;;;
+213BS;BRILLAT SAVARIN-FONTAINE;250;01/12/1924;16/18 Brillat Savarin 9 A Haller;75013;PARIS;SE;249;13;2014;;;244;;;;5;;;;;13;;;;;;;;;;Chaudière individuelle basse température;28/11/2014;16/18 rue Brillat Savarin;;;;
+213ER;ERNEST ROUSSELLE-MOULIN ;136;01/01/1925;Ernest Rousselle (rue) 18;75013;Paris;SE;137;0;2018;;115;;;;22;;;;;;;;;;;"Inoa 25 CF EU; Mira C 25 CF EU; Mira C Green Ultra 25
+1 cumulus logement 117";;;;2018;;;;;;;
+213T2;TOLBIAC 207;100;01/11/1921;Tolbiac (rue de) 207;75013;Paris;SE;99;0;2009;;87;12;;;;;;;;;;;;;;;;;;;;;;;;;
+213T6;TOLBIAC 62;34;01/06/1925;Tolbiac (rue de) 62;75013;Paris;SE;33;0;2010;;33;;;;;;;;;;;;;;;;;;;;;;;;;;
+107SD;SAINT DOMINIQUE 93      ;15;01/01/1750;Saint Dominique (rue) 93;75007;PARIS;SO;15;1;2005;;;;;;;15;;;;;1;;;;;;;;;2021;;;;;;;
+114AL;ALESIA-MONTSOURIS       ;38;01/04/2001;"Berges Hennequines (rue des) 7
+Empereur Julien (rue de l') 8";75014;PARIS;SO;40;6;2012;;;40;;;;;;;;;6;;;;;;;;;;;;;;;;
+114BA;BAUER 21                ;8;29/04/2002;Bauer (cité) 21;75014;PARIS;SO;8;3;2014;;;8;;;;;;;;;3;;;;;;;;;;Chaudière individuelle basse température;11/06/2014;21 rue Bauer;;;;
+114CU; CHATEAU 155;13;01/01/1905; 155 RUE DU CHATEAU 75014;75014; PARIS;SO;6;2;2019;;;;;;;;6;;;;;;;;2;;;;;;;;;;;;
+114D4;DIDOT 38/40-BAUER 3     ;8;01/08/2002;Didot (rue) 34/40;75014;PARIS;SO;8;2;2014;;;8;;;;;;;;;2;;;;;;;;;;Chaudière individuelle basse température;11/06/2014;38/40 rue Didot;;;;
+114DR;DENFERT ROCHEREAU 61    ;8;01/01/1910;Denfert Rochereau ( avenue  ) n° 61;75014;PARIS;SO;6;0;2015;;;;;;6;;;;;;;;;;;;;;;;;;;;;;
+114GH;GENERAL HUMBERT 2/14    ;375;01/01/1929;Général Humbert (rue du) 2/6/10/14;75014;PARIS;SO;370;7;2007;;265;91;;;;14;;;;;7;;;;;;;;;2022;;;;;;;
+114JM;JEAN MOULIN 40/48-AUGUST;259;01/02/1984;Jean Moulin (rue) 40/48;75014;PARIS;SO;6;0;2018;;;;;;;6;;;;;;;;;;MEGALIA CONDENS ELM micro acu;;;;2018;;;;;;;
+114L0;RAYMOND LOSSERAND 10    ;6;01/10/1880;Raymond Losserand (rue) 8/10;75014;PARIS;SO;6;1;2018;;5;;;;;1;;;;;1;;;;;"ELM :MEGALIA CF; ODEALIS CF (lgt 2); MEGALIA CONDENS (lgt 1)";;;;2018;;;;;;;
+114L9;RAYMOND LOSSERAND 69    ;42;01/09/1956;"ZAC Didot
+Raymond Losserand 69";75014;PARIS;SO;42;11;2018;3 caissons sanitaire P3R2018;;;;;;42;;;;;11;;;;;"SERELIA C GREEN (CM); MIRA C GRENN (CM); NIAGARA C GRENN (CM)";;;;2018;Chaudière individuelle haute performance énergétique;14/09/2018;69 rue Raymond Loserand 34 rue Pernety;;;;
+114LC;LECLERC 87bis           ;29;01/01/1900;Général Leclerc ( avenue du ) n° 87bis;75014;PARIS;SO;19;1;2012;;;;;;;19;;;;;1;;;;;;;;;;;;;;;;
+114OD;ODESSA 7;8;01/01/1895;7 rue d'Odessa;75014;PARIS;SO;6;0;acquisition 2015;;5;;;;;1;;;;;;;;;;;;;;2023;Fenêtre ou porte-fenêtre complète avec vitrage isolant;30/12/2016;7 RUE D'ODESSA;;;;
+114PC;PORTE DE CHATILLON 8/12 ;199;01/06/1950;Général de Maud Huy (rue du) 5;75014;PARIS;SO;180;0;2011;;11;161;;;;8;;;;;;;;;;;;;;;;;;;;;
+114SJ;saint jacques 12/24;154;01/10/1954;12/28 saint jacques;75014;PARIS;SO;2;0;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;
+115BR;BRANCION 42/54          ;120;01/12/1956;Brancion (rue) 52;75015;PARIS;SO;120;10;2010;;;120;;;;;;;;;10;;;;;;;;;;;;;;;;
+115CN;CONVENTION 202;14;01/01/1906;202 rue de la convention;75015;PARIS;SO;10;0;2015;;;;;;10;;;;;;;;;;;;;;;;;;;;;;
+115DA;DANTZIG 6-JOBBE DUVAL   ;58;01/04/1955;Dantzig (rue de) 6;75015;PARIS;SO;58;4;2011;;;58;;;;;;;;;4;;;;;;;;;;;;;;;;
+115LO;LOURMEL;63;01/12/1952;170 lourmel;75015;PARIS;SO;29;0;2013;;23;5;;;;;;;1;;;;;;;;;;;;;;;;;;
+115MM;MONTAUBAN-MORILLONS-LIND;100;01/12/1955;Montauban (rue de) 1/2;75015;PARIS;SO;33;3;2018;2 caissons sanitaires P3R2018;;;;;;33;;;;;3;;;;;"SD: 16 Themafast condens
+16 Isotwin condens 
+1 ODEALIS ELM
+";;;;2018;"Chaudière individuelle haute performance énergétique
+
+Réhabilitation d’un poste de livraison de chaleur d’un bâtiment résidentiel";"16/04/2018
+
+19/11/2020";"1-2 RUE MONTAUBAN
+
+23 rue Robert-Lindet";Réhabilitation d’un poste de livraison de chaleur d’un bâtiment résidentiel;19/11/2020;23 rue Robert-Lindet;
+115VA;VAUGIRARD 226           ;39;01/01/2009;Vaugirard (rue de) 226;75015;PARIS;SO;39;6;2008;;;;;39;;;;;;;;;;;6;;;;;;;;;;;;
+115VG;VAUGIRARD 383-385       ;7;20/12/2013;Vaugirard ( rue de ) n° 383/385;75015;PARIS;SO;7;1;2014;;;7;;;;;;;;;1;;;;;;;;;;;;;;;;
+116DL;DURET-LE SUEUR          ;33;01/01/1880;Duret (36-38 rue) 25 rue Lesueur;75016;PARIS;SO;29;0;2020;;;;;;10;19;;;;;;;;;;MEGALIA CONDENS ;;;;2020;;;;;;;
+116DU;DUBAN 16;10;01/01/1885;16 rue Duban;75016;PARIS;SO;4;0;2020;;;;;;;4;;;;;;;;;;;;;;;;;;;;;
+116LO;Lonchamp;40;01/01/1901;77rue lonchamp;75016;PARIS;SO;10;0;2019;;;10;;;;;;;;;;;;;;;;;;Réha 2019;;;;;;;
+116LU;LUBECK 24               ;44;01/01/1880;Lubeck (rue) 24;75016;PARIS;SO;32;1;2019;;;1;;;6;25;;;;;1;;;;;31 MEGALIS CONDENS ET 1 ELEXIA FF BT ;;;;2019;Fenêtre ou porte-fenêtre complète avec vitrage isolant;27/12/2016;24 RUE DE LUBECK;;;;
+116M3;MURAT123bis             ;10;19/03/2013;Gudin ( rue  ) n° 1;75016;PARIS;SO;10;1;2014;;;;;;10;;;;;;1;;;;;;;;;;;;;;;;
+116MO;MOZART;27;01/01/1932;Mozart (avenue) 54bis;75016;PARIS;SO;11;2;2020;;;;;;4;7;;;0;;2;;;;;MEGALIA CONDENS ;;;;2020;;;;;;;
+116PA;PASSY 60/62             ;29;01/01/1870;Passy ( rue de ) n° 60/62;75016;PARIS;SO;29;1;2014;;;;;;29;;;;;;1;;;;;;;;;;;;;;;;
+116PS;PIERRE 1ER DE SERBIE 9  ;17;01/01/1840;Pierre 1er de Serbie ( rue) 9/11;75016;PARIS;SO;13;1;2020;;;;;;;13;;;;;1;;;;;MEGALIA CONDENS ;;;;2020;;;;;;;
+116TE;CLAUDE TERRASSE 11Bis   ;12;01/05/2013;Claude Terrasse ( rue  ) n° 11BIS;75016;PARIS;SO;8;1;2014;;;;;;8;;;;;;1;;;;;;;;;;;;;;;;
+214LI;LIARD-CITE UNIVERSITAIRE;60;01/01/1923;Liard (rue) 5;75014;PARIS;SO;58;0;2019;;;;;;58;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/12/2019;;;;;
+214RE;REILLE 17               ;20;01/01/1921;Reille (17);75014;PARIS;SO;21;5;2005;;;;;;;21;;;;;5;;;;;;;;;2021;;;;;;;
+216MF;MURAT 183-FANTIN LATOU  ;220;21/10/1926;Fantin Latour (rue) 15/17;75016;PARIS;SO;18;0;2014;;;18;;;;;;;;;;;;;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;30/12/2014;183 bd Murat / 19 rue Fantin Latour;;;;
+115E5;EGLISE 15/17            ;18;15/11/2004;Eglise (rue de l') 15/17;75015;PARIS;SO;18;2;2019;;;1;;;;13;4;;;;1;;;;1;NIGARA GREEN - MIRA GRENN - NIAGARA 23FF ;;;;2019;Chaudière individuelle haute performance énergétique;08/11/2019;1517 rue de l'Eglise;;;;
+114DB;DIDOT-BOUCHOR           ;527;01/01/1931;2/8 Pte Didot1/7/2/8 M Bouchor 36/42 Brune, Col Monteil, P Leroy;75014;PARIS;SO;517;0;2016;;402;;;;;115;;;;;;;;;;;;;;2016;;;;;;;
+114GL;GEORGES LAFENESTRE 3/11 ;452;01/01/1928;Georges Lafenestre (avenue) 3;75014;PARIS;SO;398;30;2021;;;4;;;;387;;;7;;30;;;;;;;;;2021;;;;;;;
+115B7;BALARD 72/80            ;90;01/05/1989;Balard (rue) 74/80;75015;PARIS;SO;90;4;2018;3 caissons gaz P3R2018;;;90;;;;;;;;;;;4;;"MIRA C VMC 
+NIAGARA C VMC ";;;;2018;;;;;;;
+115BD;BALARD 104;17;01/01/1898;Balard (rue) 104;75015;PARIS;SO;17;3;2015;;;;;;;;17;;;;;;;;3;INITIA - CHAPPEE;;;;;;;;;;;
+115BL;BLOMET 77               ;14;01/01/1910;Blomet ( rue  ) n° 77;75015;PARIS;SO;7;0;;;7;;;;;;;;;;;;;;;;;;;;;;;;;;
+115C6;CONVENTION 60;27;01/01/1909;Convention (rue) n°60;75015;PARIS;SO;18;1;;;;;;;;13;5;;;;;;;;1;;;;;;;;;;;;
+115CM;COMMERCE 46;10;01/01/1840;Commerce (rue) n°46;75015;PARIS;SO;10;0;;;;10;;;;;;;;;;;;;;;;;;2023;;;;;;;
+115CO;COTENTIN 27/33          ;87;01/03/1986;Cotentin (rue du) 27/33;75015;PARIS;SO;87;3;2014;;;26;61;;;;;;;;;;;3;;;;;;;"Isolation des toitures terrasses
+Chaudière individuelle basse température";"18/12/2013
+10/06/2014";27/33 rue Cotentin;;;;
+115D4;DESNOUETTES 43 Bis        ;12;02/03/2012;Desnouettes ( rue  ) n° 43BIS;75015;PARIS;SO;12;4;2012;;;;;;;;12;;;;1;;;;3;;;;;;;;;;;;
+115F5;FALGUIERE 59            ;46;01/01/1890;Falguière (rue) 59;75015;PARIS;SO;31;5;2020;;;;;;2;29;;;;;1;4;;;;CHAFFOTEAUX ET MAURY MIRA C GREEN ULTRA;;;;2020;;;;;;;
+115GA;GARIBALDI 33;21;01/01/1910;Garibaldi (rue) n°33;75015;PARIS;SO;11;0;2013;;;;;;;11;;;;;;;;;;;;;;;;;;;;;
+115GR;GROULT 116;6;01/01/1914;116 rue de l'Abbé Groult;75015;PARIS;SO;;;;;;;;;;6;;;;;1;;;;;INITIA +  HTE CHAUDIÈRE murale de la marque CHAPPEE;;;;;;;;;;;
+115L2;LECOURBE 278            ;12;26/04/2011;Lecourbe ( rue  ) n° 278;75015;PARIS;SO;12;1;;;;9;;;;;;;3;;1;;;;;;;;;;;;;;;;
+115L3;LECOURBE 308            ;50;15/01/1984;Lecourbe (rue) 308;75015;PARIS;SO;50;2;2014;;;;50;;;;;;;;;;;2;;;;;;;"Chaudière individuelle basse température
+Fenêtre ou porte-fenêtre complète avec vitrage isolant";"14/05/2014
+23/08/2016";308 rue Lecourbe;;;;
+115L4;LOURMEL 14              ;11;19/07/2006;Lourmel (14 rue de);75015;PARIS;SO;11;1;2021;;;;4;;;7;;;;;;;;1;;;;;;2021;;;;;;;
+115LM;LEONTINE 6/14-MERCIER-MY;80;01/01/1988;Sébastien Mercier (rue) 24/28 - Clément Myonnet (rue) - 11 Léontine (rue) 6;75015;PARIS;SO;80;4;2012;;;;80;;;;;;;;;;;4;;;;;;;;;;;;;
+115MO;MONTPARNASSE 32         ;36;01/01/1886;Montparnasse (Bld du) 32;75015;PARIS;SO;13;0;2009;;13;;;;;;;;;;;;;;;;;;;;;;;;;;
+115PC;PIC DE BARRETTE 2/6-CAUC;84;01/07/1990;Pic de la Barrette (rue du) 4/6/8;75015;PARIS;SO;84;4;;;3;;81;;;;;;;;;;;4;;;;;;;;;;;;;
+115Q5;QUINTINIE 13/15         ;20;01/09/1989;Quintinie (rue la) 15;75015;PARIS;SO;20;1;2019;;;1;;;;19;;;;;1;;;;;MEGALIS CONDENS -THEMAPLUS CONDENS ;;;;2019;;;;;;;
+115SC;SAINT CHARLES 101       ;55;01/03/1990;Saint Charles (rue) 101/101bis;75015;PARIS;SO;55;4;2013;;;2;53;;;;;;;;;;;4;;;;;;;Isolation des toitures terrasses;18/12/2013;101 rue Saint Charles;;;;
+115SM;MERCIER45               ;13;01/01/1920;Sébastien Mercier 45;75015;PARIS;SO;12;1;2008;;;12;;;;;;;;;1;;;;;;;;;2023;;;;;;;
+115VD;VAUGIRARD 165;15;30/11/2016;165/A rue de Vaugirard;75015;PARIS;SO;15;1;;;;;;;;1;14;;;;1;;;;3;;;;;;;;;;;;
+115VO;VOLONTAIRES;24;14/09/2021;33 rue des Volontaires;75015;PARIS;SO;19;0;NC;;19;;;;;;;;;;;;;;;;;;;;;;;;;;
+214RL;RAYMOND LOSSERAND 156   ;324;01/01/1928;Raymond Losserand (rue) 156;75014;PARIS;SO;320;17;"2016
+DDR 2030";;;25;;;;295;;;;;17;;;;;;;;;2016;;;;;;;
+215P1;QUATRE FRERES PEIGNOT 7 ;132;01/02/1927;Quatre frères Peignot (rue des) 13;75015;PARIS;SO;129;0;2019;;129;;;;;;;;;;;;;;;ACLEA BAS NOX CF ;;;;2019;;;;;;;
+215P2;QUATRE FRERES PEIGNOT 8 ;158;01/02/1927;Quatre frères Peignot (rue des) 14;75015;PARIS;SO;148;0;2015;;148;;;;;;;;;;;;;;;;;;;;;;;;;;
+215P3;PEIGNOT PALULOS;134;01/02/1927;Frères peignot (rue);75015;PARIS;SO;126;0;2014;;126;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;12/06/2014;20/22 rue des Quatre Frères Peignot;;;;
+215P4;QUATRE FRERES PEIGNOT 17;188;01/02/1927;Quatre frères Peignot (rue des) 21;75015;PARIS;SO;182;0;2014;;79;103;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;30/09/2014;17/21 rue des Quatre Frères Peignot;;;;
+215TH;THEATRE 96/98           ;82;01/02/1927;Théâtre (rue du) 98;75015;PARIS;SO;78;0;2014;;78;;;;;;;;;;;;;;;;;;;;Chaudière individuelle basse température;30/09/2014;96/98 rue du Théâtre;;;;
+119AR;"   ARDENNES 6 
+ 
+ ";19;01/01/2002;6 rue des Ardennes;75019;PARIS;NE;20;5;2017;;;;;;;5;15;;;;2;;;;3;"SAUNIER DUVAL - Isotwin condens (2)
+SAUNIER DUVAL - ThemaFast Condens (17)";;;;2017;Chaudière individuelle haute performance énergétique;17/11/2017;6 RUE DES ARDENNES;;;;
+119B3;BOLERO 3-J.KOSMA 3/5;53;01/07/2001;3 Boléro 3/5 Joseph Kosma;75019;PARIS;NE;53;3;2018;"1 Caisson en 2017
+1 caisson P3R2018";;;;;;53;;;;;3;;;;;"MIRA C GRENN
+SERELIA C GRENN
+NIAGARA C GRENN";;;;2018;Chaudière individuelle haute performance énergétique;14/09/2018;3 rue Bolero - 35 rue Joseph Kosma;;;;
+119B4;BOIS 43;12;01/01/1850;43 rue des Bois;75019;PARIS;NE;12;1;2018;;;2;;;;9;;;1;;1;;;;;Mira C GREEN ultra 25;;;;2018;Chaudière individuelle haute performance énergétique;12/10/2018;43 bis rue des Bois;;;;
+119CO;CRIMEE 230-OURCQ 115;20;01/06/1998;230 Crimée 115 Ourcq;75019;PARIS;NE;20;2;2013;;;20;;;;;;;;;2;;;;;;;;;;;;;;;;
+119EP;EDGAR POE;32;01/01/1931;5/7 rue Edgar Poe;75019;PARIS;NE;1;0;pas d'info;;;;;;;;;;1;;;;;;;ELM ONDEA LM10 TIRAGE NATUREL ;;;;;;;;;;;
+119HA;HAXO 120BIS/122;22;01/05/1952;120BIS/122 Haxo;75019;PARIS;NE;14;0;2010;;;14;;;;;;;;;;;;;;;;;;;;;;;;;
+119HT;HENRI TUROT 7/15;145;01/04/1934;7/17 rue Henri Turot;75019;PARIS;NE;19;0;2011;;;;;;;;;;19;;;;;;;1 logement en elec;;;;;Chaudière à haute performance énergétique;15/11/2017;7 RUE HENRI TUROT;;;;
+119IS;INDOCHINE-SERURIER-PTE B;1204;01/01/1934;"1/23 Indochine
+94/124 Sérurier";75019;PARIS;NE;471;0;2021;;14;8;;;311;138;;;;;;;;;;Logt 249 en électrique;;OUI;;2021;"Calorifugeage réseau hydraulique de chauffage
+Isolation d’un réseau hydraulique d’eau chaude sanitaire 
+Calorifugeage réseau hydraulique de chauffage
+
+REHABILITATION ET PLAN CLIMAT";"13/11/2017
+24/11/2017
+12/01/2018
+
+15/03/2027";"12 AVENUE AMBROISE RENDU
+2 rue de la Corrèze";;;;
+119JC;JAURES-ARMAND CARREL;155;01/09/1930;"44/46 Jean Jaurès
+54/60 Amard Carrel";75019;PARIS;NE;153;0;2019;;1;3;;;;149;;;;;;;;;;;;;;2019;;;;;;;
+119LO;QUAI DE LA LOIRE 36/38;42;30/04/2003;36/38 quai de la Loire;75019;PARIS;NE;42;2;2019;;;;;;;42;;;;;2;;;;;MIRA GREEN - NIAGARA C GREEN ;;;;2019;;;;;;;
+119M1;MEAUX 19;17;01/01/1850;19 rue de Meaux;75019;PARIS;NE;17;1;2017;;14;;;;;3;;;;;1;;;;;Inoa 25 CF EU et 3 Mira C Green 25 EU;;;;2017;Chaudière individuelle haute performance énergétique;20/10/2017;19 RUE DE MEAUX;;;;
+119MM;MATHURIN MOREAU 49;24;01/05/1955;49 avenue Mathurin Moreau;75019;PARIS;NE;24;24;2017;;;;;;;24;;;;;;24;;;;Mira C Green 25 EU ;;;;2017;Chaudière individuelle haute performance énergétique;13/11/2017;49 AVENUE MATHURIN MOREAU;;;;
+119MR;MARNE THIONVILLE;31;01/01/2002;42 quai de la Marne - 27 rue de Thionville ;75019;PARIS;NE;31;6;2017;;;;;;;;31;;;;2;;;;4;;;;;2017;Chaudière individuelle haute performance énergétique;13/11/2017;27 RUE THIONVILLE;;;;
+119MS;MANIN-SERURIER;203;01/01/1957;"72/76 Manin 
+143 Sérurier";75019;PARIS;NE;106;0;2020;;;;;;;;;;106;;;;;;;1 logement en elec;;;;2020;;;;;;;
+119NA;NANTES 8BIS;10;03/01/2000;8 bis Nantes;75019;PARIS;NE;10;1;2017;1 Caisson en 2017;;2;;;;8;;;;;1;;;;;;;;;2017;Chaudière individuelle haute performance énergétique;13/11/2017;8BIS RUE DE NANTES;;;;
+119OB;ORME-BOIS;9;27/02/1998;13 rue de l'Orme;75019;PARIS;NE;9;1;2009;;;9;;;;;;;;;1;;;;;;;;;2023;;;;;;;
+119OO;OURCQ-OISE;356;01/02/1923;49/53 Ourcq 3/9 Oise;75019;PARIS;NE;352;31;2015-2016;;62;290;;;;;;;;;16;15;;;;"119 MEGALIA AGVC24-5MN/
+58 PMC M 24/28 MI PLUS HR 118 (DE DIETRICH) (condens)/
+25 THEMA F 25 E-B (BT ventouse)/
++ P3R 2015: 70 Themaplus  condens F25-A/
+ 15 Themaplus F25 E BS AR
+
+";;;;2016;Chaudière individuelle haute performance énergétique;03/08/2017;49 RUE DE L'OURCQ;;;;
+119OR;ORME 17;46;01/10/1955;17 rue de l'Orme;75019;PARIS;NE;45;4;2021;;;1;;;;44;;;;;4;;;;;;;;;2021;;;;;;;
+119RO;ROMAINVILLE;20;01/01/1925;71 rue de Romainville;75019;PARIS;NE;20;2;2021;;;;;;;20;;;;;2;;;;;saunier duval thema plus;;;;;;;;;;;
+119SA;SOLITAIRES-ANNELETS;81;01/07/1981;1/11 Annelets;75019;PARIS;NE;81;3;2013;;81;;;;;;;;;;3;;;;;;;;;;;;;;;;
+119SU;SUD 2-PETIT 26/28;29;10/01/2000;"2 Sud 
+26/28 Petit";75019;PARIS;NE;29;3;2014;;;29;;;;;;;;;3;;;;;;;;;;Chaudière individuelle basse température;11/07/2014;26 rue Petit / 2 passage du Sud;;;;
+219BM;BOLIVAR-MOREAU-CHAUFOURNIER;474;01/12/1929;"97/99 S Bolivar 
+25 Henri Turot";75019;PARIS;NE;475;;2004;;90;;;;;;;;;;;;;;;;;;;;Rénovation   globale   d’un    bâtiment   résidentiel (France métropolitaine);16/12/2022;20 bis avenue Mathurin Moreau Paris;;;;
+219DU;CAROLUS DURAN 4;15;01/04/1923;4 rue Carolus Duran;75019;PARIS;NE;16;1;2013;;1;15;;;;;;;;;1;;;;;;;;;;;;;;;;
+219PB;DR POTAIN-BOIS ;257;01/02/1927;27 Docteur Potain 16/18 Bois;75019;PARIS;NE;258;0;2005 - réha;;258;;;;;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/03/2025;;;;;
+219SE;SERURIER-ALGERIE-ALPHONS;223;01/09/1932;50/52 Sérurier 7/9 Algérie;75019;PARIS;NE;221;0;2020;;221;;;;;;;;;;;;;;;;;;;2020;;;;;;;
+1183F;TROIS FRERES 22;13;01/01/1890;22 rue des Frères;75018;PARIS;NO;13;2;2014;;0;0;0;0;0;13;0;0;0;0;2;;0;0;0;0;;;;;;;;;;;
+118BB;BARBES 80               ;20;01/01/1900;Barbès ( boulevard  ) n° 80;75018;PARIS;NO;17;1;2021;;0;1;0;0;0;16;0;0;0;0;1;;0;0;0;"ELM Leblanc - Melia I condens
+2 ballons électriques sur le groupe logements 18 et 19";;;;2021;;;;;;;
+118CE;CHAPELLE 81/83;24;01/01/1850;81/83 rue de la Chapelle;75018;PARIS;NO;24;2;2006;;0;24;0;0;0;0;0;0;0;0;2;;0;0;0;0;;;;;;;;;;;
+118CL;CLIGNANCOURT-FERNAND LAB;418;01/01/1927;1/15 Pte de Clignancourt;75018;PARIS;NO;405;25;2015;;0;332;0;0;0;73;0;0;0;0;25;;0;0;0;"- INOA 25 FF NAT V avant 05/2012
+- INOA EVO 25 FF FR BE
+- AGVAC24-5MN 
+- MEGALIA CONDENS";;;;;Chaudière individuelle haute performance énergétique;15/09/2015;1 avenue de la porte de Clignancourt;;;;
+118CN;CUSTINE 52;39;01/01/1903;52 rue Custine;75018;PARIS;NO;15;1;2017;;0;0;0;0;0;15;0;0;0;0;1;;0;0;0;0;;;;;;;;;;;
+118CR;CLIGNACOURT 83;14;01/01/1890;83 rue Clignancourt;75018;PARIS;NO;14;1;2017 sauf 2;;2;0;0;0;0;12;0;0;0;0;1;;0;0;0;0;;;;;;;;;;;
+118CS;CUSTINE 25;25;01/01/1900;25 rue Custine;75018;PARIS;NO;25;3;2021;;0;1;0;0;0;18;6;0;0;0;2;;0;0;1;ELM Leblanc - Melia I condens;;;;2021;;;;;;;
+118CT;CLIGNANCOURT 143;25;01/01/1900;143 rue de Clignancourt;75018;PARIS;NO;35;4;2022;;0;1;0;0;5;29;0;0;0;0;4;;0;0;0;0;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;31/05/2022;143 rue de Clignancourt;;;;
+118FE;FEUTRIER24;19;02/05/2014;24 rue Feutrier;75018;PARIS;NO;19;1;2014;;0;0;0;0;0;19;0;0;0;0;1;;0;0;0;0;;;;;;;;;;;
+118LC;LEIBNIZ 72-CHARLES ALBER;8;01/04/1999;72 Leibniz;75018;PARIS;NO;8;1;2012;;0;8;0;0;0;0;0;0;0;0;1;;0;0;0;0;;;;;;;;;;;
+118MH;MYRHA45 GARDES31;5;06/05/2004;45 Rue Myrha / 31 Rue des Gardes;75018;PARIS;NO;5;1;2017;;0;0;0;0;0;5;0;0;0;0;1;;0;0;0;0;;;;2017;Chaudière individuelle haute performance énergétique;24/11/2017;45 RUE MYRHA - 31 RUE DES GARDES;;;;
+118NE;NEY 149;10;01/06/1999;149 Boulevard Ney;75018;PARIS;NO;10;1;2012;;0;10;0;0;0;0;0;0;0;0;1;;0;0;0;0;;;;2023;;;;;;;
+118P3;POULET 26;22;01/01/1860;26 rue Poulet;75018;PARIS;NO;15;1;2022;;0;0;0;0;0;15;0;0;0;0;1;;0;0;0;ELM LEBLANC MELIA I CONDENS;;;;2022;Chaudière   individuelle   à    haute   performance énergétique;13/06/2022;26 RUE POULET;;;;
+118P4;POULET 28;18;01/01/1860;28 rue Poulet;75018;PARIS;NO;16;4;2021;;0;0;0;0;0;12;4;0;0;0;3;;0;0;1;Elm Leblanc - Egalis ballon (11) Melia i condens (5);;;;2021;;;;;;;
+118PS;POISSONNIERS;13;01/01/1954;139 rue des Poissonniers;75018;PARIS;NO;12;1;2011;;0;0;0;0;0;12;0;0;0;0;1;;0;0;0;THEMAPLUS CONDENS F24/30E NAT V;;;;;;;;;;;
+118SM;SEMBAT-PORTE MONTMARTRE;366;01/01/1926;1/3 Marcel Sembat 140/142 Ney;75018;PARIS;NO;359;3;2018;;35;12;0;0;0;312;0;0;0;0;3;;0;0;0;"THEMAFAST CONDENS F25
+ISOTWIN
+CONDENS 
+F25
+THEMA
+CLASSIC 
+V25
+NEXIA24FF";;;;2018;Chaudière individuelle haute performance énergétique;18/12/2018;13 rue Marcel Sembat- 212 porte Montmartre;;;;
+118SN;SIMPLON 20;20;01/01/1890;20 rue du Simplon;75018;PARIS;NO;19;1;2020;;0;0;0;0;0;0;19;0;0;0;1;;0;0;0;0;;;;;;;;;;;
+192CT;LEON SCHWARTZENBERG;58;07/01/2013;12/14 rue Trouillet;92110;CLICHY;TM;11;1;2014;;0;0;0;0;0;11;0;0;0;0;1;;0;0;0;0;;;;;;;;;;;
+192CT;LEON SCHWARTZENBERG;58;07/01/2013;12/14 rue Trouillet;92110;CLICHY;TM;11;2;2014;;0;0;0;0;0;11;0;0;0;0;2;;0;0;0;0;;;;;;;;;;;
+193PE;PIERREFITTE             ;1;01/01/1962;24 Rue Charles Perrin;93380;PIERREFITTE;TM;1;0;2020;;0;1;0;0;0;0;0;0;0;0;0;;0;0;0;0;;;;;;;;;;;
+193SJ;ST DENIS:JULES VEDRINES;141;05/10/2000;1/3/5 Rue Jules Védrine / 58/60/62 Rue Lénine;93200;SAINT DENIS;TM;141;9;2020;;0;1;0;0;0;140;0;0;0;0;9;;0;0;0;NIAGARA C GREEN - MIRA C GREEN - ;;;;2020;;;;;;;
+218AH;AMIRAUX-HERMANN LACHAPEL;80;01/01/1922;"13 Amiraux 
+4 Hermann Lachapelle";75018;PARIS;NO;77;0;2019;;77;0;0;0;0;0;0;0;0;0;0;;0;0;0;ACLEA BAS NOX CF ;;;;2019;;;;;;;
+218DU;DUC-MT CENIS;33;05/01/2015;2/6 rue Duc;75018;PARIS;NO;31;0;2017;;31;0;0;0;0;0;0;0;0;0;0;;0;0;0;MEGALIA CF (ELM);;;;2017;;;;;;;
+218MA;MARCADET 245/251;469;01/01/1924;245/251 Marcadet;75018;PARIS;NO;459;0;2006 - 2009;;349;110;0;0;0;0;0;0;0;0;0;;0;0;0;0;;;;;REHABILITATION ET PLAN CLIMAT;14/01/2024;;;;;
+118E4;EMILE DUPLOYE 4/10;21;01/03/2009;4/10 rue Emile Duployé;75018;PARIS;NO;18;;2009;;0;18;0;0;0;0;0;0;0;0;3;;;0;0;0;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;02/05/2023;4 rue Emile Duploye;;;;
+1181P;POLONCEAU;25;01/01/1850;11-13 POLONCEAU;75018;PARIS;NO;25;;2015;;0;0;25;0;0;0;0;0;0;0;0;;;3;0;0;;;;;;;;;;;
+1183P;POLONCEAU 33/37;26;01/02/1991;33/37 Polonceau;75018;PARIS;NO;26;;2014;;0;26;0;0;0;0;0;0;0;0;1;;;0;0;0;;;;;"Isolation des toitures terrasses
+Chaudière individuelle basse température";"17/06/2014
+16/05/2014";33/37 RUE POLONCEAU;;;;
+118AF;AFFRE 19;7;01/05/2009;19 rue Affre;75018;PARIS;NO;5;;2008;;0;0;0;0;0;5;0;0;0;0;1;;;0;0;0;;;;2023;;;;;;;
+118AP;CHAPELLE 100;9;01/01/1870;100 bd de la Chapelle;75018;PARIS;NO;7;;2014;;0;0;0;0;0;7;0;0;0;0;1;;;0;0;0;;;;;;;;;;;
+118BP;EMILE BLEMONT-POTEAU;305;01/01/1933;1/7 2/10 Emile Blémont;75018;PARIS;NO;304;;2017;;1;5;0;0;0;298;0;0;0;0;19;;;0;0;0;;;;2017;Chaudière individuelle haute performance énergétique;31/12/2016;1-7 ET 2-10 RUE EMILE BLEMONT;;;;
+118C0;CHAPELLE 94 CHARBONNIERE;18;30/09/2002;96 bld de la Chapelle;75018;PARIS;NO;18;;2017;;0;18;0;0;0;0;0;0;0;0;2;;;0;0;0;;;;2017;Chaudière individuelle haute performance énergétique;19/12/2016;96 BD DE LA CHAPELLE / 35 RUE DE LA CHARBONNIERE;;;;
+118C8;CHARTRES 8;6;01/01/1850;8 Chartres;75018;PARIS;NO;6;;2012;;0;6;0;0;0;0;0;0;0;0;1;;;0;0;0;;;;;;;;;;;
+118CC;CHARBONNIERE-CHARTRES-CH;109;01/04/1991;3/7 Charbonnière 2/4 Chartres 21 Jessaint;75018;PARIS;NO;109;;2014;;0;80;29;0;0;0;0;0;0;0;0;;;5;0;0;;;;;Chaudière individuelle basse température;11/07/2014;3/7 rue Charbonnière / 2/4 rue de Chartres / 21 rue de Jessaint;;;;
+118CG;CHAPELLE 104/106-GOUTTE;38;03/09/1998;104/106 Chapelle;75018;PARIS;NO;38;;2012;;0;1;37;0;0;0;0;0;0;0;0;;;2;0;0;;;;;Chaudière à haute performance énergétique;29/10/2018;53 rue de la Goutte d'Or;;;;
+118CH;CHAPELLE 86-CHARBONNIERE;12;17/07/1998;25 Charbonnière;75018;PARIS;NO;12;;2017;;0;0;0;0;0;12;0;0;0;0;1;;;0;0;0;;;;2017;;;;;;;
+118CP;CHAPELLE 90 CHARBONNIERE;6;30/06/2002;90 bld de la Chapelle;75018;PARIS;NO;6;;2016;;0;2;0;0;0;4;0;0;0;0;1;;;0;0;"3 TALIA GREEN SYSTÈME et 
+1 MIRA C GREEN";;;;2016;Chaudière individuelle haute performance énergétique;15/12/2016;29 rue de la Charbonniere;;;;
+118EB;EMILE DUPLOYE 15/17;7;01/01/2012;15/17 rue Emile Duployé;75018;PARIS;NO;6;;2009;;0;6;0;0;0;0;0;0;0;0;3;;;0;0;0;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;09/05/2023;15-17 rue Emile Duploye;;;;
+118ED;EMILE DUPLOYE 14;8;17/09/2002;14 rue Emile Duployé;75018;PARIS;NO;8;;2016;;0;0;0;0;0;0;8;0;0;0;2;;;0;2;MEGALIA AGVC24-5MN et ODEALIS GVT C 24-2M sur 3CE multiplus;;;;2016;Chaudière individuelle haute performance énergétique;06/01/2017;14 RUE EMILE DUPLOYE;;;;
+118EE;EMILE DUPLOYE 19/23;10;01/01/2012;19/23 rue Emile Duployé;75018;PARIS;NO;9;;2009;;0;9;0;0;0;0;0;0;0;0;3;;;0;0;0;;;;2023;Chaudière   individuelle   à    haute   performance énergétique;09/05/2023;19-23 rue Emile Duploye;;;;
+118ER;ERNESTINE 6;8;01/04/2005;6 rue Ernestine;75018;PARIS;NO;8;;2009;;0;8;0;0;0;0;0;0;0;0;1;;;0;0;0;;;;2023;;;;;;;
+118G0;GOUTTE D'OR 23/25 CHARTR;41;06/08/2003;23/25 Goutte d'Or 20/22 Chartres;75018;PARIS;NO;41;;2017;;0;0;0;0;0;0;41;0;0;0;3;;;0;4;4 colonnes 3CE;;;;2017;Chaudière individuelle haute performance énergétique;14/06/2017;23-25 RUE DE LA GOUTTE D'OR / 22 RUE DE CHARTRES;;;;
+118G7;GOUTTE D'OR 52;13;14/05/1999;52 Goutte d'Or;75018;PARIS;NO;13;;2012;;0;0;13;0;0;0;0;0;0;0;0;;;1;0;0;;;;;;;;;;;
+118GA;GARDES 32 CAVE40;7;15/02/2004;32 rue des Gardes 40 rue Cavé;75018;PARIS;NO;7;;2016;;0;7;0;0;0;0;0;0;0;0;1;;;0;0;"5 MIRA C GREEN
+2 TALIA GREEN SYSTÈME";;;;2016;Chaudière individuelle haute performance énergétique;28/04/2017;32 RUE DES GARDES;;;;
+118GC;GOUTTE D'OR 1/7-CHARBONN;19;24/01/2001;1/5 Goutte d'Or / 4/6 Rue de la Charbonnière;75018;PARIS;NO;19;;2015;;0;19;0;0;0;0;0;0;0;0;2;;;0;0;0;;;;2024;;;;;;;
+118GH;GOUTTE D'OR 9 CHARBONNIE;12;24/10/2007;9 rue de la Goutte d'Or / 14 rue Charbonière;75018;PARIS;NO;11;;2021;;0;0;0;0;0;11;0;0;0;0;1;;;0;0;ELM Leblanc - EGALIS BALLON CONDENS;;;;2021;;;;;;;
+118GI;GOUTTE D'OR 61-ISLETTE;17;15/10/1999;61 Rue de la Goutte d'Or;75018;PARIS;NO;23;;2012;;0;23;0;0;0;0;0;0;0;0;2;;;0;0;0;;;;;;;;;;;
+118GP;GARDES-POLONCEAU;31;15/09/1998;15/17 Rue des Gardes;75018;PARIS;NO;31;;2011;;0;31;0;0;0;0;0;0;0;0;3;;;0;0;0;;;;;;;;;;;
+118HE;HERMEL 47;15;01/01/1882;47 rue Hermel;75018;PARIS;NO;15;;2016;;0;0;0;0;0;9;6;0;0;0;2;;;0;2;0;;;;;;;;;;;
+118HH;HENRI HUCHARD-BRISSON-VA;391;01/11/1930;2/14 Henri Brisson;75018;PARIS;NO;378;;2021;;17;;;;361;;;;;;;;;;;THEMAFAST CONDENS F25;;;;2021;;;;;;;
+118I1;ISLETTES 1/5-CHAPELLE;26;13/09/1999;1/5 Rue des Islettes;75018;PARIS;NO;24;;2020;;0;;0;0;0;24;0;0;0;0;3;;;0;0;0;;;;;Isolation des toitures terrasses;30/06/2013;1/5 rue des Islettes, 116/118 Chapelle;;;;
+118JV;JEAN VARENNE-PTE MONTMAR;258;01/01/1929;2/12 Jean Varenne 144/154 Ney;75018;PARIS;NO;254;;2014;;0;16;238;0;0;0;0;0;0;0;0;;;12;0;MEGALIA CGLA23-6HN5 VMC;;;;;Chaudière individuelle basse température;11/07/2014;2/12 rue Jean Varenne / 144/154 bd Ney / 5 av. de la Porte Montmartre;;;;
+118LA;LAGHOUAT 16/18;14;03/10/2005;16/18 rue de Laghouat;75018;PARIS;NO;14;;2018;;0;0;0;0;0;14;0;0;0;0;2;;;0;0;"ELM: 5 MEGALIA CONDENS 
+CHFT: 6 NIAGARA C GREEN
+3 SERELIA GREEN";;;;2018;;;;;;;
+118LO;LEON 11/13;15;03/02/2006;11/13 rue Léon;75018;PARIS;NO;15;;2021;;0;0;0;0;0;15;0;0;0;0;1;;;0;0;"ELM Leblanc -
+Egalis condens (9) et Melia I condens (6)";;;;2021;;;;;;;
+118M2;MYRHA 48;5;10/07/2007;48 Rue Myrha;75018;PARIS;NO;5;;2021;;0;0;0;0;0;5;0;0;0;0;1;;;0;0;"ELM Leblanc -
+Egalis condens (4) et Melia I condens (1)";;;;2021;;;;;;;
+118M3;MYRHA 19/23;20;28/02/2009;19/23 rue Myrha;75018;PARIS;NO;20;;2022;;0;0;0;0;0;20;0;0;0;0;1;;;0;0;ELM LEBLANC MELIA I CONDENS;;OUI;;2022;Chaudière   individuelle   à    haute   performance énergétique;11/07/2022;19-23 RUE MYRHA;;;;
+118M6;MYRHA 60;12;20/02/2003;60/62 Rue Myrha;75018;PARIS;NO;12;;2021;;0;0;0;0;0;12;0;0;0;0;1;;;0;0;"Saunier Duval 
+Isotwin condens (5) - ThemaFast condens (7)";;;;2021;;;;;;;
+118M7;MYRHA 25/27;15;28/02/2009;25/27 rue Myrha;75018;PARIS;NO;14;;2022;;0;0;0;0;0;14;0;0;0;0;1;;;0;0;ELM LEBLANC MELIA I CONDENS;;;;2022;;;;;;;
+118M8;MYRHA 52/58;21;10/07/2007;52/58 Rue Myrha;75018;PARIS;NO;21;;2021;;0;0;0;0;0;21;0;0;0;0;1;;;0;0;Saunier Duval - Isotwin condens ;;;;2021;;;;;;;
+118M9;MYRHA 29/31Bis;12;23/12/2003;29/31 Rue Myrha;75018;PARIS;NO;12;;2017;;0;0;0;0;0;12;0;0;0;0;1;;;0;0;0;;;;2017;Chaudière individuelle haute performance énergétique;17/02/2017;29-31BIS RUE MYRHA;;;;
+118ML;MONTCALM;44;01/01/1890;21 rue Montcalm 53 rue des CLoys;75018;PARIS;NO;39;;2010;;39;0;0;0;0;0;0;0;0;0;1;;;0;0;acleis nglm;;;;;;;;;;;
+118MY;MYRHA 34-LEON 7;9;15/01/2000;34 Myrha 7 Léon;75018;PARIS;NO;9;;2012;;0;9;0;0;0;0;0;0;0;0;1;;;0;0;0;;;;;;;;;;;
+118P5;POISSONNIERS 59;7;01/01/1850;59 Rue des Poissonnières;75018;PARIS;NO;7;;2013;;0;7;0;0;0;0;0;0;0;0;5;;;0;0;0;;;;;;;;;;;
+118PB;PIERRE BUDIN 16;19;26/07/2007;14 rue Pierre Budin;75018;PARIS;NO;19;;2021;;0;0;0;0;0;19;0;0;0;0;1;;;0;0;Saunier Duval - Thema Fast Condens (10) Isotwin condens (9);;;;2021;;;;;;;
+118PJ;POTEAU-ST-JULES;47;15/03/1998;11/21 Poteau Saint Jules;75018;PARIS;NO;47;;2018;;0;0;47;0;0;0;0;0;0;0;9;;;6;0;"MEGALIS CGLA 23-7MN5
+EGALIS BALLON NGLB 23 VMC";;;;2018;Isolation des toitures terrasses;27/11/2017;11/21 PASSAGE DU POTEAU ;;;;
+118PL;POLONCEAU 8;16;31/03/2010;8 rue Polonceau;75018;PARIS;NO;23;;2010;;0;0;0;0;0;23;0;0;0;0;4;;;0;0;0;;;;;;;;;;;
+118PO;POTEAU 93;58;18/09/1998;93 r Poteau / Passage;75018;PARIS;NO;58;;2013;;0;0;58;0;0;0;0;0;0;0;0;;;5;0;MEGALIA CGLA23-6HN5 VMC;;;;;;;;;;;
+118RE;RICHOMME 11;5 (Ateliers d'artiste);04/09/2004;11 Rue Richomme;75018;PARIS;NO;5;;2021;;0;0;0;0;0;0;5;0;0;0;1;;;0;2;ELM LEBLANC - MELIA I CONDENS ;;;;2021;;;;;;;
+118RI;RICHOMME 2/10-GARDES 27;27;16/10/2000;8/10 Richomme 27 Gardes;75018;PARIS;NO;27;;2013;;0;27;0;0;0;0;0;0;0;0;3;;;0;0;0;;;;;;;;;;;
+118RU;RUISSEAU 72;8;01/01/1860;72 rue du Ruisseau;75018;PARIS;NO;8;;2014;;0;0;0;0;0;8;0;0;0;0;1;;;0;0;THEMAPLUS CONDENS F 30 E NAT VV;;;;;;;;;;;
+218L1;LETORT-A.MESSAGER-CHAMPI;234;21/02/1927;29 Letort 2/8 André Messager;75018;PARIS;NO;233;;2019;;0;2;0;0;0;231;0;0;0;0;13;;;0;0;MEGALIS CONDENS - ELEXIA 2 FF;;;;2019;Chaudière individuelle haute performance énergétique;11/12/2019;28 Letort 28 Andre Messager 97 Championnet;;;;
+218L2;LETORT-A.MESSAGER-E.BLEM;276;11/02/1929;17/21 Letort 1/11 André Messager;75018;PARIS;NO;271;;2019;;0;5;0;0;0;266;0;0;0;0;14;;;0;0;MEGALIS CONDENS - ELEXIA 2 FF;;;;2019;;;;;;;
+101JO;JOUR 17;9;01/01/1750;17 rue du Jour;75001;PARIS;SE;9;1;2013;;;;9;;;;;;;;;;;1;;;;;;;;;;;;;
+101P8;PRECHEURS  8;8;01/01/1750;8 rue des Prêcheurs;75001;PARIS;SE;8;1;2013;;;;8;;;;;;;;;;;1;;;;;;;;;;;;;
+101SD;SAINT DENIS 24;4;01/01/1750;24 rue Saint Denis;75001;PARIS;SE;4;0;2014;;4;;;;;;;;;;;;;;;;;;;;"Isolation de combles ou de toitures
+Chaudière individuelle basse température";"11/03/2015
+30/09/2014";24 rue Saint Denis;;;;
+102BN;BONNE NOUVELLE  23;19;01/01/1880;23 Bld Bonne Nouvelle;75002;PARIS;SE;19;1;2017;;;;;;;19;;;;;1;;;;;Chaffoteaux MIRA C GREEN 25 EU et Niagara C Green 25 EU;;;;2017;Chaudière individuelle haute performance énergétique;01/07/2016;23 BD BONNE NOUVELLE;;;;
+102SD;SAINT DENIS 156;21;01/01/1750;156 rue Saint Denis / escalier B;75002;PARIS;SE;21;0;2013;;21;;;;;;;;;;;;;;;;;;;;;;;;;;
+103BE;BEAUMARCHAIS 93;29;01/01/1860;93 bd Beaumarchais;75003;PARIS;SE;29;2;2022;;;2;;;;22;;;;5;2;;;;;ATLANTIC NAIA;;;;2022;;;;;;;
+103QU;QUINCAMPOIX - OURS;5;01/01/1700;111 Quincampoix 19 Ours;75003;PARIS;SE;5;1;2013;;;;5;;;;;;;;;;;1;;;;;;;;;;;;;
+103SE;SEBASTOPOL 66 - BOURG L';22;01/01/1860;66 Sébastopol;75003;PARIS;SE;22;1;2016;;;;;;;22;;;;;1;;;;;MIRA C GREEN;;;;2016;Chaudière individuelle haute performance énergétique;01/07/2016;66 BD SEBASTOPOL;;;;
+103SM;SAINT MARTIN 216/218/220;31;01/01/1700;216/220 rue Saint Martin;75003;PARIS;SE;16;4;2021;;;;;;;7;9;;;;2;;;;2;CM VENTOUSE BALIXIA & PRIMAXIA 24 FF ;;;;2021;Isolation de combles ou de toitures;"11/03/2015
+09/07/2019";"216/218 rue Saint Martin
+Parcelle 81 - Feuille 000 AV 01";;;;
+103TU;TURENNE120  ;16;01/01/1910;120 rue de Turenne;75003;PARIS;SE;16;2;2016;;;;;;;16;;;;;2;;;;;;;;;;;;;;;;
+104AU;AUBRY LE BOUCHER 23;6;01/01/1750;23 Aubry le Boucher;75004;PARIS;SE;5;1;2014;;;;5;;;;;;;;;;;1;;;;;;;Chaudière individuelle basse température;28/11/2014;23 rue Aubry le Boucher;;;;
+104BE;BEAUMARCHAIS 27;41;01/01/1870;27 bd Beaumarchais;75004;PARIS;SE;41;6;2013;;;;;;;4;37;;;;3;;;;3;CM INOA 22 FF / URBIA GREEN & NIAGARA GREEN CONDENSATION;;;;;;;;;;;
+104FM;FRANCOIS MIRON 64;8;01/01/1600;64 rue François Miron;75004;PARIS;SE;8;0;2013;;8;;;;;;;;;;;;;;;;;;;;Isolation de combles ou de toitures;01/08/2013;64/66 rue F. Miron;;;;
+104J2;JOUY 12;7;01/01/1700;12 rue de Jouy;75004;PARIS;SE;7;0;2013;;7;;;;;;;;;;;;;;;;;;;;Isolation de combles ou de toitures;10/05/2013;12 rue de Jouy;;;;
+104J4;JOUY  4;10;01/01/1700;4 rue de Jouy;75004;PARIS;SE;10;1;2013;;;;10;;;;;;;;;;;1;;;;;;;Isolation de combles ou de toitures;15/04/2013;4 rue de Jouy;;;;
+104J6;JOUY  6/10;23;01/01/1700;6/10 rue de Jouy;75004;PARIS;SE;23;1;2013;;15;3;5;;;;;;;;;;;1;;;;;;;Isolation de combles ou de toitures;03/06/2013;6/8/10 rue de Jouy;;;;
+104J8;JOUY 16/18;12;01/01/1700;16/18 rue de Jouy;75004;PARIS;SE;12;1;2013;;;;12;;;;;;;;;;;1;;;;;;;Isolation de combles ou de toitures;03/07/2013;16/18 rue de Jouy;;;;
+104JF;JOUY - FRANCOIS MIRON;9;01/01/1650;20 Jouy 60/62 François Miron;75004;PARIS;SE;9;0;2013;;9;;;;;;;;;;;;;;;;;;;;Isolation de combles ou de toitures;01/08/2013;58/60/62 rue F. Miron - 20 rue de Jouy;;;;
+104PL;PLATRE 13/15;25;01/01/1650;13/15 Plâtre;75004;PARIS;SE;23;0;2013;;23;;;;;;;;;;;;;;;;;;;;;;;;;;
+104QU;QUINCAMPOIX 53;5;01/01/1650;53 Quincampoix;75004;PARIS;SE;5;1;2013;;;;5;;;;;;;;;;;1;;;;;;;;;;;;;
+104RO;ROSIERS 12BIS/16BIS;38;01/01/1850;12BIS/16BIS Rosiers;75004;PARIS;SE;26;0;2014;;25;;;;;1;;;;;;;;;;;;;;;Chaudière individuelle basse température;30/09/2014;14 bis rue des Rosiers;;;;
+104SC;SCHOMBERG 2/6 - MORLAND;67;01/01/1870;4/6 rueSchomberg;75004;PARIS;SE;66;3;2010;;;;66;;;;;;;;;;;3;;;;;;;;;;;;;
+104SM;SAINT MERRI 16;19;01/01/1700;16 Saint Merri 5 Pierre au Lard;75004;PARIS;SE;19;2;2014;;;;19;;;;;;;;;;;2;;;;;;;Chaudière individuelle basse température;28/11/2014;16 rue Saint Merri;;;;
+104TE;TEMPLE 36;19;01/01/1840;36 Temple;75004;PARIS;SE;19;2;2014;;;;19;;;;;;;;;;;2;;;;;;;Chaudière individuelle basse température;28/11/2014;36 rue du Temple;;;;
+105HU;HUCHETTE 13;18;01/01/1730;13 Rue de la Huchette;75013;PARIS;SE;17;2;2020;;;0;;;;9;8;;;;2;;;;2;MEGALIA CONDENS ;;;;2020;;;;;;;
+113D4;DUNOIS 41/43;23;01/04/1982;41/43 Rue Dunois;75013;PARIS;SE;23;2;2014;;;;23;;;;;;;;;;;2;;;;;;;Chaudière individuelle basse température;08/09/2014;41/43 rue Dunois;;;;
+113I4;ITALIE 45/49;36;30/10/1998;45/49 Avenue d'Italie;75013;PARIS;SE;36;3;2011;;;;36;;;;;;;;;;;3;;;;;;;;;;;;;
+113IB;BAUDRICOURT-AUMONT 5;81;01/10/1998;66 Baudricourt 5 Aumont;75013;PARIS;SE;81;5;2011;;;;81;;;;;;;;;;;5;;;;;;;;;;;;;
+113JE;JEANNE D'ARC 107/121;188;01/06/1978;107/121 Rue Jeanne d'Arc;75013;PARIS;SE;1;0;2021;;;;;;;1;;;;;;;;;;;;;;;;;;;;;
+113OM;OLIVIER MESSIAEN 10/14;21;02/09/2003;10 / 14 Rue Olivier Messian;75013;PARIS;SE;23;1;2016;"P3R 2016 
+1 caisson";;;;;;23;;;;;1;;;;;"10 NIAGARA C GREEN 
+13 URBIA C 25 GREEN";;;;2016;Chaudière individuelle haute performance énergétique;31/10/2016;10/14 rue Olivier Messaien - rue René Goscinny - rue Franz;;;;
+213CE;CHATEAU DES RENTIERS;285;01/11/1925;159/161 Château des Rentiers;75013;PARIS;SE;286;17;2003;;;286;;;;;;;;;17;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/12/2023;;;;;
+213CR;CROULEBARBE-RECULETTES;146;01/11/1925;51-55 Rue Croulebarbe / 29 Rue des Reculettes;75013;PARIS;SE;145;0;2004;;144;1;;;;;;;;;;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/03/2025;;;;;
+213SP;STEPHEN PICHON 9/11;69;01/10/1921;9/11 Rue Stephen Pichon;75013;PARIS;SE;69;3;2018;P3R 2018;;;;;;69;;;;;3;;;;;MEGALIA CONDENS;;;;2018;;;;;;;
+213ST;STHRAU 5;119;01/09/1922;5/9 Sthrau 90 Nationale;75013;PARIS;SE;119;7;1997;;;119;;;;;;;;;7;;;;;;;;;;REHABILITATION ET PLAN CLIMAT;15/05/2025;;;;;
+213T1;TOLBIAC 118;60;01/06/1930;116/118 rue de Tolbiac;75013;PARIS;SE;55;3;2016;"P3R 2016 
+2 caissons";;;46;;;9;;;;;;;;3;;"MEGALIA AGVC24-5MN et 
+MEGALIA CGLA 23-7H 5 VMC";;;;2016;Chaudière individuelle haute performance énergétique;09/10/2017;116/118 RUE DE TOLBIAC;;;;
+213TR;TOLBIAC 52-RICHEMONT;90;01/08/1931;50/56 Tolbiac 19BIS Richemont;75013;PARIS;SE;89;0;2018;;;;;;;89;;;;;;;;;;MEGALIA CONDENS;;;;2018;;;;;;;
+117E3;EPINETTES 35;20;01/09/1955;35 rue des Epinettes;75017;PARIS;NO;20;2;2013;;;20;;;;;;;;;2;;;;;;;;;;;;;;;;
+117B6;BAYEN 60;17;01/01/1890;60 rue Bayen;75017;PARIS;NO;17;10;2013;;;;;;;11;6;;;;;;8;;2;VIESSMANN TIRAGE NATUREL VITODENS / VITOPENT / DNS 100 ;;;;;;;;;;;
+117BA;BATIGNOLLES 61;16;01/01/1850;61 Batignolles;75017;PARIS;NO;14;0;2014;;14;;;;;;;;;;;;;;;ELM LEBLANC ACLEIS NGLM 24- (ELM);;;;2014;;;;;;;
+117BE;BESSIERES-GARNIER-PONT A;788;01/04/1933;24/42 Bessières,F Pelloutier;75017;PARIS;NO;493;0;2020;;;;;;473;20;;;;;;;;;;;;;;2020;"Isolation des toitures terrasses
+Chaudière à haute performance énergétique";"17/09/2018
+31/10/2018";"4 rue Fernand Pelloutier
+4 rue Frédéric Brunet";;;;
+117BN;BAYEN 62;11;01/01/1910;62 rue Bayen;75017;PARIS;NO;11;0;2013;;11;;;;;;;;;;;;;;; ELM TIRAGE NATUREL ACLEIS GLM 23 2H / EGALIS BALLON ;;;;;;;;;;;
+117CH;CHAMPERRET16-JACQUES IBE;41;01/12/1987;16 Porte de Champerret;75017;PARIS;NO;41;2;2012;;;;41;;;;;;;;;;;2;;;;;;2023;Fenêtre ou porte-fenêtre complète avec vitrage isolant;23/12/2016;16 AVENUE DE LA PORTE DE CHAMPERRET;;;;
+117CP;CAPORAL PEUGEOT 11-JACQU;60;01/12/1987;29/33 Jacques Ibert;75017;PARIS;NO;60;3;2014;;;;60;;;;;;;;;;;3;;;;;;;Fenêtre ou porte-fenêtre complète avec vitrage isolant;07/11/2016;29/31 RUE JACQUES IBERT;;;;
+117ER;ERNEST ROCHE 7 FOYER;100;01/04/1921;7 rue Ernest Roche;75017;PARIS;NO;101;40;2013;;;51;;;;50;;;;;;;40;;;;;;;2023;Chaudière individuelle haute performance énergétique;23/12/2016;7 RUE ERNEST ROCHE;;;;
+117MT;MONTENOTTE 2/2BIS-TERNES;18;01/01/1850;2BIS Montenotte 23 Ternes;75017;PARIS;NO;18;1;2016;;;;18;;;;;;;;;;;1;;THEMAFAST (SD) avec bouches BAZ pilotées;;;;2016;;;;;;;
+117P6;POUCHET 62/66;111;01/07/1934;62/66 Pouchet;75017;PARIS;NO;110;34;2018;;108;;;;2;;;;;;;;34;;;"Inoa 25 CF EU; Mira C 25 CF EU; Mira C Green Ultra 25";;;;2018;;;;;;;
+117PB;PAUL BROUSSE-BESSIERES-E;243;01/01/1960;2 Dr Paul Brousse 3 Ernest Roche;75017;PARIS;NO;24;0;2018;;;;;;;;;;24;;;;;;;;;;;2018;;;;;;;
+117PD;POUCHET 82 - DELIGNY 11;7;01/01/1850;82 rue Pouchet ;75017;PARIS;NO;7;2;2021;;;1;;;;1;5;;;;1;;;;1;CM URBIA GREEN CONDENSATION / NIAGARA C GREEN CONDENSATION ;;;;2021;;;;;;;
+117PR;PIERRE REBIERE 3/19;195;01/04/1957;17/19 rue Pierre Rebière;75017;PARIS;NO;195;0;2016;;195;;;;;;;;;;;;;;;;;;;2015-2016;;;;;;;
+117SO;ST-OUEN-BESSIERES-ANDRE;347;01/09/1954;1/11 Pte St Ouen 2/22 Bessières;75017;PARIS;NO;16;0;2018;;;;;;;;;;16;;;;;;;Opalia C11 (SD);;;;2018;;;;;;;
+217JK;JACQUES KELLNER 20/24;45;01/01/1927;20/22 Jacques Kellner;75017;PARIS;NO;45;3;2020;;;;;;;45;;;;;3;;;;;;;;;2020;Isolation de combles ou de toitures;17/10/2017;20/22 RUE JACQUES KELLNER;;;;
+112CA;CHARENTON 107;19;01/10/1984;107 rue de Charenton;75012;PARIS;ES;19;1;2014;;;;19;;;;;;;;;;;1;;;;;;;"Fenêtre ou porte-fenêtre complète avec vitrage isolant
+Chaudière individuelle basse température
+Isolation des toitures terrasses";"05/12/2014
+11/06/2014
+01/07/2016";107 rue de Charenton;;;;
+119CD;CRIMEE 165/177-DUVERGIER;128;01/08/1989;167/177 Crimée 6/8 Duvergier;75019;PARIS;NE;130;8;2018;3 sanitaires P3R2018;;;23;;;107;;;;;7;;;1;;"ELM LEBLANC 
+EGALIS  CONDENS
+MEGALIA CONDENS
+MEGALIA VMC ";;;;2018;Chaudière individuelle haute performance énergétique;19/11/2018;167177 rue de Crimée  68 rue Duvergier;;;;
+119CM;CHAUFOURNIERS-MATHURIN;75;01/10/1955;3 avenue Mathurin Moreau;75019;PARIS;NE;30;1;2019;;;;30;;;;;;;;;;;1;;;;;;2019;;;;;;;
+119CP;CRIMEE-PETIT;166;01/01/1988;"105 Crimée
+40 Petit
+3/7 passage Dubois";75019;PARIS;NE;116;6;2017;;;;116;;;;;;;;;;;6;;Inoa 24 VMC EU  et Niagara C 24 VMC (ballon intégré);;;;2017;;;;;;;
+119DP;DR POTAIN-BOIS;12;01/09/1986;34 Docteur Potain;75019;PARIS;NE;12;1;2017;;;;12;;;;;;;;;;;1;;;;;;2017;;;;;;;
+119FA;FLANDRE 156/160-ARGONNE;40;15/02/1999;156/160 Flandre 30 Argonne;75019;PARIS;NE;40;2;2013;;;1;39;;;;;;;;;;;2;;;;;;;;;;;;;
+119FG;FLANDRE 13-GASTON REBUFF  ;127;01/05/1993;13/15 Flandre 14TER Tanger;75019;PARIS;NE;70;7;2019;;;;70;;;;;;;;3;;;4;;ACLEA VMC BAS NOX ;;;;2019;;;;;;;
+119FK;FLANDRE 167/171-ALPHONSE KARR;88;01/02/1990;159/171 Flandre 11 Alphonse Karr;75019;PARIS;NE;88;3;2014;;;7;81;;;;;;;;;;;3;;;;;;;Chaudière individuelle basse température;31/10/2014;159/171 avenue de Flandre;;;;
+119HU;HAUTPOUL 76/78;20;01/06/2000;76/78 rue Hautpoul ;75019;PARIS;NE;20;1;2017;1 Caisson en 2017;;;20;;;;;;;;;;;1;;;;;;2017;;;;;;;
+119LG;LEON GIRAUD 19/25-OURCQ;60;01/08/1986;19/23 Léon Giraud 21 Ourcq;75019;PARIS;NE;60;4;2013;;;;60;;;;;;;;;;;4;;;;;;;;;;;;;
+119M3;MEAUX 33                ;12;01/01/1850;33 rue de Meaux;75019;PARIS;NE;12;1;2017;1 Caisson en 2017;;;12;;;;;;;;;;;1;;Inoa 24 VMC EU;;;;2017;;;;;;;
+119MA;MAROC 31;14;05/11/1997;31 Maroc;75019;PARIS;NE;14;1;2013;;;;14;;;;;;;;;;;1;;;;;;;;;;;;;
+119S5;SOLITAIRES 5/7;22;01/01/1850;5/7 Solitaires;75019;PARIS;NE;22;2;2013;;18;;4;;;;;;;;;;;2;;;;;;;;;;;;;
+119SE;SERURIER-ALPHONSE AULARD ;41;01/01/1940;52/52BIS Sérurier;75019;PARIS;NE;41;1;2014;;;;41;;;;;;;;;;;1;;;;;;;Chaudière individuelle basse température;08/09/2014;52/52 bis bd Serrurier;;;;
+120BB;BAGNOLET-BALKANS;39;01/10/1986;"138/142 Bagnolet
+23 Balkans";75020;PARIS;ES;39;2;2020;;;;29;;;10;;;;;;;;2;;MEGALIA CONDENS - ACLEA VMC BAS NOX ;;;;2020;Fenêtre ou porte-fenêtre complète avec vitrage isolant;18/12/2013;142 rue de Bagnolet, 23 rue des Balkans, 5 place Pierre Vaudrey;;;;
+120BG;ST BLAISE-GALLERON;30;01/09/1985;22/26 Saint Blaise;75020;PARIS;ES;30;5;2012;1 caisson gaz P3R2018;;;30;;;;;;;;;;;5;;SD- thema plus c25 E;;;;2018;;;;;;;
+120BR;ST BLAISE 15/19;15;01/01/1800;15/19 Saint Blaise;75020;PARIS;ES;15;1;2012;;11;;4;;;;;;;;;;;1;;SD- themaplus c25 e;;;;;;;;;;;
+120BS;BAGNOLET-ST-BLAISE;14;01/12/1984;"120BIS Bagnolet 
+2/4 Saint Blaise";75020;PARIS;ES;14;2;2014;;;;14;;;;;;;;;;;2;;ELM- MEGALIA CGLA23-6H.5;;;;;Chaudière individuelle basse température;12/06/2014;2/4 rue Saint Blaise;;;;
+120DB;DEBROUSSE;210;01/01/1985;183 Bld Davout;75020;PARIS;ES;210;22;DDR;;;18;192;;;;;;;;;;;22;;SD- THEMA PLUS  ;;;;;PLAN CLIMAT;01/11/2021;;;;;
+120DT;DAVOUT-FELIX TERRIER;728;01/08/1932;"94/110 Davout 
+1 Eugène Reisz";75020;PARIS;ES;719;40;2005 - Plan Climat 2016 -2017;;;9;710;;;;;;;;;;;40;;;;;;;REHABILITATION ET PLAN CLIMAT;15/03/2025;;;;;
+120FL;FLORIAN 10/18;16;01/05/1986;12 Florian;75020;PARIS;ES;16;2;2018;1 caisson gaz P3R2018;;;12;;;4;;;;;;;;2;;"ELM:  EGALIS VMC; MEGALIA VMC ; MEGALIA CONDENS 
+ ";;;;2018;;;;;;;
+120LP;LYANES 7/15-PELLEPORT;88;01/10/1985;"11/15 Lyanes
+8/16 Pelleport";75020;PARIS;ES;68;3;(DDR 2024) 2013;;;;68;;;;;;;;1;;;2;;Chaff- inoa evo 24 vmc;;;;;REHABILITATION ET PLAN CLIMAT;15/12/2027;;;;;
+120P1;PYRENEES 146/154;36;01/05/1986;146/152 Pyrénées;75020;PARIS;ES;36;1;2014;;;;36;;;;;;;;;;;1;;;;;;;Chaudière individuelle basse température;23/10/2014;148/152 rue des Pyrénées;;;;
+120PB;P.BONNARD-BAGNOLET-ST-BLAISE;62;01/04/1989;"4/14 Pierre Bonnard 
+116 Bagnolet";75020;PARIS;ES;62;5;2019;;;;62;;;;;;;;;;;5;;NIAGARA C NOX VMC - INOA C NOX VMC;;;;2019;;;;;;;
+120PF;P.BONNARD 3/17;37;01/06/1987;"5/17 Pierre Bonnard 
+28 Florian";75020;PARIS;ES;37;4;2018;2 caissons gaz P3R2018;;;34;;;3;;;;;;;;4;;"ELM: 17 MEGALIA VMC; 3 MEGALIA CONDENS; 1 EGALIA VMC; CFF 9 Serelia vmc 
+";;;;2018;;;;;;;
+120PR;PYRENEES 53;18;01/05/2000;53 rue des Pyrénées;75020;PARIS;ES;18;2;2012;;;;18;;;;;;;;;;;2;;;;;;;;;;;;;
+120PV;PLANCHAT 26BIS-VIGNOLES;26;28/05/1998;"26BIS Planchat 
+11/13 Vignoles";75020;PARIS;ES;26;1;2012;;;;26;;;;;;;;;;;1;;;;;;;;;;;;;
+120R1;REPOS 10/12;27;01/11/1986;10/12 Repos;75020;PARIS;ES;27;2;2017;2 caissons en 2017;;;27;;;;;;;;;;;2;;;;;;2017;;;;;;;
+120R8;RIBLETTE 8;15;15/09/1983;8 Riblette;75020;PARIS;ES;15;2;2013;;;;15;;;;;;;;;;;2;;;;;;;;;;;;;
+120RR;RONDONNEAUX-RAMUS;28;21/12/2001;"5 Rondonneaux
+50 Ramus";75020;PARIS;ES;28;12;2017;2 caissons en 2017;;;;;;4;24;;;;5;3;;;4;;;;;2017;Chaudière individuelle haute performance énergétique;16/10/2017;5 RUE DES RONDONNEAUX;;;;
+120TO;PAUL JEAN TOULET 1/11;67;01/02/1987;3 4/6 Paul Jean Toulet;75020;PARIS;ES;70;8;2018;5 caissons gaz P3R2018;;;70;;;;;;;;;;;8;;"ELM: EGALIS VMC VMC;  MEGALIA VMC ";;;;2018;;;;;;;
+219OS;ORME 16-SERURIER 79;142;01/05/1923;"16/18 Orme
+79 Sérurier - 47 Bois";75019;PARIS;NE;140;6;2017;;;;140;;;;;;;;;;;6;;Inoa 24 VMC EU ;;;;2017;;;;;;;
+219PA;PREVOYANCE-DAVID D'ANGE;41;01/01/1928;1/5 rue de la Prévoyance;75019;PARIS;NE;41;5;2018;5 caissons gaz P3R2018;;;40;;;1;;;;;;;;5;;"Inoa 24 VMC EU
+Mira C Green Ultra 25";;;;2018;;;;;;;
+219PL;GASTON PINOT-ALSACE LORR;109;01/01/1928;4/10 rue Gaston Pinot;75019;PARIS;NE;109;14;2017;;;1;105;;;3;;;;;;;;14;;Inoa 24 VMC EU;;;;2017;;;;;;;
+114CH;ANTOINE CHANTIN;;;;;;SO;;;;;;;;;;;;;;;;;;;;;;;;;Rénovation   globale   d’un    bâtiment   résidentiel (France métropolitaine);02/04/2020;19 rue Antoine Chantin;;;;
+118VA;;ind electrique;;;;;NO;;;;;;;;;;;;;;;;;;;;;OUI;;;;Fenêtre  ou  porte-fenêtre  complète  avec  vitrage isolant;02/10/2020;29 rue Vauvenargues;;;;
+120T1;"
+TOURELLES 17/27";60;01/04/1991;15 /27 Tourelles;75020;Paris;ES;;;;;;;;;;;;;;;;;;;;;;;;;Fenêtre  ou  porte-fenêtre  complète  avec  vitrage isolant;05/05/2021;15 / 27 passage des Tourelles;;;;
+113DM;"	
+DAMESME-MOULIN DE LA POI";49;30/04/1995;49/53 Damesme 48 Moulin de la Pointe;75013;Paris;SE;;;;;;;;;;;;;;;;;;;;;;;;;Isolation des toitures terrasses;31/12/2020;49 / 53 rue Damesme  48 rue du Moulin de la Pointe;;;;
+119A1;ARDENNES 11;6;01/01/1930;11 Ardennes;75019;PARIS;NE;;;;;;;;;;;;;;;;;;;;;;;;;Émetteur électrique à régulation électronique à fonctions avancées;31/05/2021;19 rue des Ardennes;;;;
+120PL;PLANCHAT 28&31;27;01/10/1992;28 / 31 Planchat;75020;PARIS;ES;;;;;;;;;;;;;;;;;;;;;;;;;Émetteur électrique à régulation électronique à fonctions avancées;11/06/2021;28/31 Planchat;;;;
+115BV;VICTOR17;14;14/04/2023;17 Boulevard Victor ;75015;PARIS;SO;;;2 023;;;;;;7;;7;;;;;;;;1;;;;;Réha 2023;;;;;;;
+110MN;FB MARTIN-PASSAGE MARCHE;14;20/03/2023;7 passage du marché;75010;PARIS;NE;14;1;2022;;;;;;;14;;;;;1;;;;;;;;;;;;;;;;
+105MG;MONGE 76;14;01/01/1865;76 rue Monge;75005;PARIS;SE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+111PR;PARMENTIER 49;18;01/01/1900;49 avenue Parmentier;75011;PARIS;NE;17;1;2023;;;;;;;17;;;;;1;;;;;;;;;;;;;;;;
