@@ -1,205 +1,185 @@
 import streamlit as st
 import pandas as pd
-import os
-
-# --- CONSTANTES DE COLONNES ---
-COL_ANNEE_INDIV = 'Années (chaudières & chauffe-bains)\nà titre indicatif'
-COL_NB_EQUIP_INDIV = "Nb d'équipements individuels gaz"
-COL_TRAVAUX_INDIV = 'Travaux réalisés'
-COL_TRAVAUX_COLL = 'Travaux réalisés'
-COL_DATE_TRAVAUX_COLL = "Date d'achèvement travaux"
-COL_SYSTEME_COLL = "Systeme_Type"
 
 # 1. CONFIG PAGE
 st.set_page_config(
     page_title="Socobat Asset - Jeb",
     page_icon="🏢",
-    layout="wide",  # large sur desktop, mais reste utilisable sur mobile [web:19]
+    layout="wide",
     initial_sidebar_state="collapsed"
 )
 
 # 2. DESIGN SYSTEM
 st.markdown("""
     <style>
-    .stApp, [data-testid="stAppViewContainer"] {
-        background-color: #F9FAFB !important;
-    }
-    div[data-baseweb="select"], div[data-baseweb="base-input"], input {
-        background-color: white !important;
-        color: #111827 !important;
-        border: 1px solid #D1D5DB !important;
-        border-radius: 12px !important;
-    }
-    div[role="listbox"] div, span[data-baseweb="select"] {
-        color: #111827 !important;
-        -webkit-text-fill-color: #111827 !important;
-    }
     .alan-card {
         background-color: white !important;
-        padding: 16px !important;
-        border-radius: 16px !important;
+        padding: 24px !important;
+        border-radius: 20px !important;
         border: 1px solid #E5E7EB !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 16px !important;
         color: #111827 !important;
     }
-    .t-label {
-        color: #6B7280 !important;
-        font-size: 0.75rem !important;
-        font-weight: 700 !important;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-    }
-    .t-val {
-        color: #111827 !important;
-        font-size: 2rem !important;
-        font-weight: 800 !important;
-        letter-spacing: -1.5px;
-        line-height: 1;
-    }
-    .t-sub {
-        color: #6366F1 !important;
-        font-size: 0.85rem !important;
-        font-weight: 600 !important;
-        margin-top: 6px;
-    }
-    h1, h2, h3, p, label {
-        color: #111827 !important;
-        font-weight: 600 !important;
-    }
-    .stButton>button {
-        background-color: #6366f1 !important;
-        color: white !important;
-        border-radius: 999px !important;
-        font-weight: 700 !important;
-        border: none !important;
-        width: 100%;
-        height: 45px;
-    }
-    @media (max-width: 768px) {
-        .t-val {
-            font-size: 1.7rem !important;
-        }
-        .alan-card {
-            padding: 12px !important;
-        }
-    }
+    .t-label { color: #6B7280 !important; font-size: 0.75rem !important; font-weight: 700 !important; text-transform: uppercase; margin-bottom: 8px; }
+    .t-val { color: #111827 !important; font-size: 2.2rem !important; font-weight: 800 !important; letter-spacing: -1.5px; line-height: 1; }
+    .t-sub { color: #6366F1 !important; font-size: 0.85rem !important; font-weight: 600 !important; margin-top: 8px; }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. ACCÈS SÉCURISÉ
-if "auth" not in st.session_state:
-    st.markdown("<div style='text-align:center; padding-top:40px;'>", unsafe_allow_html=True)
-    st.markdown("<h1>🏢 Socobat Asset</h1><p style='color:#6B7280;'>By Jeb 😉</p>", unsafe_allow_html=True)
+# 3. CHARGEMENT DES DONNÉES
+@st.cache_data
+def load_csv(path):
+    return pd.read_csv(path, dtype=str)
 
-    # Sur mobile, une seule colonne pleine largeur reste lisible. [web:11][web:18]
-    code = st.text_input("Code secret", type="password")
-    if st.button("Se connecter"):
-        if code == "SOCOBAT2026":
-            st.session_state["auth"] = True
-            st.rerun()
-        else:
-            st.error("Code incorrect")
-    st.markdown("</div>", unsafe_allow_html=True)
-    st.stop()
+df_ug = load_csv("ug_surfaces.csv")
+df_ind = load_csv("chauffage_individuel.csv")
+df_coll = load_csv("chauffage_collectif.csv")
+df_pv = load_csv("pv.csv")
+df_th = load_csv("thermique.csv")
 
-# 4. GESTION FICHIERS
-# __file__ peut ne pas exister en mode interactif, on sécurise. [web:7]
-try:
-    CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-except NameError:
-    CURRENT_DIR = os.getcwd()
+# Harmonisation colonnes
+if "N° UG" in df_ug.columns and "N°UG" not in df_ug.columns:
+    df_ug = df_ug.rename(columns={"N° UG": "N°UG"})
 
-FILES_MAPPING = {
-    "ug": "4 - UG SURFACES - NOVEMBRE 2024.xlsx - SURFACES DES UG.csv",
-    "batiments": "3 - BATIMENTS_SURFACES_NOVEMBRE 2024.xlsx - SURFACES BATIMENTS.csv",
-    "ind": "2-EQUIPEMENTS CHAUFFAGE INDIVIDUEL_NOVEMBRE 2024.xlsx - BDD CIgaz.csv",
-    "coll": "1-EQUIPEMENTS CHAUFFAGE COLLECTIF_NOVEMBRE 2024.xlsx - COLLECTIF + TRAVAUX.csv",
-    "pv": "5 - PANNEAUX SOLAIRES_NOVEMBRE 2024.xlsx - InfoPV.csv",
-    "th": "5 - PANNEAUX SOLAIRES_NOVEMBRE 2024.xlsx - Thermique.csv"
-}
+# 4. TITRE
+st.markdown("<h2>🏢 Assistant DPE logement – Socobat Asset</h2>", unsafe_allow_html=True)
 
-def get_path(filename: str) -> str:
-    return os.path.join(CURRENT_DIR, filename)
+# 5. SÉLECTION HP2 / UG
+hp2_list = sorted(df_ug['GROUPE HP2'].dropna().unique())
+col1, col2 = st.columns(2)
 
-def clean_data(df: pd.DataFrame) -> pd.DataFrame:
-    """Nettoyage agressif des espaces et normalisation basique."""
-    df = df.copy()
-    df.columns = df.columns.astype(str).str.strip()
-    for col in df.select_dtypes(include=["object"]).columns:
-        df[col] = df[col].astype(str).str.strip()
-    return df
+with col1:
+    sel_h = st.selectbox("Groupe HP2", hp2_list, index=None, placeholder="Choisir...")
 
-def safe_get(row: pd.Series, key: str, default: str = '') -> str:
-    """Accès sécurisé à une valeur de ligne, en renvoyant une chaîne propre."""
-    if key not in row.index:
-        return default or ""
-    val = row[key]
-    if pd.isna(val) or str(val).lower() in ['nan', 'none', '', 'nat']:
-        return default or ""
-    return str(val)
+sel_u = None
+if sel_h:
+    ug_list = sorted(df_ug[df_ug['GROUPE HP2'] == sel_h]['N°UG'].dropna().unique())
+    with col2:
+        sel_u = st.selectbox("Unité UG", ug_list, index=None, placeholder="Choisir...")
 
-@st.cache_data(show_spinner="Chargement des données...")
-def load_data():
-    data = {}
-    missing_files = []
+# 6. AFFICHAGE DES DONNÉES
+if sel_h and sel_u:
 
-    # 1. UG
-    path_ug = get_path(FILES_MAPPING["ug"])
-    if os.path.exists(path_ug):
-        df = pd.read_csv(path_ug, dtype=str)
-        df = clean_data(df)
-        df = df.rename(columns={
-            "N° UG": "N°UG",
-            "N°UG ": "N°UG",
-            "GROUPE (HP2)": "GROUPE HP2",
-            "GROUPE HP2 ": "GROUPE HP2"
-        })
-        data["ug"] = df
+    u_row = df_ug[(df_ug['GROUPE HP2'] == sel_h) & (df_ug['N°UG'] == sel_u)]
+    if u_row.empty:
+        st.warning("Aucune donnée UG trouvée pour cette combinaison.")
+        st.stop()
+
+    u_data = u_row.iloc[0]
+
+    # SHA numérique
+    df_ug["SHA_NUM"] = pd.to_numeric(df_ug.get("SURFACE HABITABLE (SHA)", pd.Series([None]*len(df_ug))), errors="coerce")
+    total_immeuble = df_ug[df_ug["GROUPE HP2"] == sel_h]["SHA_NUM"].sum()
+
+    adresse_col = "Adresse" if "Adresse" in df_ug.columns else None
+    if adresse_col:
+        adresse_ug = u_data[adresse_col]
+        mask_same_addr = (df_ug["GROUPE HP2"] == sel_h) & (df_ug[adresse_col] == adresse_ug)
+        total_addr = df_ug[mask_same_addr]["SHA_NUM"].sum()
+        nb_ug_addr = mask_same_addr.sum()
     else:
-        missing_files.append(FILES_MAPPING["ug"])
+        adresse_ug = "Adresse non disponible"
+        total_addr = None
+        nb_ug_addr = None
 
-    # 2. Bâtiments
-    path_bat = get_path(FILES_MAPPING["batiments"])
-    if os.path.exists(path_bat):
-        df = pd.read_csv(path_bat, dtype=str)
-        df = clean_data(df)
-        df = df.rename(columns={
-            "GROUPE (HP2)": "GROUPE HP2",
-            "GROUPE HP2 ": "GROUPE HP2"
-        })
-        data["batiments"] = df
+    # --- SURFACES ---
+    st.markdown("""
+    <div class="alan-card">
+        <div class="t-label">🏠 LOGEMENT (UG)</div>
+        <div class="t-val">{sha} m²</div>
+        <div class="t-sub">Type {typ} • Étage {etg}</div>
+    </div>
+    """.format(
+        sha=u_data.get("SURFACE HABITABLE (SHA)", "NC"),
+        typ=u_data.get("Type", "NC"),
+        etg=u_data.get("Etage", "NC")
+    ), unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="alan-card">
+        <div class="t-label">🏢 IMMEUBLE (HP2)</div>
+        <div class="t-val">{tot} m²</div>
+        <div class="t-sub">{nb} logements</div>
+    </div>
+    """.format(
+        tot=int(total_immeuble) if pd.notna(total_immeuble) else "NC",
+        nb=len(df_ug[df_ug["GROUPE HP2"] == sel_h])
+    ), unsafe_allow_html=True)
+
+    if adresse_col:
+        st.markdown("""
+        <div class="alan-card">
+            <div class="t-label">📏 SOMME DES SURFACES PAR ADRESSE</div>
+            <div class="t-val">{tot} m²</div>
+            <div class="t-sub">{nb} UG • {addr}</div>
+        </div>
+        """.format(
+            tot=int(total_addr) if pd.notna(total_addr) else "NC",
+            nb=nb_ug_addr,
+            addr=adresse_ug
+        ), unsafe_allow_html=True)
+
+    # --- CHAUFFAGE INDIVIDUEL ---
+    st.markdown("### 🔥 Chauffage individuel")
+    ind_rows = df_ind[df_ind["GROUPE HP2"] == sel_h]
+    if "N°UG" in ind_rows.columns:
+        ind_rows = ind_rows[ind_rows["N°UG"] == sel_u]
+
+    if ind_rows.empty:
+        st.info("Pas de chauffage individuel pour cette UG.")
     else:
-        data["batiments"] = pd.DataFrame()
-        missing_files.append(FILES_MAPPING["batiments"])
+        for _, r in ind_rows.iterrows():
+            st.markdown("""
+            <div class="alan-card">
+                <div class="t-label">Chaudière individuelle</div>
+                <p>Modèle : {mod}<br>
+                Type : {typ}<br>
+                Année : {an}<br>
+                Nb équipements : {nb}<br>
+                Travaux : {trav} – {date}</p>
+            </div>
+            """.format(
+                mod=r.get("Modèle", r.get("Modèles des chaudières", "NC")),
+                typ=r.get("Type", "NC"),
+                an=r.get("Années (chaudières & chauffe-bains)", "NC"),
+                nb=r.get("Nb d'équipements individuels gaz", "NC"),
+                trav=r.get("Travaux réalisés", "NC"),
+                date=r.get("Date d'achèvement travaux", "NC")
+            ), unsafe_allow_html=True)
 
-    # 3. Individuel
-    path_ind = get_path(FILES_MAPPING["ind"])
-    if os.path.exists(path_ind):
-        # header=2 car deux lignes d'entête dans l’export ; à ajuster si ton modèle change. [web:6][web:9]
-        df = pd.read_csv(path_ind, dtype=str, header=2)
-        df = clean_data(df)
-        df = df.rename(columns={"HP2": "GROUPE HP2", "HP2 ": "GROUPE HP2"})
-        data["ind"] = df
+    # --- CHAUFFAGE COLLECTIF ---
+    st.markdown("### 🏢 Chauffage collectif")
+    coll_rows = df_coll[df_coll["GROUPE HP2"] == sel_h]
+
+    if coll_rows.empty:
+        st.info("Pas de chauffage collectif pour ce HP2.")
     else:
-        data["ind"] = pd.DataFrame()
-        missing_files.append(FILES_MAPPING["ind"])
+        for _, r in coll_rows.iterrows():
+            st.markdown("""
+            <div class="alan-card">
+                <div class="t-label">Chauffage collectif</div>
+                <p>
+                🏭 Système : {sys}<br>
+                🔥 Type chaudière : {typ}<br>
+                ⚡ Énergie : {ene}<br>
+                Nb équipements : {nb}<br>
+                Travaux : {trav} – {date}
+                </p>
+            </div>
+            """.format(
+                sys=r.get("Système collectif", r.get("Type de système", "NC")),
+                typ=r.get("Type de chaudière", "NC"),
+                ene=r.get("Type d'énergie", "NC"),
+                nb=r.get("Nb d'équipements collectifs", "NC"),
+                trav=r.get("Travaux réalisés", "NC"),
+                date=r.get("Date d'achèvement travaux", "NC")
+            ), unsafe_allow_html=True)
 
-    # 4. Collectif
-    path_coll = get_path(FILES_MAPPING["coll"])
-    if os.path.exists(path_coll):
-        df = pd.read_csv(path_coll, dtype=str)
-        df = clean_data(df)
-        df = df.rename(columns={
-            "HP2": "GROUPE HP2",
-            "HP2 ": "GROUPE HP2",
-            "Type combustible": "Energie",
-            "Type d'équipement": COL_SYSTEME_COLL
-        })
-        data["coll"] = df
+    # --- PV ---
+    st.markdown("### ☀️ Panneaux solaires photovoltaïques")
+    pv_rows = df_pv[df_pv["Code HP2"] == sel_h]
+    if pv_rows.empty:
+        st.info("Pas de PV pour ce HP2.")
     else:
-        data["coll"] = pd.DataFrame()
-        missing_files.append(FILES_MAPPING["coll"])
-
-    # 5. PV
-    path_pv =
+        for _, r in pv_rows.iterrows
