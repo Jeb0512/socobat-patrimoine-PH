@@ -166,4 +166,4 @@ if sel_h and sel_u:
             st.markdown(f"- {line}")
         st.markdown("</div>", unsafe_allow_html=True)
     else:
-        st.info("Aucun travail recensé
+        st.info("Aucun travail recensé")
