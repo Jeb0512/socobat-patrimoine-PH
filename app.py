@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-# --- CONSTANTES DE COLONNES (Pour éviter les erreurs de syntaxe) ---
+# --- CONSTANTES DE COLONNES ---
 COL_ANNEE_INDIV = 'Années (chaudières & chauffe-bains)\nà titre indicatif'
 COL_NB_EQUIP_INDIV = "Nb d'équipements individuels gaz"
 COL_TRAVAUX_INDIV = 'Travaux réalisés'
@@ -87,17 +87,25 @@ FILES_MAPPING = {
     "th": "5 - PANNEAUX SOLAIRES_NOVEMBRE 2024.xlsx - Thermique.csv"
 }
 
-def clean_columns(df):
-    df.columns = df.columns.str.strip()
-    return df
-
 def get_path(filename):
     return os.path.join(CURRENT_DIR, filename)
 
+def clean_data(df):
+    """Nettoyage agressif des espaces et des colonnes"""
+    # 1. Nettoyer les noms de colonnes
+    df.columns = df.columns.str.strip()
+    
+    # 2. Nettoyer le contenu (enlever les espaces avant/après dans toutes les cellules texte)
+    # Ceci corrige le bug "UG Introuvable" dû aux espaces invisibles '113E1 '
+    for col in df.select_dtypes(['object']).columns:
+        df[col] = df[col].astype(str).str.strip()
+        
+    return df
+
 def safe_get(row, key, default=''):
-    """Récupère une valeur de manière sécurisée (gère NaN et strings vides)"""
+    """Récupère une valeur de manière sécurisée"""
     val = row.get(key, default)
-    if pd.isna(val) or str(val).lower() in ['nan', 'none', '']:
+    if pd.isna(val) or str(val).lower() in ['nan', 'none', '', 'nat']:
         return default if default else ""
     return str(val)
 
@@ -110,7 +118,7 @@ def load_data():
     path_ug = get_path(FILES_MAPPING["ug"])
     if os.path.exists(path_ug):
         df = pd.read_csv(path_ug, dtype=str)
-        df = clean_columns(df)
+        df = clean_data(df)
         df = df.rename(columns={"N° UG": "N°UG", "GROUPE (HP2)": "GROUPE HP2"})
         data["ug"] = df
     else:
@@ -120,7 +128,7 @@ def load_data():
     path_bat = get_path(FILES_MAPPING["batiments"])
     if os.path.exists(path_bat):
         df = pd.read_csv(path_bat, dtype=str)
-        df = clean_columns(df)
+        df = clean_data(df)
         df = df.rename(columns={"GROUPE (HP2)": "GROUPE HP2"})
         data["batiments"] = df
     
@@ -128,7 +136,7 @@ def load_data():
     path_ind = get_path(FILES_MAPPING["ind"])
     if os.path.exists(path_ind):
         df = pd.read_csv(path_ind, dtype=str, header=2)
-        df = clean_columns(df)
+        df = clean_data(df)
         df = df.rename(columns={"HP2": "GROUPE HP2"})
         data["ind"] = df
     else:
@@ -138,7 +146,7 @@ def load_data():
     path_coll = get_path(FILES_MAPPING["coll"])
     if os.path.exists(path_coll):
         df = pd.read_csv(path_coll, dtype=str)
-        df = clean_columns(df)
+        df = clean_data(df)
         df = df.rename(columns={
             "HP2": "GROUPE HP2", 
             "Type combustible": "Energie",
@@ -152,7 +160,7 @@ def load_data():
     path_pv = get_path(FILES_MAPPING["pv"])
     if os.path.exists(path_pv):
         df = pd.read_csv(path_pv, dtype=str)
-        df = clean_columns(df)
+        df = clean_data(df)
         if "Code HP2" in df.columns:
             df = df.rename(columns={"Code HP2": "GROUPE HP2"})
         data["pv"] = df
@@ -163,7 +171,7 @@ def load_data():
     path_th = get_path(FILES_MAPPING["th"])
     if os.path.exists(path_th):
         df = pd.read_csv(path_th, dtype=str)
-        df = clean_columns(df)
+        df = clean_data(df)
         if "Code HP2" in df.columns:
             df = df.rename(columns={"Code HP2": "GROUPE HP2"})
         data["th"] = df
@@ -196,14 +204,24 @@ try:
     
     sel_u = None
     if sel_h:
-        ug_list = sorted(df_ug[df_ug['GROUPE HP2'] == sel_h]['N°UG'].dropna().unique())
+        # Filtrage pour la liste UG
+        subset_hp2 = df_ug[df_ug['GROUPE HP2'] == sel_h]
+        ug_list = sorted(subset_hp2['N°UG'].dropna().unique())
         with col2:
             sel_u = st.selectbox("Unité UG", ug_list, index=None, placeholder="Choisir...")
 
     if sel_h and sel_u:
+        # Recherche EXACTE avec les données nettoyées
         u_row = df_ug[(df_ug['GROUPE HP2'] == sel_h) & (df_ug['N°UG'] == sel_u)]
+        
         if u_row.empty:
-            st.warning("UG introuvable.")
+            st.warning("⚠️ UG introuvable malgré la sélection.")
+            # DIAGNOSTIC
+            with st.expander("🛠️ Voir les détails techniques (Debug)"):
+                st.write(f"Recherche HP2: '{sel_h}'")
+                st.write(f"Recherche UG: '{sel_u}'")
+                st.write("Extrait des données disponibles pour ce HP2 :")
+                st.dataframe(df_ug[df_ug['GROUPE HP2'] == sel_h][['GROUPE HP2', 'N°UG']].head())
             st.stop()
         
         u_data = u_row.iloc[0]
@@ -213,7 +231,7 @@ try:
         total_immeuble = df_ug[df_ug['GROUPE HP2'] == sel_h]['SHA_NUM'].sum()
 
         adresse_ug = "Adresse non disponible"
-        if 'Adresse' in u_data and pd.notna(u_data['Adresse']):
+        if 'Adresse' in u_data and pd.notna(u_data['Adresse']) and u_data['Adresse'] != 'nan':
             adresse_ug = u_data['Adresse']
         elif not df_bat.empty:
             bat_info = df_bat[df_bat['GROUPE HP2'] == sel_h]
@@ -270,7 +288,7 @@ try:
         else:
             st.info("Pas de chauffage individuel gaz recensé pour ce groupe.")
 
-        # 3. Collectif (LE CORRECTIF PRINCIPAL EST ICI)
+        # 3. Collectif
         st.markdown("### 🏢 Chauffage collectif")
         coll_rows = pd.DataFrame()
         if not df_coll.empty and 'GROUPE HP2' in df_coll.columns:
@@ -285,12 +303,9 @@ try:
                 trav = safe_get(r, COL_TRAVAUX_COLL, 'Aucun travaux récents')
                 date_trav = safe_get(r, COL_DATE_TRAVAUX_COLL, '-')
                 
-                # Construction propre de la description
                 desc_sys = sys_t
-                if marque:
-                    desc_sys += f" - {marque}"
-                if mod:
-                    desc_sys += f" ({mod})"
+                if marque: desc_sys += f" - {marque}"
+                if mod: desc_sys += f" ({mod})"
 
                 st.markdown(f"""
                 <div class="alan-card">
