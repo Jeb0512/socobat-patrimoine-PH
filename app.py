@@ -99,15 +99,21 @@ if sel_h and sel_u:
         st.info("Pas de PV.")
     else:
         for _, r in pv_rows.iterrows():
+            surface = r.get("Surface totale de capteurs", "NC")
+            nb = r.get("Nb de capteurs", "NC")
+            type_cap = r.get("Type de capteurs", "NC")
+            incl = r.get("Inclinaison [�/hor]", "NC")
+            orient = r.get("Orientation [�/Sud]", "NC")
+            etat_pv = r.get("Etat de l'installation", "NC")
             st.markdown(f"""
             <div class="alan-card">
                 <div class="t-label">PV – {r.get("Nom du groupe", "NC")}</div>
-                <p>Surface : {r.get("Surface totale de capteurs", "NC")} m²<br>
-                Nb capteurs : {r.get("Nb de capteurs", "NC")}<br>
-                Type : {r.get("Type de capteurs", "NC")}<br>
-                Inclinaison : {r.get("Inclinaison [�/hor]", "NC")}<br>
-                Orientation : {r.get("Orientation [�/Sud]", "NC")}<br>
-                État : {r.get("Etat de l'installation", "NC")}</p>
+                <p>Surface : {surface} m²<br>
+                Nb capteurs : {nb}<br>
+                Type : {type_cap}<br>
+                Inclinaison : {incl}<br>
+                Orientation : {orient}<br>
+                État : {etat_pv}</p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -118,15 +124,21 @@ if sel_h and sel_u:
         st.info("Pas de solaire thermique.")
     else:
         for _, r in th_rows.iterrows():
+            surface = r.get("Surface totale des capteurs (m2)", "NC")
+            nb = r.get("Nb de capteurs", "NC")
+            type_cap = r.get("Type de capteurs", "NC")
+            incl = r.get("Inclinaison  [�/hor]", "NC")
+            orient = r.get("Orientation", "NC")
+            etat_th = r.get("Etat des lieux", "NC")
             st.markdown(f"""
             <div class="alan-card">
                 <div class="t-label">Thermique – {r.get("Nom", "NC")}</div>
-                <p>Surface : {r.get("Surface totale des capteurs (m2)", "NC")} m²<br>
-                Nb capteurs : {r.get("Nb de capteurs", "NC")}<br>
-                Type : {r.get("Type de capteurs", "NC")}<br>
-                Inclinaison : {r.get("Inclinaison  [�/hor]", "NC")}<br>
-                Orientation : {r.get("Orientation", "NC")}<br>
-                État : {r.get("Etat des lieux", "NC")}</p>
+                <p>Surface : {surface} m²<br>
+                Nb capteurs : {nb}<br>
+                Type : {type_cap}<br>
+                Inclinaison : {incl}<br>
+                Orientation : {orient}<br>
+                État : {etat_th}</p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -142,9 +154,11 @@ if sel_h and sel_u:
         date = r.get("Date d'achèvement travaux", "NC")
         resume.append(f"Collectif : {travaux} ({date})")
     for _, r in pv_rows.iterrows():
-        resume.append(f"PV : {r.get('Etat de l'installation', 'NC')}")
+        etat_pv = r.get("Etat de l'installation", "NC")
+        resume.append(f"PV : {etat_pv}")
     for _, r in th_rows.iterrows():
-        resume.append(f"Thermique : {r.get('Etat des lieux', 'NC')}")
+        etat_th = r.get("Etat des lieux", "NC")
+        resume.append(f"Thermique : {etat_th}")
 
     if resume:
         st.markdown("<div class='alan-card'><div class='t-label'>Résumé des travaux</div>", unsafe_allow_html=True)
@@ -152,4 +166,4 @@ if sel_h and sel_u:
             st.markdown(f"- {line}")
         st.markdown("</div>", unsafe_allow_html=True)
     else:
-        st.info("Aucun travail recensé pour ce HP2 / UG.")
+        st.info("Aucun travail recensé
