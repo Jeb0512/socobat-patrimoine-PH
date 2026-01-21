@@ -116,7 +116,6 @@ def load_data():
     if os.path.exists(FILES_MAPPING["coll"]):
         df = pd.read_csv(FILES_MAPPING["coll"], dtype=str)
         df = clean_columns(df)
-        # On mappe explicitement les colonnes importantes pour le système et l'énergie
         df = df.rename(columns={
             "HP2": "GROUPE HP2", 
             "Type combustible": "Energie",
@@ -225,88 +224,10 @@ if datasets and "ug" in datasets:
                 modele = r.get('Modèle', r.get('Modèles des chaudières', 'Non spécifié'))
                 if pd.isna(modele): modele = "Modèle non détecté"
                 
-                st.markdown(f"""
-                <div class="alan-card">
-                    <div class="t-label">Chaudière Individuelle</div>
-                    <div class="t-sub">{modele}</div>
-                    <p>Année : {r.get('Années (chaudières & chauffe-bains)\nà titre indicatif', 'NC')}<br>
-                    Nb équipements : {r.get("Nb d'équipements individuels gaz", 'NC')}<br>
-                    Travaux : {r.get('Travaux réalisés', 'NC')}</p>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("Pas de chauffage individuel gaz recensé pour ce groupe.")
-
-        # 8. CHAUFFAGE COLLECTIF
-        st.markdown("### 🏢 Chauffage collectif")
-        coll_rows = pd.DataFrame()
-        if not df_coll.empty and 'GROUPE HP2' in df_coll.columns:
-            coll_rows = df_coll[df_coll['GROUPE HP2'] == sel_h]
-
-        if not coll_rows.empty:
-            for _, r in coll_rows.iterrows():
-                # Récupération détaillée du système
-                systeme = r.get('Systeme_Type', 'NC')
-                marque = r.get('Marque', '')
-                modele = r.get('Modèle', '')
-                
-                # Construction de la chaîne complète pour le système
-                desc_systeme = f"{systeme}"
-                if pd.notna(marque) and marque:
-                    desc_systeme += f" - {marque}"
-                if pd.notna(modele) and modele:
-                    desc_systeme += f" ({modele})"
-                
-                energie = r.get('Energie', 'NC')
+                # Extraction des variables pour éviter le backslash dans la f-string
+                annee_chaudiere = r.get('Années (chaudières & chauffe-bains)\nà titre indicatif', 'NC')
+                nb_equip = r.get("Nb d'équipements individuels gaz", 'NC')
+                travaux_realises = r.get('Travaux réalisés', 'NC')
 
                 st.markdown(f"""
-                <div class="alan-card">
-                    <div class="t-label">Chaufferie Collective</div>
-                    <div class="t-sub">Système : {desc_systeme}</div>
-                    <div class="t-val" style="font-size: 1.5rem !important;">Énergie : {energie}</div>
-                    <p style="margin-top:10px;">Travaux : {r.get('Travaux réalisés', 'Aucun travaux récents')}<br>
-                    Date : {r.get("Date d'achèvement travaux", '-')}</p>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("Pas de chauffage collectif recensé pour ce HP2.")
-
-        # 9. PV
-        st.markdown("### ☀️ Panneaux solaires PV")
-        pv_rows = pd.DataFrame()
-        if not df_pv.empty and 'GROUPE HP2' in df_pv.columns:
-            pv_rows = df_pv[df_pv['GROUPE HP2'] == sel_h]
-
-        if not pv_rows.empty:
-            for _, r in pv_rows.iterrows():
-                st.markdown(f"""
-                <div class="alan-card">
-                    <div class="t-label">Photovoltaïque</div>
-                    <p>Surface : {r.get('Surface totale de capteurs', 'NC')} m²<br>
-                    Orientation : {r.get('Orientation [°/Sud]', 'NC')}<br>
-                    État : {r.get("Etat de l'installation", 'NC')}</p>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("Pas de PV.")
-
-        # 10. THERMIQUE
-        st.markdown("### ♨️ Solaire Thermique")
-        th_rows = pd.DataFrame()
-        if not df_th.empty and 'GROUPE HP2' in df_th.columns:
-            th_rows = df_th[df_th['GROUPE HP2'] == sel_h]
-
-        if not th_rows.empty:
-            for _, r in th_rows.iterrows():
-                st.markdown(f"""
-                <div class="alan-card">
-                    <div class="t-label">Solaire Thermique</div>
-                    <p>Surface : {r.get('Surface totale des capteurs (m2)', 'NC')} m²<br>
-                    État : {r.get('Etat des lieux', 'NC')}</p>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("Pas de solaire thermique.")
-
-except Exception as e:
-    st.error(f"Une erreur est survenue : {e}")
+                <div class
