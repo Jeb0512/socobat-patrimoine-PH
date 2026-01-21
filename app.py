@@ -2,6 +2,14 @@ import streamlit as st
 import pandas as pd
 import os
 
+# --- CONSTANTES DE COLONNES (Pour éviter les erreurs de syntaxe) ---
+COL_ANNEE_INDIV = 'Années (chaudières & chauffe-bains)\nà titre indicatif'
+COL_NB_EQUIP_INDIV = "Nb d'équipements individuels gaz"
+COL_TRAVAUX_INDIV = 'Travaux réalisés'
+COL_TRAVAUX_COLL = 'Travaux réalisés'
+COL_DATE_TRAVAUX_COLL = "Date d'achèvement travaux"
+COL_SYSTEME_COLL = "Systeme_Type"
+
 # 1. CONFIG PAGE
 st.set_page_config(
     page_title="Socobat Asset - Jeb",
@@ -67,8 +75,7 @@ if "auth" not in st.session_state:
     st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
-# 4. GESTION DES CHEMINS ET FICHIERS
-# On récupère le dossier où se trouve le script app.py
+# 4. GESTION FICHIERS
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 FILES_MAPPING = {
@@ -81,13 +88,18 @@ FILES_MAPPING = {
 }
 
 def clean_columns(df):
-    """Nettoie les noms de colonnes"""
     df.columns = df.columns.str.strip()
     return df
 
 def get_path(filename):
-    """Reconstruit le chemin absolu du fichier"""
     return os.path.join(CURRENT_DIR, filename)
+
+def safe_get(row, key, default=''):
+    """Récupère une valeur de manière sécurisée (gère NaN et strings vides)"""
+    val = row.get(key, default)
+    if pd.isna(val) or str(val).lower() in ['nan', 'none', '']:
+        return default if default else ""
+    return str(val)
 
 @st.cache_data
 def load_data():
@@ -107,12 +119,12 @@ def load_data():
     # 2. Batiments
     path_bat = get_path(FILES_MAPPING["batiments"])
     if os.path.exists(path_bat):
-        df_bat = pd.read_csv(path_bat, dtype=str)
-        df_bat = clean_columns(df_bat)
-        df_bat = df_bat.rename(columns={"GROUPE (HP2)": "GROUPE HP2"})
-        data["batiments"] = df_bat
+        df = pd.read_csv(path_bat, dtype=str)
+        df = clean_columns(df)
+        df = df.rename(columns={"GROUPE (HP2)": "GROUPE HP2"})
+        data["batiments"] = df
     
-    # 3. Chauffage Individuel
+    # 3. Indiv
     path_ind = get_path(FILES_MAPPING["ind"])
     if os.path.exists(path_ind):
         df = pd.read_csv(path_ind, dtype=str, header=2)
@@ -122,7 +134,7 @@ def load_data():
     else:
         data["ind"] = pd.DataFrame()
 
-    # 4. Chauffage Collectif
+    # 4. Collectif
     path_coll = get_path(FILES_MAPPING["coll"])
     if os.path.exists(path_coll):
         df = pd.read_csv(path_coll, dtype=str)
@@ -130,7 +142,7 @@ def load_data():
         df = df.rename(columns={
             "HP2": "GROUPE HP2", 
             "Type combustible": "Energie",
-            "Type d'équipement": "Systeme_Type"
+            "Type d'équipement": COL_SYSTEME_COLL
         })
         data["coll"] = df
     else:
@@ -160,20 +172,13 @@ def load_data():
         
     return data, missing_files
 
-# --- MAIN APP ---
+# --- APP ---
 datasets, missing = load_data()
 
-# Si le fichier principal UG manque, on arrête tout et on affiche pourquoi
 if "ug" not in datasets:
-    st.error("❌ ERREUR CRITIQUE : Fichiers introuvables")
-    st.write(f"Le script cherche les fichiers ici : **{CURRENT_DIR}**")
-    st.write("Fichier manquant essentiel :")
-    st.code(FILES_MAPPING["ug"])
-    if missing:
-        st.write("Autres fichiers non trouvés :", missing)
+    st.error("❌ ERREUR : Fichier UG introuvable.")
     st.stop()
 
-# Si on arrive ici, c'est que les données sont chargées
 try:
     df_ug = datasets["ug"]
     df_bat = datasets.get("batiments", pd.DataFrame())
@@ -184,7 +189,6 @@ try:
 
     st.markdown("<h2>🏢 Assistant DPE logement – Socobat Asset</h2>", unsafe_allow_html=True)
 
-    # SELECTEURS
     hp2_list = sorted(df_ug['GROUPE HP2'].dropna().unique())
     col1, col2 = st.columns(2)
     with col1:
@@ -204,7 +208,7 @@ try:
         
         u_data = u_row.iloc[0]
 
-        # CALCULS SURFACES
+        # CALCULS
         df_ug['SHA_NUM'] = pd.to_numeric(df_ug.get('SURFACE HABITABLE (SHA)', pd.Series([0]*len(df_ug))), errors='coerce').fillna(0)
         total_immeuble = df_ug[df_ug['GROUPE HP2'] == sel_h]['SHA_NUM'].sum()
 
@@ -220,12 +224,10 @@ try:
         
         st.markdown(f"<p style='color:#6366F1; font-weight:700; margin-left:5px;'>📍 {sel_h} – UG {sel_u}</p>", unsafe_allow_html=True)
 
-        # --- AFFICHAGE CARTES ---
-        
         # 1. Surfaces
-        val_sha = u_data.get('SURFACE HABITABLE (SHA)', 'NC')
-        val_type = u_data.get('Type', 'NC')
-        val_etage = u_data.get('Etage', 'NC')
+        val_sha = safe_get(u_data, 'SURFACE HABITABLE (SHA)', 'NC')
+        val_type = safe_get(u_data, 'Type', 'NC')
+        val_etage = safe_get(u_data, 'Etage', 'NC')
         
         c_a, c_b = st.columns(2)
         with c_a:
@@ -245,7 +247,7 @@ try:
             </div>
             """, unsafe_allow_html=True)
 
-        # 2. Chauffage Individuel
+        # 2. Indiv
         st.markdown("### 🔥 Chauffage individuel")
         ind_rows = pd.DataFrame()
         if not df_ind.empty and 'GROUPE HP2' in df_ind.columns:
@@ -253,12 +255,10 @@ try:
             
         if not ind_rows.empty:
             for _, r in ind_rows.iterrows():
-                # Extraction des variables (Sécurisé)
-                modele = r.get('Modèle', r.get('Modèles des chaudières', 'Non spécifié'))
-                if pd.isna(modele): modele = "Modèle non détecté"
-                annee = r.get('Années (chaudières & chauffe-bains)\nà titre indicatif', 'NC')
-                nb_eq = r.get("Nb d'équipements individuels gaz", 'NC')
-                trav = r.get('Travaux réalisés', 'NC')
+                modele = safe_get(r, 'Modèle', '') or safe_get(r, 'Modèles des chaudières', 'Modèle non détecté')
+                annee = safe_get(r, COL_ANNEE_INDIV, 'NC')
+                nb_eq = safe_get(r, COL_NB_EQUIP_INDIV, 'NC')
+                trav = safe_get(r, COL_TRAVAUX_INDIV, 'NC')
 
                 st.markdown(f"""
                 <div class="alan-card">
@@ -270,7 +270,7 @@ try:
         else:
             st.info("Pas de chauffage individuel gaz recensé pour ce groupe.")
 
-        # 3. Chauffage Collectif
+        # 3. Collectif (LE CORRECTIF PRINCIPAL EST ICI)
         st.markdown("### 🏢 Chauffage collectif")
         coll_rows = pd.DataFrame()
         if not df_coll.empty and 'GROUPE HP2' in df_coll.columns:
@@ -278,21 +278,71 @@ try:
 
         if not coll_rows.empty:
             for _, r in coll_rows.iterrows():
-                # Extraction des variables (Sécurisé)
-                sys_t = r.get('Systeme_Type', 'NC')
-                marque = r.get('Marque', '')
-                mod = r.get('Modèle', '')
-                energie = r.get('Energie', 'NC')
-                trav = r.get('Travaux réalisés', 'Aucun travaux récents')
-                date_trav = r.get("Date d'achèvement travaux", '-')
+                sys_t = safe_get(r, COL_SYSTEME_COLL, 'NC')
+                marque = safe_get(r, 'Marque')
+                mod = safe_get(r, 'Modèle')
+                energie = safe_get(r, 'Energie', 'NC')
+                trav = safe_get(r, COL_TRAVAUX_COLL, 'Aucun travaux récents')
+                date_trav = safe_get(r, COL_DATE_TRAVAUX_COLL, '-')
                 
-                # Construction description
-                desc_sys = f"{sys_t}"
-                if pd.notna(marque) and marque: desc_sys += f" - {marque}"
-                if pd.notna(mod) and mod: desc_sys += f" ({mod})"
+                # Construction propre de la description
+                desc_sys = sys_t
+                if marque:
+                    desc_sys += f" - {marque}"
+                if mod:
+                    desc_sys += f" ({mod})"
 
                 st.markdown(f"""
                 <div class="alan-card">
                     <div class="t-label">Chaufferie Collective</div>
                     <div class="t-sub">Système : {desc_sys}</div>
-                    <div class="t-val" style="font
+                    <div class="t-val" style="font-size: 1.5rem !important;">Énergie : {energie}</div>
+                    <p style="margin-top:10px;">Travaux : {trav}<br>Date : {date_trav}</p>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("Pas de chauffage collectif recensé pour ce HP2.")
+
+        # 4. PV
+        st.markdown("### ☀️ Panneaux solaires PV")
+        pv_rows = pd.DataFrame()
+        if not df_pv.empty and 'GROUPE HP2' in df_pv.columns:
+            pv_rows = df_pv[df_pv['GROUPE HP2'] == sel_h]
+
+        if not pv_rows.empty:
+            for _, r in pv_rows.iterrows():
+                surf = safe_get(r, 'Surface totale de capteurs', 'NC')
+                ori = safe_get(r, 'Orientation [°/Sud]', 'NC')
+                etat = safe_get(r, "Etat de l'installation", 'NC')
+
+                st.markdown(f"""
+                <div class="alan-card">
+                    <div class="t-label">Photovoltaïque</div>
+                    <p>Surface : {surf} m²<br>Orientation : {ori}<br>État : {etat}</p>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("Pas de PV.")
+
+        # 5. Thermique
+        st.markdown("### ♨️ Solaire Thermique")
+        th_rows = pd.DataFrame()
+        if not df_th.empty and 'GROUPE HP2' in df_th.columns:
+            th_rows = df_th[df_th['GROUPE HP2'] == sel_h]
+
+        if not th_rows.empty:
+            for _, r in th_rows.iterrows():
+                surf = safe_get(r, 'Surface totale des capteurs (m2)', 'NC')
+                etat = safe_get(r, 'Etat des lieux', 'NC')
+
+                st.markdown(f"""
+                <div class="alan-card">
+                    <div class="t-label">Solaire Thermique</div>
+                    <p>Surface : {surf} m²<br>État : {etat}</p>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("Pas de solaire thermique.")
+
+except Exception as e:
+    st.error(f"Une erreur inattendue est survenue : {e}")
