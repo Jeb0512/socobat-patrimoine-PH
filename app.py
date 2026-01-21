@@ -57,6 +57,8 @@ if sel_h and sel_u:
         st.info("Pas de chauffage individuel.")
     else:
         for _, r in ind_rows.iterrows():
+            travaux = r.get("Travaux réalisés", "NC")
+            date = r.get("Date d'achèvement travaux", "NC")
             st.markdown(f"""
             <div class="alan-card">
                 <div class="t-label">Chaudière individuelle</div>
@@ -64,7 +66,7 @@ if sel_h and sel_u:
                 Type : {r.get("Type", "NC")}<br>
                 Année : {r.get("Années (chaudières & chauffe-bains)", "NC")}<br>
                 Nb équipements : {r.get("Nb d'équipements individuels gaz", "NC")}<br>
-                Travaux : {r.get("Travaux réalisés", "NC")} – {r.get("Date d'achèvement travaux", "NC")}</p>
+                Travaux : {travaux} – {date}</p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -75,6 +77,8 @@ if sel_h and sel_u:
         st.info("Pas de chauffage collectif.")
     else:
         for _, r in coll_rows.iterrows():
+            travaux = r.get("Travaux réalisés", "NC")
+            date = r.get("Date d'achèvement travaux", "NC")
             st.markdown(f"""
             <div class="alan-card">
                 <div class="t-label">Chauffage collectif</div>
@@ -83,7 +87,7 @@ if sel_h and sel_u:
                 🔥 Type chaudière : {r.get("Type de chaudière", "NC")}<br>
                 ⚡ Énergie : {r.get("Type d'énergie", "NC")}<br>
                 Nb équipements : {r.get("Nb d'équipements collectifs", "NC")}<br>
-                Travaux : {r.get("Travaux réalisés", "NC")} – {r.get("Date d'achèvement travaux", "NC")}
+                Travaux : {travaux} – {date}
                 </p>
             </div>
             """, unsafe_allow_html=True)
@@ -130,11 +134,15 @@ if sel_h and sel_u:
     st.markdown("### 🛠️ Résumé des travaux")
     resume = []
     for _, r in ind_rows.iterrows():
-        resume.append(f"Individuel : {r.get('Travaux réalisés', 'NC')} ({r.get('Date d\'achèvement travaux', 'NC')})")
+        travaux = r.get("Travaux réalisés", "NC")
+        date = r.get("Date d'achèvement travaux", "NC")
+        resume.append(f"Individuel : {travaux} ({date})")
     for _, r in coll_rows.iterrows():
-        resume.append(f"Collectif : {r.get('Travaux réalisés', 'NC')} ({r.get('Date d\'achèvement travaux', 'NC')})")
+        travaux = r.get("Travaux réalisés", "NC")
+        date = r.get("Date d'achèvement travaux", "NC")
+        resume.append(f"Collectif : {travaux} ({date})")
     for _, r in pv_rows.iterrows():
-        resume.append(f"PV : {r.get('Etat de l\'installation', 'NC')}")
+        resume.append(f"PV : {r.get('Etat de l'installation', 'NC')}")
     for _, r in th_rows.iterrows():
         resume.append(f"Thermique : {r.get('Etat des lieux', 'NC')}")
 
