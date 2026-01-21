@@ -107,7 +107,8 @@ df_coll = load_csv(source_for("coll"))
 df_pv = load_csv(source_for("pv"))
 df_th = load_csv(source_for("th"))
 
-missing = [name for name,df in ("UG",df_ug),("IND",df_ind),("COLL",df_coll),("PV",df_pv),("TH",df_th) if df is None]
+# Fix syntax: build sequence of tuples for comprehension
+missing = [name for name, df in ("UG", df_ug), ("IND", df_ind), ("COLL", df_coll), ("PV", df_pv), ("TH", df_th) if df is None]
 if missing:
     st.error(f"Fichiers manquants ou illisibles : {', '.join(missing)}. Vérifie les noms ou upload via l'UI ci‑dessus.")
     st.info("Conseils rapides :\n- Vérifie que les CSV sont bien au même emplacement que app.py.\n- Vérifie la casse et les espaces spéciaux dans les noms de fichiers.\n- Si les fichiers existent mais ne sont pas détectés, renomme-les pour inclure des mots-clés comme 'UG', 'SURFACE', 'INDIVIDUEL', 'COLLECTIF', 'PV', 'THERMIQUE'.")
@@ -152,13 +153,7 @@ if sel_h and sel_u:
     sh = u_data.get("SURFACE HABITABLE (SHA)", "NC")
     typ = u_data.get("Type", "NC")
     etage = u_data.get("Etage", "NC")
-st.markdown(f"""
-    <div class="alan-card">
-        <div class="t-label">🏠 LOGEMENT (UG)</div>
-        <div class="t-val">{sh} m²</div>
-        <div class="t-sub">Type {typ} • Étage {etage}</div>
-    </div>
-""", unsafe_allow_html=True)
+st.markdown(f"\n    <div class=\"alan-card\">\n        <div class=\"t-label\">🏠 LOGEMENT (UG)</div>\n        <div class=\"t-val\">{sh} m²</div>\n        <div class=\"t-sub\">Type {typ} • Étage {etage}</div>\n    </div>\n    ", unsafe_allow_html=True)
 
     # Chauffage individuel
     st.markdown("### 🔥 Chauffage individuel")
@@ -171,16 +166,7 @@ st.markdown(f"""
         for _, r in ind_rows.iterrows():
             travaux = r.get("Travaux réalisés", "NC")
             date = r.get("Date d'achèvement travaux", "NC")
-            st.markdown(f"""
-            <div class="alan-card">  
-                <div class="t-label">Chaudière individuelle</div>
-                <p>Modèle : {r.get("Modèles des chaudières", "NC")}<br>
-                Type : {r.get("Type", "NC")}<br>
-                Année : {r.get("Années (chaudières & chauffe-bains)", "NC")}<br>
-                Nb équipements : {r.get("Nb d'équipements individuels gaz", "NC")}<br>
-                Travaux : {travaux} – {date}</p>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(f"\n            <div class=\"alan-card\">\n                <div class=\"t-label\">Chaudière individuelle</div>\n                <p>Modèle : {r.get("Modèles des chaudières", "NC")}<br>\n                Type : {r.get("Type", "NC")}<br>\n                Année : {r.get("Années (chaudières & chauffe-bains)", "NC")}<br>\n                Nb équipements : {r.get("Nb d'équipements individuels gaz", "NC")}<br>\n                Travaux : {travaux} – {date}</p>\n            </div>\n            ", unsafe_allow_html=True)
 
     # Chauffage collectif
     st.markdown("### 🏢 Chauffage collectif")
@@ -191,19 +177,8 @@ st.markdown(f"""
         for _, r in coll_rows.iterrows():
             travaux = r.get("Travaux réalisés", "NC")
             date = r.get("Date d'achèvement travaux", "NC")
-            system = r.get("Système collectif", r.get("Type de système", "NC"))
-            st.markdown(f"""
-            <div class="alan-card">
-                <div class="t-label">Chauffage collectif</div>
-                <p>
-                🏭 Système : {system}<br>
-                🔥 Type chaudière : {r.get("Type de chaudière", "NC")}<br>
-                ⚡ Énergie : {r.get("Type d'énergie", "NC")}<br>
-                Nb équipements : {r.get("Nb d'équipements collectifs", "NC")}<br>
-                Travaux : {travaux} – {date}
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
+            system = r.get("Système collectif", r.get("Type de système", "NC")
+            st.markdown(f"\n            <div class=\"alan-card\">\n                <div class=\"t-label\">Chauffage collectif</div>\n                <p>\n                🏭 Système : {system}<br>\n                🔥 Type chaudière : {r.get("Type de chaudière", "NC")}<br>\n                ⚡ Énergie : {r.get("Type d'énergie", "NC")}<br>\n                Nb équipements : {r.get("Nb d'équipements collectifs", "NC")}<br>\n                Travaux : {travaux} – {date}\n                </p>\n            </div>\n            ", unsafe_allow_html=True)
 
     # PV
     st.markdown("### ☀️ Panneaux solaires photovoltaïques")
@@ -217,19 +192,9 @@ st.markdown(f"""
             nb = r.get("Nb de capteurs", "NC")
             type_cap = r.get("Type de capteurs", "NC")
             incl = r.get("Inclinaison [°/hor]", r.get("Inclinaison [°/hor]", r.get("Inclinaison [�/hor]", "NC")))
-            orient = r.get("Orientation [°/Sud]", r.get("Orientation", "NC"))
+            orient = r.get("Orientation [°/Sud]", r.get("Orientation", "NC")")
             etat_pv = r.get("Etat de l'installation", "NC")
-            st.markdown(f"""
-            <div class="alan-card">
-                <div class="t-label">PV – {r.get("Nom du groupe", "NC")}</div>
-                <p>Surface : {surface} m²<br>
-                Nb capteurs : {nb}<br>
-                Type : {type_cap}<br>
-                Inclinaison : {incl}<br>
-                Orientation : {orient}<br>
-                État : {etat_pv}</p>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(f"\n            <div class=\"alan-card\">\n                <div class=\"t-label\">PV – {r.get("Nom du groupe", "NC")}</div>\n                <p>Surface : {surface} m²<br>\n                Nb capteurs : {nb}<br>\n                Type : {type_cap}<br>\n                Inclinaison : {incl}<br>\n                Orientation : {orient}<br>\n                État : {etat_pv}</p>\n            </div>\n            ", unsafe_allow_html=True)
 
     # Thermique
     st.markdown("### ♨️ Panneaux solaires thermiques")
@@ -239,23 +204,13 @@ st.markdown(f"""
         st.info("Pas de solaire thermique.")
     else:
         for _, r in th_rows.iterrows():
-            surface = r.get("Surface totale des capteurs (m2)", r.get("Surface totale des capteurs", "NC"))
+            surface = r.get("Surface totale des capteurs (m2)", r.get("Surface totale des capteurs", "NC")
             nb = r.get("Nb de capteurs", "NC")
             type_cap = r.get("Type de capteurs", "NC")
-            incl = r.get("Inclinaison  [°/hor]", r.get("Inclinaison  [�/hor]", "NC"))
+            incl = r.get("Inclinaison  [°/hor]", r.get("Inclinaison  [�/hor]", "NC")
             orient = r.get("Orientation", "NC")
-            etat_th = r.get("Etat des lieux", r.get("Etat", "NC"))
-            st.markdown(f"""
-            <div class="alan-card">
-                <div class="t-label">Thermique – {r.get("Nom", "NC")}</div>
-                <p>Surface : {surface} m²<br>
-                Nb capteurs : {nb}<br>
-                Type : {type_cap}<br>
-                Inclinaison : {incl}<br>
-                Orientation : {orient}<br>
-                État : {etat_th}</p>
-            </div>
-            """, unsafe_allow_html=True)
+            etat_th = r.get("Etat des lieux", r.get("Etat", "NC")
+            st.markdown(f"\n            <div class=\"alan-card\">\n                <div class=\"t-label\">Thermique – {r.get("Nom", "NC")}</div>\n                <p>Surface : {surface} m²<br>\n                Nb capteurs : {nb}<br>\n                Type : {type_cap}<br>\n                Inclinaison : {incl}<br>\n                Orientation : {orient}<br>\n                État : {etat_th}</p>\n            </div>\n            ", unsafe_allow_html=True)
 
     # Résumé des travaux
     st.markdown("### 🛠️ Résumé des travaux")
