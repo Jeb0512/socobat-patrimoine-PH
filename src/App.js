@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as XLSX from 'xlsx';
-import { Search, MapPin, Zap, Loader2, Building2, Layers, Sun, ClipboardCheck } from 'lucide-react';
+import { Search, MapPin, Zap, Loader2, Building2, Sun, ClipboardCheck, Info } from 'lucide-react';
 
 const FICHIERS_EXCEL = [
   "1-equipements chauffage collectif_novembre 2024.xlsx",
@@ -10,180 +10,154 @@ const FICHIERS_EXCEL = [
   "5 - panneaux solaires_novembre 2024.xlsx"
 ];
 
-// Nettoyeur universel de codes (HP2 ou UG)
-const cleanCode = (val) => {
-  if (!val) return "";
-  let s = String(val).trim().toUpperCase().replace(/\s/g, '');
-  // Si c'est un code UG numérique, on le force sur 6 caractères
-  if (/^\d+$/.test(s) && s.length <= 6) return s.padStart(6, '0');
-  return s;
-};
+const clean = (v) => String(v || "").trim().toUpperCase();
 
 export default function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("Chargement...");
+  const [status, setStatus] = useState("Synchro...");
   const [filters, setFilters] = useState({ hp2: '', ug: '' });
 
   useEffect(() => {
-    const loadAll = async () => {
+    const load = async () => {
       let all = [];
-      for (const file of FICHIERS_EXCEL) {
+      for (const f of FICHIERS_EXCEL) {
         try {
-          setStatus(`Lecture : ${file}`);
-          const res = await fetch(`/${encodeURIComponent(file)}`);
+          setStatus(`Lecture : ${f}`);
+          const res = await fetch(`/${encodeURIComponent(f)}`);
           if (!res.ok) continue;
           const ab = await res.arrayBuffer();
           const wb = XLSX.read(ab, { type: 'array' });
-          wb.SheetNames.forEach(sheet => {
-            const json = XLSX.utils.sheet_to_json(wb.Sheets[sheet], { defval: "" });
-            all.push(...json.map(row => {
-              const cleanedRow = {};
-              // On indexe chaque ligne avec des clés simplifiées
-              Object.keys(row).forEach(k => {
-                cleanedRow[k.trim().toUpperCase()] = String(row[k]).trim();
-              });
-              return { ...cleanedRow, _RAW: row, _FILE: file };
-            }));
+          wb.SheetNames.forEach(sn => {
+            const json = XLSX.utils.sheet_to_json(wb.Sheets[sn], { defval: "" });
+            all.push(...json.map(r => ({ ...r, _F: f })));
           });
         } catch (e) { console.error(e); }
       }
       setData(all);
       setLoading(false);
     };
-    loadAll();
+    load();
   }, []);
 
-  const consolidatedResults = useMemo(() => {
-    const sHP2 = cleanCode(filters.hp2);
-    const sUG = cleanCode(filters.ug);
+  const results = useMemo(() => {
+    const sH = clean(filters.hp2);
+    const sU = clean(filters.ug);
+    if (!sH && !sU) return [];
 
-    if (!sHP2 && !sUG) return [];
-
-    // 1. Trouver le code HP2 de référence
-    let activeHP2 = sHP2;
-    let activeUGData = null;
-
-    if (sUG) {
-      // Si on cherche une UG, on scanne tous les fichiers pour trouver le HP2 associé
-      const ugRow = data.find(row => {
-        return Object.keys(row).some(k => 
-          (k.includes("UG") || k.includes("UNIT")) && cleanCode(row[k]) === sUG
-        );
-      });
-      if (ugRow) {
-        activeUGData = ugRow;
-        // On cherche le HP2 dans cette même ligne
-        const hp2Key = Object.keys(ugRow).find(k => k.includes("HP2") || k.includes("GROUPE"));
-        if (hp2Key) activeHP2 = cleanCode(ugRow[hp2Key]);
-      }
-    }
-
-    if (!activeHP2) return [];
-
-    // 2. Récupérer TOUTES les lignes de TOUS les fichiers pour ce HP2
-    const groupRows = data.filter(row => {
-      return Object.keys(row).some(k => 
-        (k.includes("HP2") || k.includes("GROUPE")) && cleanCode(row[k]) === activeHP2
-      );
+    // 1. Trouver les lignes qui matchent
+    const matches = data.filter(r => {
+      const rowStr = Object.values(r).join(" ").toUpperCase();
+      const matchH = sH === "" || rowStr.includes(sH);
+      const matchU = sU === "" || rowStr.includes(sU);
+      return matchH && matchU;
     });
 
-    // 3. Extraire les meilleures données (Fusion)
-    const findBest = (terms) => {
-      for (const row of groupRows) {
-        for (const k of Object.keys(row)) {
-          if (terms.some(t => k.includes(t))) {
-            const v = row[k];
-            if (v && v !== "0" && v !== "N/A" && v !== "0.0") return v;
+    // 2. Grouper par HP2
+    const groups = {};
+    matches.forEach(r => {
+      const id = clean(r['GROUPE (HP2)'] || r['HP2'] || r['CODE_HP2'] || r['GROUPE'] || r['CODE_SITE']);
+      if (!id || id === "N/C") return;
+      if (!groups[id]) groups[id] = [];
+      groups[id].push(r);
+    });
+
+    return Object.keys(groups).map(id => {
+      const rows = data.filter(r => clean(r['GROUPE (HP2)'] || r['HP2'] || r['CODE_HP2'] || r['GROUPE']) === id);
+      
+      const get = (keys) => {
+        for (const r of rows) {
+          for (const k of Object.keys(r)) {
+            if (keys.some(tk => k.toUpperCase().includes(tk))) {
+              const v = String(r[k]).trim();
+              if (v && v !== "0" && v !== "0.0" && v !== "N/A") return v;
+            }
           }
         }
-      }
-      return "N/C";
-    };
+        return "N/C";
+      };
 
-    return [{
-      hp2: activeHP2,
-      nom: findBest(["NOM", "LIBELLE"]),
-      adresse: findBest(["ADRESSE", "LOCALISATION", "RUE"]),
-      // Surface globale (Fichier 3 ou 1)
-      surfTotal: findBest(["SURFACE CHAUFFEE", "SCH", "SUT", "SURFACE_UTILE"]),
-      // Surface spécifique de l'UG si recherchée
-      surfUG: activeUGData ? (activeUGData["SURFACE HABITABLE (SHA)"] || activeUGData["SHA"] || activeUGData["SURFACE"]) : null,
-      ugID: sUG || null,
-      equip: findBest(["EQUIPEMENT", "SYSTEME", "CHAUFFAGE", "DESIGNATION", "DESCRIPTIF"]),
-      energie: findBest(["ENERGIE", "COMBUSTIBLE", "TYPE"]),
-      isSolaire: groupRows.some(r => r._FILE.includes("panneaux")),
-      isIndividuel: groupRows.some(r => r._FILE.includes("individuel"))
-    }];
+      // Spécifique pour l'UG cherchée
+      const ugRow = rows.find(r => sU !== "" && Object.values(r).some(v => clean(v).includes(sU)));
+
+      return {
+        id,
+        nom: get(["NOM", "LIBELLE"]),
+        adr: get(["ADRESSE", "LOCALISATION", "RUE"]),
+        sch: get(["SURFACE CHAUFFEE", "SCH", "SUT", "SURFACE_UTILE"]),
+        sha: ugRow ? (ugRow['SURFACE HABITABLE (SHA)'] || ugRow['SHA'] || ugRow['SURFACE'] || "N/C") : null,
+        ug: ugRow ? (ugRow['N° UG'] || ugRow['UG'] || sU) : null,
+        equip: get(["EQUIPEMENT", "SYSTEME", "CHAUFFAGE", "CHAUDIERE", "DESIGNATION"]),
+        nrj: get(["ENERGIE", "COMBUSTIBLE", "TYPE"]),
+        sol: rows.some(r => r._F.includes("panneaux")),
+        ind: rows.some(r => r._F.includes("individuel"))
+      };
+    });
   }, [data, filters]);
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 pb-20 font-sans">
-      <header className="bg-blue-600 p-6 shadow-xl sticky top-0 z-50 flex justify-between items-center text-white">
-        <div className="flex items-center gap-3">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-20">
+      <header className="bg-[#1E40AF] p-5 shadow-xl sticky top-0 z-50 flex justify-between items-center text-white">
+        <div className="flex items-center gap-2">
           <Building2 size={24} />
-          <h1 className="font-black text-xl uppercase italic">Socobat PH</h1>
+          <h1 className="font-black text-lg uppercase tracking-tighter">Socobat <span className="text-blue-200">Patrimoine</span></h1>
         </div>
-        <div className="text-[10px] font-bold bg-black/20 px-3 py-1 rounded-full uppercase">{data.length} Lignes</div>
+        <div className="text-[10px] font-bold bg-white/20 px-3 py-1 rounded-full uppercase">{data.length} Lignes</div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 pt-10">
-        {/* BLOC RECHERCHE */}
-        <div className="bg-white p-8 rounded-[40px] shadow-2xl shadow-blue-900/10 mb-10 flex flex-col md:flex-row gap-6">
+      <main className="max-w-4xl mx-auto px-4 pt-8">
+        <div className="bg-white p-6 rounded-[32px] shadow-sm mb-8 flex flex-col md:flex-row gap-4 border border-slate-100">
           <div className="flex-1">
-            <label className="text-[10px] font-black text-slate-400 uppercase mb-2 block ml-2">Code Groupe (HP2)</label>
-            <input 
-              placeholder="Ex: 119AL" 
-              className="w-full p-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 font-bold"
-              onChange={e => setFilters({...filters, hp2: e.target.value})}
-            />
+            <input placeholder="Groupe (ex: 119AL)" className="w-full p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold" onChange={e => setFilters({...filters, hp2: e.target.value})} />
           </div>
           <div className="flex-1">
-            <label className="text-[10px] font-black text-blue-400 uppercase mb-2 block ml-2">N° UG (Logement)</label>
-            <input 
-              placeholder="Ex: 015179" 
-              className="w-full p-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 font-bold text-blue-600"
-              onChange={e => setFilters({...filters, ug: e.target.value})}
-            />
+            <input placeholder="N° UG (ex: 151799)" className="w-full p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold text-blue-600" onChange={e => setFilters({...filters, ug: e.target.value})} />
           </div>
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center py-20"><Loader2 className="animate-spin text-blue-600" size={40} /></div>
+          <div className="flex flex-col items-center py-20 text-slate-400 font-bold uppercase text-xs tracking-widest"><Loader2 className="animate-spin mb-2" /> {status}</div>
         ) : (
-          <div className="space-y-8">
-            {consolidatedResults.map((r, i) => (
-              <div key={i} className="bg-white rounded-[45px] shadow-sm border border-slate-200 overflow-hidden border-b-8 border-b-blue-600">
-                <div className="p-10">
+          <div className="space-y-6">
+            {results.map((r, i) => (
+              <div key={i} className="bg-white rounded-[40px] shadow-sm border border-slate-100 overflow-hidden border-b-8 border-b-blue-600 hover:shadow-2xl transition-all">
+                <div className="p-8">
                   <div className="flex gap-2 mb-4">
-                    <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-lg">ID: {r.hp2}</span>
-                    {r.isSolaire && <span className="bg-orange-500 text-white text-[10px] font-black px-3 py-1 rounded-lg uppercase flex items-center gap-1"><Sun size={12}/> Solaire</span>}
+                    <span className="bg-slate-900 text-white text-[9px] font-black px-2 py-1 rounded">ID: {r.id}</span>
+                    {r.sol && <span className="bg-orange-500 text-white text-[9px] font-black px-2 py-1 rounded uppercase flex items-center gap-1"><Sun size={10}/> Solaire</span>}
+                    <span className={`text-[9px] font-black px-2 py-1 rounded uppercase ${r.ind ? 'bg-purple-100 text-purple-700' : 'bg-emerald-100 text-emerald-700'}`}>
+                      {r.ind ? 'Individuel' : 'Collectif'}
+                    </span>
                   </div>
-                  <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-10 leading-none">{r.nom}</h3>
-                  <div className="grid md:grid-cols-2 gap-10">
-                    <div className="space-y-8">
+
+                  <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-8">{r.nom}</h2>
+
+                  <div className="grid md:grid-cols-2 gap-8 pt-6 border-t border-slate-50">
+                    <div className="space-y-6">
                       <div className="flex gap-4">
-                        <MapPin size={24} className="text-blue-600 shrink-0" />
-                        <p className="font-bold text-slate-700 text-lg leading-tight">{r.adresse}</p>
+                        <MapPin size={20} className="text-blue-500 shrink-0" />
+                        <p className="font-bold text-slate-600 text-sm leading-tight">{r.adr}</p>
                       </div>
-                      <div className="bg-blue-600 text-white p-8 rounded-[40px] shadow-xl">
-                        <div className="flex items-center gap-2 mb-6 opacity-60 border-b border-white/20 pb-2 uppercase text-[9px] font-black"><ClipboardCheck size={16}/> Synthèse DPE</div>
-                        <div className="flex justify-between items-end mb-6">
-                           <p className="text-xs font-bold uppercase tracking-tighter">Surface Logement <span className="block opacity-60 text-[8px]">UG: {r.ugID || "N/C"}</span></p>
-                           <p className="text-3xl font-black">{r.surfUG ? `${r.surfUG} m²` : '--'}</p>
+
+                      <div className="bg-[#2563EB] text-white p-6 rounded-[32px] shadow-lg shadow-blue-100">
+                        <div className="flex items-center gap-2 mb-4 opacity-70 border-b border-white/20 pb-2 uppercase text-[9px] font-black"><ClipboardCheck size={14}/> Données Surfaces</div>
+                        <div className="flex justify-between items-end mb-4">
+                           <p className="text-xs font-bold uppercase">UG (Logement) <span className="block opacity-60 text-[8px]">{r.ug || "--"}</span></p>
+                           <p className="text-2xl font-black tracking-tighter">{r.sha ? `${r.sha} m²` : '--'}</p>
                         </div>
                         <div className="flex justify-between items-end">
-                           <p className="text-xs font-bold uppercase tracking-tighter">Surface Groupe <span className="block opacity-60 text-[8px]">Ensemble HP2</span></p>
-                           <p className="text-xl font-black">{r.surfTotal} m²</p>
+                           <p className="text-xs font-bold uppercase">Groupe (Total)</p>
+                           <p className="text-xl font-black tracking-tighter">{r.sch} m²</p>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-slate-50 p-8 rounded-[40px] border border-slate-100 h-fit">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-2"><Zap size={16}/> Chaufferie</p>
-                      <p className="font-bold text-slate-800 text-sm leading-relaxed mb-6 italic">{r.equip}</p>
+
+                    <div className="bg-slate-50 p-6 rounded-[32px] border border-slate-100">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-2"><Zap size={14}/> Technique</p>
+                      <p className="font-bold text-slate-800 text-xs leading-relaxed mb-6 italic">{r.equip}</p>
                       <div className="border-t border-slate-200 pt-4 flex justify-between font-black text-[10px] uppercase">
                          <span className="text-slate-400">Énergie :</span>
-                         <span className="text-blue-600">{r.energie}</span>
+                         <span className="text-blue-600">{r.nrj}</span>
                       </div>
                     </div>
                   </div>
