@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as XLSX from 'xlsx';
-import { Search, MapPin, Thermometer, Zap, Loader2, Building2, AlertTriangle, Sun, Home } from 'lucide-react';
+import { Search, MapPin, Thermometer, Zap, Loader2, Building2, AlertTriangle, Sun, Home, Layers } from 'lucide-react';
 
 const FICHIERS_EXCEL = [
   "1-equipements chauffage collectif_novembre 2024.xlsx",
@@ -13,187 +13,170 @@ const FICHIERS_EXCEL = [
 export default function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("Connexion...");
-  const [filters, setFilters] = useState({ groupe: '', ug: '' });
+  const [status, setStatus] = useState("Initialisation...");
+  const [filters, setFilters] = useState({ search: '' });
 
   useEffect(() => {
-    const chargerToutesLesDonnees = async () => {
-      let cumulDonnees = [];
-      for (const nomFichier of FICHIERS_EXCEL) {
+    const loadData = async () => {
+      let rawData = [];
+      for (const file of FICHIERS_EXCEL) {
         try {
-          setStatus(`Chargement : ${nomFichier}`);
-          const res = await fetch(`/${encodeURIComponent(nomFichier)}`);
+          setStatus(`Lecture : ${file}`);
+          const res = await fetch(`/${encodeURIComponent(file)}`);
           if (!res.ok) continue;
-          
           const ab = await res.arrayBuffer();
           const wb = XLSX.read(ab, { type: 'array' });
           
-          wb.SheetNames.forEach(sheetName => {
-            const ws = wb.Sheets[sheetName];
-            const jsonData = XLSX.utils.sheet_to_json(ws, { defval: "" });
-            
-            const cleanedData = jsonData.map(item => {
-              // FONCTION MAGIQUE : Cherche une valeur dans plusieurs noms de colonnes possibles
-              const find = (keywords) => {
-                const key = Object.keys(item).find(k => 
-                  keywords.some(kw => k.toUpperCase().includes(kw.toUpperCase()))
-                );
-                return key ? String(item[key]).trim() : "";
-              };
-
-              return {
-                // On cherche les colonnes les plus probables
-                GROUPE_FINAL: find(['GROUPE', 'HP2', 'GRPE', 'GRP']),
-                UG_FINAL: find(['N°UG', 'N° UG', 'UG', 'CODE UG', 'UNIT']),
-                ADRESSE_VAL: find(['ADRESSE', 'LOCALISATION', 'RUE', 'COMMUNE']),
-                SURFACE_VAL: find(['SCH', 'SURFACE', 'SURF', 'M2', 'S.CH']),
-                EQUIP_VAL: find(['SYSTEME', 'CHAUFFAGE', 'EQUIPEMENT', 'DESIGNATION', 'TYPE', 'CHAUDIERE']),
-                ENERGIE_VAL: find(['ENERGIE', 'COMBUSTIBLE', 'TYPE ENERGIE']),
-                PUISSANCE: find(['PUISSANCE', 'KW', 'P_NOMINALE']),
-                DATE_MES: find(['DATE', 'ANNEE', 'MISE EN SERVICE', 'MES']),
-                MARQUE: find(['MARQUE', 'MODELE', 'CONSTRUCTEUR']),
-                sourceFile: nomFichier,
-                onglet: sheetName
-              };
-            });
-            cumulDonnees = [...cumulDonnees, ...cleanedData];
+          wb.SheetNames.forEach(sheet => {
+            const json = XLSX.utils.sheet_to_json(wb.Sheets[sheet], { defval: "" });
+            rawData.push(...json.map(row => {
+              // Standardisation de toutes les clés en MAJUSCULES et SANS ESPACES
+              const cleanRow = {};
+              Object.keys(row).forEach(k => {
+                const cleanKey = k.trim().toUpperCase()
+                  .replace(/ /g, '_')
+                  .replace(/\(/g, '')
+                  .replace(/\)/g, '')
+                  .replace(/N°/g, 'N');
+                cleanRow[cleanKey] = String(row[k]).trim();
+              });
+              return { ...cleanRow, _SOURCE: file };
+            }));
           });
-        } catch (err) { console.error(err); }
+        } catch (e) { console.error(e); }
       }
-      setData(cumulDonnees);
+      setData(rawData);
       setLoading(false);
     };
-    chargerToutesLesDonnees();
+    loadData();
   }, []);
 
-  const filteredResults = useMemo(() => {
-    const sG = filters.groupe.toLowerCase().trim();
-    const sU = filters.ug.toLowerCase().trim();
-    if (!sG && !sU) return [];
+  const results = useMemo(() => {
+    const s = filters.search.toLowerCase().trim();
+    if (!s) return [];
 
-    return data.filter(item => {
-      // On filtre pour ne garder que les lignes qui ont au moins un Groupe ou une UG
-      if (!item.GROUPE_FINAL && !item.UG_FINAL) return false;
-      
-      const matchG = sG === '' || item.GROUPE_FINAL.toLowerCase().includes(sG);
-      const matchU = sU === '' || item.UG_FINAL.toLowerCase().includes(sU);
-      return matchG && matchU;
+    // 1. Trouver tous les Groupes ou UG correspondant à la recherche
+    const matches = data.filter(item => {
+      const hp2 = (item.GROUPE_HP2 || item.HP2 || item.CODE_HP2 || "").toLowerCase();
+      const ug = (item.N_UG || item.UG || "").toLowerCase();
+      return hp2.includes(s) || ug.includes(s);
+    });
+
+    // 2. Grouper les informations par Code HP2 pour fusionner les fichiers
+    const grouped = {};
+    matches.forEach(item => {
+      const id = item.GROUPE_HP2 || item.HP2 || item.CODE_HP2 || "INCONNU";
+      if (!grouped[id]) grouped[id] = { hp2: id, docs: [] };
+      grouped[id].docs.push(item);
+    });
+
+    return Object.values(grouped).map(group => {
+      const findVal = (keys) => {
+        for (const doc of group.docs) {
+          for (const k of keys) { if (doc[k]) return doc[k]; }
+        }
+        return "";
+      };
+
+      return {
+        hp2: group.hp2,
+        nom: findVal(['NOM_GROUPE', 'NOM']),
+        adresse: findVal(['ADRESSE', 'LOCALISATION', 'ADRESSE_COMPLETE']),
+        surface: findVal(['SURFACE_CHAUFFEE_SCH', 'SCH', 'SURFACE']),
+        equipement: findVal(['EQUIPEMENT', 'SYSTEME_CHAUFFAGE', 'DESIGNATION', 'MARQUE', 'MARQUE_DE_TYPE_VITOSOL']),
+        energie: findVal(['TYPE_COMBUSTIBLE', 'ENERGIE', 'TYPE_ENERGIE']),
+        isSolaire: group.docs.some(d => d._SOURCE.includes("panneaux")),
+        isIndividuel: group.docs.some(d => d._SOURCE.includes("individuel")),
+        ug: group.docs.find(d => d.N_UG)?.N_UG || ""
+      };
     });
   }, [data, filters]);
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#4A4A4A] font-sans pb-12">
-      <header className="bg-white p-6 border-b border-gray-100 shadow-sm sticky top-0 z-10 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className="bg-[#3A7AFE] p-2 rounded-xl text-white shadow-lg shadow-blue-100"><Building2 size={24} /></div>
-          <div>
-            <h1 className="text-lg font-black text-gray-900 tracking-tight leading-none uppercase">Socobat PH</h1>
-            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Patrimoine Technique</p>
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans pb-20">
+      <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 p-4">
+        <div className="max-w-4xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="bg-blue-600 p-2.5 rounded-2xl text-white shadow-lg shadow-blue-200"><Building2 size={24}/></div>
+            <h1 className="font-black text-xl tracking-tighter uppercase">Socobat <span className="text-blue-600">PH</span></h1>
+          </div>
+          <div className="text-[10px] font-bold bg-slate-100 px-3 py-1.5 rounded-full text-slate-500 uppercase tracking-widest">
+            {loading ? "Chargement..." : `${data.length} Entrées`}
           </div>
         </div>
-        {!loading && <div className="text-right px-4 py-1 bg-gray-50 rounded-full border border-gray-100 font-bold text-[10px] text-gray-500 uppercase">{data.length} LIGNES ANALYSÉES</div>}
       </header>
 
-      <main className="max-w-5xl mx-auto p-4 md:p-8">
-        <div className="bg-white p-6 rounded-[32px] shadow-sm mb-8 flex flex-col md:flex-row gap-6 border border-gray-50">
-          <div className="flex-1">
-            <label className="text-[11px] font-black text-gray-400 uppercase ml-2 block mb-2">Groupe (HP2)</label>
-            <input placeholder="Ex: HP2-045" className="w-full p-4 bg-[#F5F7FA] rounded-2xl outline-none focus:ring-2 focus:ring-[#3A7AFE] transition-all font-bold text-gray-700" onChange={e => setFilters({...filters, groupe: e.target.value})} />
-          </div>
-          <div className="flex-1">
-            <label className="text-[11px] font-black text-gray-400 uppercase ml-2 block mb-2">N° UG / Code</label>
-            <input placeholder="Ex: 119AL" className="w-full p-4 bg-[#F5F7FA] rounded-2xl outline-none focus:ring-2 focus:ring-[#3A7AFE] transition-all font-bold text-gray-700" onChange={e => setFilters({...filters, ug: e.target.value})} />
-          </div>
+      <main className="max-w-4xl mx-auto px-4 pt-8">
+        <div className="relative mb-12">
+          <input 
+            placeholder="Rechercher une UG ou un Groupe (ex: 119AL, HP2-045...)" 
+            className="w-full p-6 bg-white rounded-[32px] shadow-2xl shadow-blue-900/5 outline-none focus:ring-4 focus:ring-blue-100 transition-all text-lg font-medium pr-16 border border-slate-50"
+            onChange={e => setFilters({search: e.target.value})}
+          />
+          <div className="absolute right-6 top-6 text-blue-600"><Search size={28}/></div>
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-32 bg-white rounded-[40px] shadow-sm border border-gray-50">
-            <Loader2 className="animate-spin text-[#3A7AFE] mb-6" size={48} />
-            <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">{status}</p>
+          <div className="flex flex-col items-center justify-center py-20 text-slate-400">
+            <Loader2 className="animate-spin mb-4" size={48} />
+            <p className="font-bold uppercase tracking-widest text-xs">{status}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredResults.length > 0 ? (
-              filteredResults.map((u, i) => (
-                <div key={i} className="bg-white p-8 rounded-[35px] shadow-sm border border-transparent hover:border-blue-200 transition-all hover:shadow-xl group relative overflow-hidden">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="max-w-[70%]">
-                      <span className="text-[9px] font-black text-[#3A7AFE] bg-blue-50 px-2.5 py-1 rounded-lg uppercase mb-2 block w-fit leading-none">
-                        {u.sourceFile.split(' ')[0]}
-                      </span>
-                      <h3 className="font-black text-xl text-gray-900 uppercase tracking-tighter leading-none break-words">
-                        {u.GROUPE_FINAL || 'GROUPE N/C'}
-                      </h3>
+          <div className="space-y-6">
+            {results.map((r, i) => (
+              <div key={i} className="bg-white rounded-[40px] p-8 border border-slate-50 shadow-sm hover:shadow-xl transition-all group">
+                <div className="flex justify-between items-start mb-8">
+                  <div>
+                    <div className="flex gap-2 mb-3">
+                      <span className="bg-blue-50 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Groupe {r.hp2}</span>
+                      {r.isSolaire && <span className="bg-orange-50 text-orange-600 text-[10px] font-black px-3 py-1 rounded-full uppercase flex items-center gap-1"><Sun size={12}/> Solaire</span>}
+                      {r.isIndividuel ? 
+                        <span className="bg-purple-50 text-purple-600 text-[10px] font-black px-3 py-1 rounded-full uppercase">Individuel</span> :
+                        <span className="bg-emerald-50 text-emerald-600 text-[10px] font-black px-3 py-1 rounded-full uppercase">Collectif</span>
+                      }
                     </div>
-                    <div className="text-right flex flex-col items-end">
-                      <div className="bg-gray-900 text-white p-2 rounded-2xl shadow-md min-w-[60px] text-center">
-                        <p className="text-[8px] font-bold uppercase opacity-60 leading-none mb-1">Code UG</p>
-                        <p className="text-sm font-black leading-none">{u.UG_FINAL || 'N/A'}</p>
+                    <h2 className="text-2xl font-black text-slate-900 uppercase leading-none tracking-tighter">{r.nom || "Groupe sans nom"}</h2>
+                  </div>
+                  {r.ug && <div className="text-right bg-slate-900 text-white p-4 rounded-3xl shadow-lg">
+                    <p className="text-[10px] font-bold opacity-50 uppercase mb-1">Code UG</p>
+                    <p className="text-lg font-black leading-none">{r.ug}</p>
+                  </div>}
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8 border-t border-slate-50 pt-8">
+                  <div className="space-y-5">
+                    <div className="flex gap-4 items-start">
+                      <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><MapPin size={20}/></div>
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Localisation</p>
+                        <p className="font-bold text-slate-700 leading-snug">{r.adresse || "Adresse non listée"}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4 items-center">
+                      <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><Layers size={20}/></div>
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Surface Chauffée</p>
+                        <p className="font-bold text-slate-700">{r.surface || "N/C"} m²</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4 border-t border-gray-50 pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-blue-50 rounded-2xl text-[#3A7AFE] shrink-0 shadow-sm"><MapPin size={18}/></div>
-                      <div className="pt-1">
-                        <p className="text-[9px] font-bold text-gray-300 uppercase leading-none mb-1">Localisation</p>
-                        <p className="text-sm font-bold text-gray-600 leading-tight">{u.ADRESSE_VAL || 'Non renseignée'}</p>
-                      </div>
+                  <div className="bg-slate-50 rounded-[32px] p-6 relative overflow-hidden">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Zap className="text-blue-600" size={20}/>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Centrale Thermique</p>
                     </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-3 bg-gray-50 rounded-2xl text-gray-400 shrink-0"><Zap size={18}/></div>
-                          <div>
-                            <p className="text-[9px] font-bold text-gray-300 uppercase leading-none mb-1">Surface</p>
-                            <p className="text-sm font-black text-gray-700">{u.SURFACE_VAL || 'N/C'} <span className="text-[10px] font-bold text-gray-400">m²</span></p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="p-3 bg-gray-50 rounded-2xl text-gray-400 shrink-0"><Thermometer size={18}/></div>
-                          <div>
-                            <p className="text-[9px] font-bold text-gray-300 uppercase leading-none mb-1">Énergie</p>
-                            <p className="text-sm font-black text-gray-700 truncate max-w-[100px]">{u.ENERGIE_VAL || 'N/C'}</p>
-                          </div>
-                        </div>
+                    <p className="font-bold text-slate-700 text-sm leading-relaxed mb-4">{r.equipement || "Détails techniques en cours de saisie..."}</p>
+                    <div className="flex justify-between items-center border-t border-slate-200/50 pt-4 mt-2">
+                       <span className="text-[10px] font-black text-blue-600 uppercase tracking-tighter">{r.energie || "Énergie N/C"}</span>
                     </div>
-
-                    <div className="bg-[#F5F7FA] p-5 rounded-[24px] border border-gray-100 mt-4 group-hover:bg-white group-hover:border-blue-100 transition-colors">
-                        <div className="flex items-center gap-2 mb-2 text-[#3A7AFE]">
-                           <Home size={14} />
-                           <p className="text-[10px] font-black uppercase tracking-wider">Équipement Technique</p>
-                        </div>
-                        <p className="text-sm font-bold text-gray-700 leading-snug mb-2">{u.EQUIP_VAL || 'Information non disponible'}</p>
-                        <div className="flex justify-between items-end border-t border-gray-200/50 pt-3 mt-3">
-                           <div>
-                              <p className="text-[8px] font-bold text-gray-400 uppercase leading-none">Marque / Modèle</p>
-                              <p className="text-[10px] font-black text-gray-500 uppercase">{u.MARQUE || 'N/C'}</p>
-                           </div>
-                           <div className="text-right">
-                              <p className="text-[8px] font-bold text-gray-400 uppercase leading-none">Mise en service</p>
-                              <p className="text-[10px] font-black text-gray-500">{u.DATE_MES || 'Inconnue'}</p>
-                           </div>
-                        </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-opacity">
-                     <span className="text-[9px] font-black text-gray-300 uppercase tracking-widest">Feuille : {u.onglet}</span>
-                     <div className="flex items-center gap-1 text-blue-400">
-                        <AlertTriangle size={12} />
-                        <span className="text-[9px] font-black uppercase">Source : Excel</span>
-                     </div>
                   </div>
                 </div>
-              ))
-            ) : (
-              <div className="col-span-full bg-white py-32 px-10 rounded-[50px] text-center border-4 border-dashed border-gray-50 flex flex-col items-center">
-                <div className="p-6 bg-blue-50 rounded-full mb-6 text-[#3A7AFE] shadow-inner"><Search size={40} /></div>
-                <h2 className="text-xl font-black text-gray-800 uppercase tracking-tighter italic">Recherche Patrimoine</h2>
-                <p className="text-gray-400 text-sm mt-4 max-w-sm font-medium leading-relaxed">
-                  Saisissez un **Groupe** ou un **Code UG** (ex: 119AL) pour voir apparaître les fiches techniques.
-                </p>
+              </div>
+            ))}
+            {filters.search && results.length === 0 && (
+              <div className="text-center py-20 bg-white rounded-[40px] border-2 border-dashed border-slate-100">
+                <p className="text-slate-400 font-bold uppercase tracking-widest text-sm">Aucun patrimoine trouvé</p>
               </div>
             )}
           </div>
