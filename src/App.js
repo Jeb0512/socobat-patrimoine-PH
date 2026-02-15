@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as XLSX from 'xlsx';
-import { Building2, MapPin, Zap, Loader2, Sun, ClipboardCheck, Calculator } from 'lucide-react';
+import { Building2, MapPin, Zap, Loader2, ClipboardCheck, Calculator } from 'lucide-react';
 
 const FICHIERS_EXCEL = [
   "1-equipements chauffage collectif_novembre 2024.xlsx",
@@ -10,73 +10,84 @@ const FICHIERS_EXCEL = [
   "5 - panneaux solaires_novembre 2024.xlsx"
 ];
 
-const normalize = (val) => String(val || "").trim().toUpperCase().replace(/\s/g, '');
-
 export default function App() {
-  const [data, setData] = useState([]);
+  const [allCells, setAllCells] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const load = async () => {
-      let all = [];
+    const loadData = async () => {
+      let tempCells = [];
       for (const f of FICHIERS_EXCEL) {
         try {
           const res = await fetch(`/${encodeURIComponent(f)}`);
-          if (!res.ok) continue;
           const ab = await res.arrayBuffer();
           const wb = XLSX.read(ab, { type: 'array' });
           wb.SheetNames.forEach(sn => {
-            // On lit tout en format texte pour ne rien rater
-            const json = XLSX.utils.sheet_to_json(wb.Sheets[sn], { defval: "" });
-            all.push(...json.map(r => ({ ...r, _F: f, _STRING: Object.values(r).join("|").toUpperCase() })));
+            // header: 1 force la lecture en tableau de tableaux (brut)
+            const rows = XLSX.utils.sheet_to_json(wb.Sheets[sn], { header: 1 });
+            rows.forEach((row, rowIndex) => {
+              if (row.length > 0) {
+                tempCells.push({
+                  content: row.map(c => String(c || "").trim()),
+                  file: f
+                });
+              }
+            });
           });
-        } catch (e) { console.error(e); }
+        } catch (e) { console.error(`Erreur sur ${f}`, e); }
       }
-      setData(all);
+      setAllCells(tempCells);
       setLoading(false);
     };
-    load();
+    loadData();
   }, []);
 
   const result = useMemo(() => {
-    const s = normalize(search);
+    const s = search.trim().toUpperCase();
     if (s.length < 3) return null;
 
-    // 1. Trouver n'importe quelle ligne qui contient la recherche
-    const match = data.find(r => r._STRING.includes(s));
-    if (!match) return null;
+    // 1. Trouver la ligne qui contient exactement ou partiellement la recherche
+    const matchLine = allCells.find(line => 
+      line.content.some(cell => cell.toUpperCase().includes(s))
+    );
 
-    // 2. Identifier le code HP2 dans cette ligne (On cherche un motif type 119AL ou 515VA)
-    const hp2Candidate = Object.values(match).find(v => {
-      const val = normalize(v);
-      return val.length >= 4 && val.length <= 7 && /[0-9]/.test(val) && /[A-Z]/.test(val);
-    }) || s;
+    if (!matchLine) return null;
 
-    const hp2 = normalize(hp2Candidate);
+    // 2. Identifier le Code HP2 (souvent 4 à 6 caractères, lettres et chiffres)
+    // On cherche dans la ligne trouvée ce qui ressemble à un code groupe
+    const hp2 = matchLine.content.find(cell => 
+      cell.length >= 4 && cell.length <= 7 && /[0-9]/.test(cell) && /[A-Z]/.test(cell)
+    ) || s;
 
-    // 3. Récupérer TOUTES les lignes liées à ce HP2
-    const groupRows = data.filter(r => r._STRING.includes(hp2));
+    // 3. Récupérer toutes les lignes liées à ce HP2 dans tous les fichiers
+    const relatedLines = allCells.filter(line => 
+      line.content.some(cell => cell.toUpperCase() === hp2.toUpperCase())
+    );
 
-    // 4. Calcul de la somme des surfaces (On cherche des nombres dans le fichier 4)
-    let totalSHA = 0;
+    // 4. Calcul de la somme des SHA (Fichier 4 - Colonne L = Index 11)
+    let sumSHA = 0;
     let specificSHA = "--";
 
-    groupRows.forEach(r => {
-      if (r._F.includes("4") || r._F.includes("ug")) {
-        // On cherche une valeur numérique qui ressemble à une surface (entre 9 et 200)
-        const surfaces = Object.values(r).map(v => parseFloat(String(v).replace(',', '.'))).filter(v => v > 5 && v < 500);
-        const val = surfaces[0] || 0;
-        totalSHA += val;
-        // Si c'est la ligne de l'UG cherchée
-        if (r._STRING.includes(s)) specificSHA = val;
+    relatedLines.forEach(line => {
+      if (line.file.includes("4") || line.file.includes("ug")) {
+        // Dans le fichier 4, la SHA est en colonne L (index 11)
+        const val = parseFloat(String(line.content[11] || 0).replace(',', '.'));
+        if (!isNaN(val) && val > 0) sumSHA += val;
+        
+        // Si c'est la ligne précise de l'UG cherchée
+        if (line.content.some(cell => cell.toUpperCase().includes(s))) {
+          specificSHA = val || "--";
+        }
       }
     });
 
-    const getInfo = (keys) => {
-      for (const r of groupRows) {
-        for (const [k, v] of Object.entries(r)) {
-          if (keys.some(key => k.toUpperCase().includes(key)) && String(v).length > 3) return v;
+    // 5. Trouver les infos (Adresse, Equipement)
+    const findInArray = (keywords) => {
+      for (const line of relatedLines) {
+        const text = line.content.join(" ").toUpperCase();
+        if (keywords.some(kw => text.includes(kw))) {
+          return line.content.find(c => c.length > 5 && !c.includes(hp2)) || "";
         }
       }
       return "N/C";
@@ -84,73 +95,74 @@ export default function App() {
 
     return {
       hp2,
-      nom: getInfo(["NOM", "LIBELLE", "GROUPE"]) || hp2,
-      adr: getInfo(["ADRESSE", "RUE", "LOCALISATION"]),
+      nom: findInArray(["ALSACE", "VAUGIRARD", "AUBERVILLIERS", "SOLIDARITE"]),
+      adr: findInArray(["RUE", "AVENUE", "BOULEVARD", "PASSAGE"]),
       shaUG: specificSHA,
-      shaTotal: totalSHA.toFixed(2),
-      equip: getInfo(["EQUIPEMENT", "CHAUFFAGE", "DESIGNATION", "CHAUDIERE"]),
-      nrj: getInfo(["ENERGIE", "COMBUSTIBLE", "TYPE"]),
-      solaire: groupRows.some(r => r._F.includes("panneaux"))
+      shaTotal: sumSHA.toFixed(2),
+      equip: findInArray(["CHAUDIERE", "ECHANGEUR", "CPCU", "GAZ", "BALLON"]),
+      nrj: findInArray(["GAZ", "CPCU", "FIOUL", "ELEC"])
     };
-  }, [data, search]);
+  }, [allCells, search]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pb-20 font-sans">
-      <header className="bg-blue-700 p-6 shadow-lg flex justify-between items-center text-white">
-        <h1 className="font-black uppercase tracking-tighter italic flex items-center gap-2">
-          <Building2 /> Socobat PH
-        </h1>
-        <div className="text-[10px] font-bold bg-white/20 px-3 py-1 rounded-full">{data.length} LIGNES</div>
-      </header>
+    <div className="min-h-screen bg-slate-100 font-sans p-4">
+      <div className="max-w-xl mx-auto pt-10">
+        <div className="bg-blue-600 text-white p-6 rounded-t-[30px] flex justify-between items-center shadow-lg">
+          <h1 className="font-black uppercase italic tracking-tighter">Socobat PH</h1>
+          <span className="text-[10px] font-bold bg-white/20 px-2 py-1 rounded">{allCells.length} Lignes</span>
+        </div>
 
-      <main className="max-w-2xl mx-auto px-4 pt-10">
-        <div className="bg-white p-6 rounded-[30px] shadow-xl mb-10 border-2 border-blue-100">
+        <div className="bg-white p-6 shadow-xl border-x border-slate-200">
           <input 
-            placeholder="Tapez l'UG (ex: 151799) ou le HP2 (ex: 515VA)..." 
-            className="w-full p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold text-lg text-center"
+            placeholder="Tapez l'UG (ex: 151799) ou le HP2..." 
+            className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 font-black text-center text-lg"
             onChange={e => setSearch(e.target.value)}
           />
         </div>
 
         {loading ? (
-          <div className="text-center py-20 animate-pulse font-bold text-slate-400">CHARGEMENT...</div>
+          <div className="bg-white p-10 text-center rounded-b-[30px] border border-slate-200">
+            <Loader2 className="animate-spin mx-auto text-blue-600 mb-2" />
+            <p className="text-[10px] font-black uppercase text-slate-400">Analyse du patrimoine...</p>
+          </div>
         ) : result ? (
-          <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden border-b-8 border-b-blue-700">
-            <div className="p-10">
-              <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-lg uppercase mb-4 inline-block">ID: {result.hp2}</span>
-              <h2 className="text-3xl font-black uppercase mb-2 leading-none">{result.nom}</h2>
-              <p className="flex items-center gap-2 text-slate-500 font-bold text-sm mb-10"><MapPin size={16}/> {result.adr}</p>
+          <div className="bg-white p-8 rounded-b-[30px] border border-slate-200 shadow-2xl space-y-6">
+             <div className="border-b pb-4">
+                <span className="text-[10px] font-black bg-slate-100 px-2 py-1 rounded text-slate-500 uppercase">Groupe {result.hp2}</span>
+                <h2 className="text-2xl font-black uppercase leading-tight mt-2">{result.nom || result.hp2}</h2>
+                <p className="text-slate-400 text-xs font-bold mt-1 flex items-center gap-1"><MapPin size={12}/> {result.adr}</p>
+             </div>
 
-              <div className="grid gap-6">
-                <div className="bg-blue-600 text-white p-8 rounded-[40px] shadow-xl shadow-blue-200">
-                  <div className="flex items-center gap-2 mb-6 opacity-80 border-b border-white/20 pb-3 uppercase text-[10px] font-black">
-                    <ClipboardCheck size={18}/> Données de Surface (SHA)
-                  </div>
-                  <div className="flex justify-between items-center mb-6">
-                    <p className="text-xs font-bold uppercase">Logement (UG)</p>
-                    <p className="text-4xl font-black">{result.shaUG} m²</p>
-                  </div>
-                  <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                    <p className="text-xs font-bold uppercase opacity-80">Total Groupe (Calculé)</p>
-                    <p className="text-xl font-black">{result.shaTotal} m²</p>
-                  </div>
+             <div className="bg-blue-600 rounded-[25px] p-6 text-white shadow-inner">
+                <div className="flex items-center gap-2 mb-4 opacity-70 border-b border-white/20 pb-2">
+                   <ClipboardCheck size={16}/>
+                   <span className="text-[10px] font-black uppercase tracking-widest">Surfaces HabitaBles</span>
                 </div>
+                <div className="flex justify-between items-center mb-4">
+                   <p className="text-xs font-bold uppercase">UG Logement</p>
+                   <p className="text-3xl font-black">{result.shaUG} m²</p>
+                </div>
+                <div className="flex justify-between items-center pt-4 border-t border-white/10">
+                   <div className="flex items-center gap-2">
+                      <Calculator size={14} className="opacity-50"/>
+                      <p className="text-[10px] font-bold uppercase">Total Groupe (L)</p>
+                   </div>
+                   <p className="text-xl font-black">{result.shaTotal} m²</p>
+                </div>
+             </div>
 
-                <div className="bg-slate-50 p-8 rounded-[40px] border border-slate-100">
-                  <p className="text-[10px] font-black uppercase text-blue-600 mb-4">Équipement Technique</p>
-                  <p className="font-bold text-sm italic mb-6 text-slate-700">{result.equip}</p>
-                  <div className="flex justify-between font-black text-[10px] uppercase pt-4 border-t">
-                    <span className="text-slate-400">Énergie</span>
-                    <span className="text-blue-600">{result.nrj}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+             <div className="bg-slate-50 p-5 rounded-[25px] border border-slate-100">
+                <p className="text-[10px] font-black text-blue-600 uppercase mb-2">Technique</p>
+                <p className="font-bold text-sm italic text-slate-700 leading-snug">{result.equip}</p>
+                <p className="text-[10px] font-black text-blue-400 uppercase mt-4">Énergie: {result.nrj}</p>
+             </div>
           </div>
         ) : search.length > 2 && (
-          <div className="text-center py-20 text-slate-300 font-black uppercase tracking-widest">Aucune correspondance</div>
+          <div className="bg-white p-10 text-center rounded-b-[30px] text-slate-300 font-black uppercase text-xs tracking-widest">
+             Aucune donnée trouvée
+          </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }
